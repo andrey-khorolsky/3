@@ -46,6 +46,35 @@ function carrs(){
             s.classList.add('phtalb');
             img.src = fotos[i];
             img.style.cursor = "pointer";
+            //открытие фото
+            img.addEventListener("click", function(e){
+                var d = document.createElement("div");
+                d.addEventListener("click", function(){
+                    document.body.style.overflow = "visible";
+                    this.remove();
+                });
+                var im = document.createElement("img");
+                im.src = this.src;
+                d.appendChild(im);
+                d.style.position = "fixed";
+                d.style.height = "100%";
+                d.style.width = "100%";
+                d.style.marginTop = "-80px";
+                // d.style.opacity = "50%";
+                // d.style.hidden = "overflow";
+                d.style.backgroundColor = "lightgrey";
+                // d.focus();
+                // im.focus();
+                im.style.height = "60%";
+                im.style.marginLeft = "36%";
+                im.style.marginTop = "10%";
+                document.body.style.overflow = "auto";
+                // im.style.opacity = "100%";
+                // im.style.width = "100%";
+        
+                document.body.appendChild(d);
+        
+            });
             h.appendChild(elemText);
             s.appendChild(img);
             s.appendChild(h);
