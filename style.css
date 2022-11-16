@@ -256,3 +256,19 @@ th, td, tr, caption{
   align-items: center;
   text-align: center;
 }
+
+.openedPhoto{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  margin-top: -80px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.openedPhoto img{
+  cursor: pointer; 
+  height: 60%;
+  margin-left: 36%;
+  margin-top: 10%;
+  border-radius: 5px;
+}
