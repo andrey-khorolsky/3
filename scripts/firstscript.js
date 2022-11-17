@@ -45,6 +45,7 @@ function carrs(){
             var elemText = document.createTextNode(titles[i]);
             s.classList.add('phtalb');
             img.src = fotos[i];
+            img.style.cursor = "pointer";
             //открытие фото
             img.addEventListener("click", function(e){
                 var d = document.createElement("div");
@@ -54,8 +55,8 @@ function carrs(){
                 });
                 var im = document.createElement("img");
                 im.src = this.src;
-                d.appendChild(im);
                 d.classList.add("openedPhoto");
+                d.appendChild(im);
                 document.body.style.overflow = "auto";
                 document.body.appendChild(d);
         
@@ -68,3 +69,5 @@ function carrs(){
     all.classList.add('phtalb_d');
     document.body.appendChild(all);
 };
+
+window.onload = carrs();

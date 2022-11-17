@@ -75,3 +75,6 @@ for (var i=0; i<7; i++){
     });
 }
 }
+
+window.onload = glamMenu();
+window.onload = showtime();

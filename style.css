@@ -233,6 +233,7 @@ th, td, tr, caption{
 }
 
 .phtalb img{
+  cursor: pointer; 
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -266,7 +267,6 @@ th, td, tr, caption{
 }
 
 .openedPhoto img{
-  cursor: pointer; 
   height: 60%;
   margin-left: 36%;
   margin-top: 10%;
