@@ -272,3 +272,19 @@ th, td, tr, caption{
   margin-top: 10%;
   border-radius: 5px;
 }
+
+.ul_from_opened_menu{
+  position: absolute;
+  margin-top: 80px;
+  margin-left: 25%;
+  background-color: #FFF8F1;
+  width: 12.5%;
+  text-align: center;
+}
+
+.ul_from_opened_menu a{
+  width: 100%;
+  height: 60px;
+  display: block;
+  line-height: 60px;
+}

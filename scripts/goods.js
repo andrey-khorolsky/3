@@ -28,8 +28,9 @@ var u, na, l;
 var sctn = ["Музыка", "Книги", "Фильмы", "Игры"];
 
 function openMenu(){
-    if (flag) flag = false; else flag = true;
-    if (!flag){
+    if (!flag) flag = true;
+    else{
+        flag = false
         u.remove();
         return;
     }
@@ -37,10 +38,6 @@ function openMenu(){
     l = document.createElement("li");
     for (var i = 0; i<4; i++){
         na = document.createElement("a");
-        na.style.width = "100%";
-        na.style.height = "60px";
-        na.style.display = "block";
-        na.style.lineHeight = "60px";
         na.addEventListener("mouseover", function(e){
             this.style.backgroundColor = "#CAA88A";
         });
@@ -56,12 +53,7 @@ function openMenu(){
         l.appendChild(na);
     }
     l.style.width = "100%";
-    u.style.position = "absolute";
-    u.style.marginTop = "80px";
-    u.style.marginLeft = "25%";
-    u.style.backgroundColor = " #FFF8F1";
-    u.style.width = "12.5%";
-    u.style.textAlign = "center";
+    u.classList.add("ul_from_opened_menu");
     u.appendChild(l);
     document.querySelector("nav").appendChild(u);
 }

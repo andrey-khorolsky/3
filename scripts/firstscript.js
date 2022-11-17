@@ -56,19 +56,7 @@ function carrs(){
                 im.src = this.src;
                 d.appendChild(im);
                 d.classList.add("openedPhoto");
-                // d.style.position = "fixed";
-                // d.style.height = "100%";
-                // d.style.width = "100%";
-                // d.style.marginTop = "-80px";
-                // d.style.opacity = "90%";
-                // d.style.hidden = "overflow";
-                // d.style.backgroundColor = "lightgrey";
-                // d.focus();
-                // im.focus();
                 document.body.style.overflow = "auto";
-                // im.style.opacity = "100%";
-                // im.style.width = "100%";
-        
                 document.body.appendChild(d);
         
             });
