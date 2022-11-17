@@ -293,8 +293,10 @@ th, td, tr, caption{
   align-items: center;
   text-align: center;
   background-color: #FFF8F1;
-  height: 350px;
+  height: 300px;
   width: 350px;
+  margin-left: 46%;
+  margin-top: 10px;
   border: 3px solid #fff;
 }
 
@@ -316,12 +318,47 @@ th, td, tr, caption{
   margin-left: 10%;
 }
 
+.head-div-cal select{
+  width: 30%;
+  height: 100%;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.week-div-cal{
+  /* padding-left: 7%; */
+  /* display: block;
+  float: left; */
+  width: 100%;
+  margin-top: 5px;
+  margin-left: 20px;
+  /* text-align: center; */
+}
+
+.week-div-cal div{
+  /* text-align: center; */
+  margin-left: 5px;
+  width: 40px;
+  display: block;
+  float: left;
+  text-align: center;
+  align-items: center;
+}
+
+.week-div-cal :first-child{
+  margin-left: 0%;
+}
+
 .days-div-cal{
-  
+  text-align: center;
+  align-items: center;
 }
 
 .days-div-cal button{
   text-align: center;
   width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
