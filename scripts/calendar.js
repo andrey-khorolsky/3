@@ -1,6 +1,6 @@
-months = ["Январь", "Феврель", "Март", "Апрель", "Май", "Июнь", "Илюь", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+months = ["Январь", "Феврель", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
-var div, div_h, div_d, flag_cal = false, first=true, current_year, current_month, current_day=31, table_days;
+var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
 var inp = document.getElementById("birthID");
 
 document.getElementById("birthID").addEventListener("focus", function(){
@@ -8,7 +8,7 @@ document.getElementById("birthID").addEventListener("focus", function(){
     if (!flag_cal) flag_cal = true;
     else return;
 
-    inp.value = "00.01.2022";
+    inp.value = "01.01.2022";
 
     div = document.createElement("div");
     div.classList.add("main-div-cal");
@@ -53,7 +53,11 @@ function addWeek(){
 }
 
 function getDaysCount(mon){
-    if (mon == 2) return 28;
+    if (mon == 1) return 28;
+    if (mon < 7){
+        if (mon % 2 == 1) return 30;
+        if (mon % 2 == 0) return 31;
+    }
     if (mon % 2 == 0) return 30;
     if (mon % 2 == 1) return 31;
     return "null-";
@@ -64,7 +68,7 @@ function addSelectMonth(){
     for (var i=0; i<12; i++){
         var opt = document.createElement("option");
         opt.innerText = months[i];
-        opt.value = i+1;
+        opt.value = i;
         selMonth.appendChild(opt);
     };
     selMonth.addEventListener("change", function(){
@@ -102,6 +106,16 @@ function printDays(){
     div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
 //несколько div блоков после которых идут дни недели
+    var dat = new Date(current_year, current_month, 1);
+    // dat.setFullYear(current_year);
+    // dat.setMonth(current_month-1);
+    console.log(dat.getFullYear());
+    console.log(dat.getMonth());
+    console.log("dat.getDay() - " + dat.getDay());
+    for (var i=0; i<dat.getDay()-1; i++){
+        var void_div = document.createElement("div");
+        div_d.appendChild(void_div);
+    }
     for (var i=1; i<current_day+1; i++){
         var button = document.createElement("button");
         button.innerHTML = i;
