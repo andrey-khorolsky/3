@@ -1,4 +1,4 @@
-months = ["Январь", "Феврель", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
 var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
 var inp = document.getElementById("birthID");
@@ -125,7 +125,7 @@ function printDays(){
 }
 
 function setMonth(){
-    var monthInp = current_month;
+    var monthInp = Number(current_month) + Number(1);
     if (monthInp < 10) monthInp = "0" + Number(monthInp);
     inp.value = inp.value.substring(0, 3) + monthInp + inp.value.substring(5);
 }
