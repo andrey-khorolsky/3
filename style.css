@@ -349,26 +349,49 @@ th, td, tr, caption{
   margin-left: 0px;
 }
 
-.days-div-cal{
-  margin-left: 10px;
-  text-align: left;
-  align-items: center;
-}
 
-.days-div-cal div{
+
+/* .days-div-cal div{
   text-align: center;
   float: left;
   width: 40px;
   height: 40px;
   margin-top: 5px;
   margin-left: 5px;
-}
+} */
 
-.days-div-cal button{
+
+.days-div-cal{
+  cursor: pointer;
   text-align: center;
+  display: block;
+  float: left;
+
+  border:  1px black solid;
+  line-height: 40px;
+  border-radius: 2px;
+
   width: 40px;
   height: 40px;
   margin-top: 5px;
   margin-left: 5px;
 }
 
+
+.days-div-cal-void{
+  border: none;
+  text-align: center;
+  display: block;
+  float: left;
+
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.days-div-cal .days-div-cal-void{
+  margin-left: 10px;
+  text-align: left;
+  align-items: center;
+}

@@ -103,7 +103,7 @@ function printDays(){
     if (!first) div_d.remove();
     first = false;
     div_d = document.createElement("div");
-    div_d.classList.add("days-div-cal");
+    // div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
 //несколько div блоков после которых идут дни недели
     var dat = new Date(current_year, current_month, 1);
@@ -114,13 +114,21 @@ function printDays(){
     console.log("dat.getDay() - " + dat.getDay());
     for (var i=0; i<dat.getDay()-1; i++){
         var void_div = document.createElement("div");
+        void_div.classList.add("days-div-cal-void");
         div_d.appendChild(void_div);
     }
     for (var i=1; i<current_day+1; i++){
-        var button = document.createElement("button");
-        button.innerHTML = i;
-        button.value = i;
-        div_d.appendChild(button);
+        var divDay = document.createElement("div");
+        divDay.innerHTML = i;
+        divDay.value = i;
+        divDay.classList.add("days-div-cal");
+        divDay.addEventListener("click", function(){
+            setDay(this.innerHTML);
+            console.log("17 = " + i);
+        });
+        console.log(divDay.innerHTML+"-==-");
+        // divDay.onclick = setDay(this.value);
+        div_d.appendChild(divDay);
     }
 }
 
@@ -128,5 +136,11 @@ function setMonth(){
     var monthInp = Number(current_month) + Number(1);
     if (monthInp < 10) monthInp = "0" + Number(monthInp);
     inp.value = inp.value.substring(0, 3) + monthInp + inp.value.substring(5);
+}
+
+function setDay(nday){
+    var dayInp = Number(nday);
+    if (dayInp < 10) dayInp = "0" + Number(dayInp);
+    inp.value = dayInp + inp.value.substring(2);
 }
 
