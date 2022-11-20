@@ -1,8 +1,11 @@
+// массив месяцев
 months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
+// переменные
 var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
 var inp = document.getElementById("birthID");
 
+// слушатель. при фокусировке открытие календаря
 document.getElementById("birthID").addEventListener("focus", function(){
     console.log("bf");
     if (!flag_cal) flag_cal = true;
@@ -26,6 +29,7 @@ document.getElementById("birthID").addEventListener("focus", function(){
 });
 
 
+// добавлени крестика
 function addCross(){
     var cross = document.createElement("div");
     cross.innerHTML = "&times";
@@ -39,8 +43,10 @@ function addCross(){
     return cross;
 }
 
+// дни недели
 var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
+// добавление названий дней
 function addWeek(){
     var div_w = document.createElement("div");
     div_w.classList.add("week-div-cal");
@@ -52,6 +58,7 @@ function addWeek(){
     return div_w;
 }
 
+// функция возвращает кол-во дней в текущем месяце
 function getDaysCount(mon){
     if (mon == 1) return 28;
     if (mon < 7){
@@ -63,6 +70,7 @@ function getDaysCount(mon){
     return "null-";
 }
 
+// создание выбора месяца. добавление слушателя для изменения
 function addSelectMonth(){
     var selMonth = document.createElement("select");
     for (var i=0; i<12; i++){
@@ -82,6 +90,7 @@ function addSelectMonth(){
     return selMonth;
 }
 
+// создание выбора года. добавление слушателя для изменения
 function addSelectYear(){
     var selYear = document.createElement("select");
     for (var i=2022; i>1900; i--){
@@ -99,13 +108,13 @@ function addSelectYear(){
     return selYear;
 }
 
+// вывод дней в месяце
 function printDays(){
     if (!first) div_d.remove();
     first = false;
     div_d = document.createElement("div");
     div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
-//несколько div блоков после которых идут дни недели
     var dat = new Date(current_year, current_month, 1);
     // dat.setFullYear(current_year);
     // dat.setMonth(current_month-1);
@@ -122,6 +131,7 @@ function printDays(){
         divDay.innerHTML = i;
         divDay.value = i;
         divDay.classList.add("days-div-cal-num");
+        // установка выбранного числа в строку с датой
         divDay.addEventListener("click", function(){
             setDay(this.innerHTML);
             console.log("17 = " + i);
@@ -132,12 +142,14 @@ function printDays(){
     }
 }
 
+// установка выбранного месяца в строку с датой
 function setMonth(){
     var monthInp = Number(current_month) + Number(1);
     if (monthInp < 10) monthInp = "0" + Number(monthInp);
     inp.value = inp.value.substring(0, 3) + monthInp + inp.value.substring(5);
 }
 
+// установак выбранного года в строку с датой
 function setDay(nday){
     var dayInp = Number(nday);
     if (dayInp < 10) dayInp = "0" + Number(dayInp);
