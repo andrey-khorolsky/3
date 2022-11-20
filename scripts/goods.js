@@ -81,5 +81,21 @@ for (var i=0; i<menu.length; i++){
 }
 }
 
+function createSeshStorage(){
+    var count = sessionStorage.getItem(window.location.href);
+    count++;
+    sessionStorage.setItem(window.location.href, count);
+    // console.log(window.location.href);
+}
+
+function createCookie(){
+    var text = window.location.href + "=" + "1";
+    console.log("text = 11");
+    document.cookie = "text = 11; path=/";
+}
+
+
 window.onload = glamMenu();
 window.onload = showtime();
+window.onload = createSeshStorage();
+window.onload = createCookie();

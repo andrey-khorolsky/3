@@ -399,3 +399,23 @@ th, td, tr, caption{
   text-align: left;
   align-items: center;
 }
+
+.sch{
+  margin-top: 40px;
+  /* float: left; */
+  display: block;
+  text-align: center;
+  align-items: center;
+}
+
+.sch a{
+  text-decoration: none;
+  height: 80px;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 6px;
+  color: #532A05;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #532A05;
+}
