@@ -17,7 +17,6 @@ function showtime(){
     var date = new Date();
     na.innerText = date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '\n'
     + days[date.getDay()] + '\n' + date.getHours() + ":" + minut(date.getMinutes());
-    console.log(date.getDay());
     nli.appendChild(na);
     list.appendChild(nli);
     }, 1000);
@@ -62,17 +61,22 @@ function openMenu(){
 // изменение меню при наведении
 function glamMenu(){
 var menu = document.querySelectorAll("a");
-console.log(menu);
-for (var i=0; i<7; i++){
+for (var i=0; i<menu.length; i++){
+    var leafs = menu[i].childNodes;
+    leafs[0].src = "img/bulb.png";
+    var locate = (i != 2) ? menu[i].href : "file:///C:/TWO/Web/3/web_hobby.html";
+    if ( window.location.href.includes(locate)){
+        leafs[0].src = "img/color_bulb.png";
+        continue;
+    }
     menu[i].addEventListener("mouseover", function(e){
-        this.style.backgroundColor = "#CAA88A";
-        this.style.color = "#FFF8F1";
+        var leafs = this.childNodes;
+        leafs[0].src ="img/color_bulb.png";
     });
-}
-for (var i=0; i<7; i++){
+    
     menu[i].addEventListener("mouseout", function(e){
-        this.style.backgroundColor = "#FFF8F1";
-        this.style.color = "#532A05";
+        var leafs = this.childNodes;
+        leafs[0].src = "img/bulb.png";
     });
 }
 }
