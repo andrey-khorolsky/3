@@ -103,7 +103,7 @@ function printDays(){
     if (!first) div_d.remove();
     first = false;
     div_d = document.createElement("div");
-    // div_d.classList.add("days-div-cal");
+    div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
 //несколько div блоков после которых идут дни недели
     var dat = new Date(current_year, current_month, 1);
@@ -121,7 +121,7 @@ function printDays(){
         var divDay = document.createElement("div");
         divDay.innerHTML = i;
         divDay.value = i;
-        divDay.classList.add("days-div-cal");
+        divDay.classList.add("days-div-cal-num");
         divDay.addEventListener("click", function(){
             setDay(this.innerHTML);
             console.log("17 = " + i);

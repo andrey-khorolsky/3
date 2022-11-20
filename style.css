@@ -293,11 +293,13 @@ th, td, tr, caption{
   align-items: center;
   text-align: center;
   background-color: #FFF8F1;
-  height: 370px;
-  width: 340px;
-  margin-left: 46%;
+  height: 340px;
+  width: 345px;
+  margin-left: 41%;
   margin-top: 10px;
-  border: 3px solid #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(136, 136, 136);
 }
 
 .cross-cal{
@@ -323,6 +325,7 @@ th, td, tr, caption{
   height: 100%;
   text-align: center;
   border-radius: 4px;
+  box-shadow: inset 1px 1px 1px rgba(136, 136, 136, 0.6);
 }
 
 .week-div-cal{
@@ -330,7 +333,7 @@ th, td, tr, caption{
   /* display: block;
   float: left; */
   width: 100%;
-  margin-top: 5px;
+  margin-top: 7px;
   margin-left: 10px;
   /* text-align: center; */
 }
@@ -345,23 +348,15 @@ th, td, tr, caption{
   align-items: center;
 }
 
-.week-div-cal :first-child{
-  margin-left: 0px;
+.days-div-cal{
+  text-align: center;
+  display: block;
+  float: left;
+  /* margin-top: 2px; */
+  margin-left: 10px;
 }
 
-
-
-/* .days-div-cal div{
-  text-align: center;
-  float: left;
-  width: 40px;
-  height: 40px;
-  margin-top: 5px;
-  margin-left: 5px;
-} */
-
-
-.days-div-cal{
+.days-div-cal-num{
   cursor: pointer;
   text-align: center;
   display: block;
@@ -377,6 +372,11 @@ th, td, tr, caption{
   margin-left: 5px;
 }
 
+.days-div-cal-num:hover{
+  background-color: rgba(197, 197, 197, 0.527);
+  box-shadow: 0 0 1px;
+}
+
 
 .days-div-cal-void{
   border: none;
@@ -390,7 +390,7 @@ th, td, tr, caption{
   margin-left: 5px;
 }
 
-.days-div-cal .days-div-cal-void{
+.days-div-cal-num .days-div-cal-void{
   margin-left: 10px;
   text-align: left;
   align-items: center;

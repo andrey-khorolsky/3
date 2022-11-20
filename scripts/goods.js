@@ -1,7 +1,7 @@
 
 
 // вывод даты и вемени
-let days = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"];
+let days = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
 
 function minut(m){
     if (m < 10) return "0" + m;
@@ -16,7 +16,8 @@ function showtime(){
     setInterval( function(){
     var date = new Date();
     na.innerText = date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '\n'
-    + days[date.getDay()-1] + '\n' + date.getHours() + ":" + minut(date.getMinutes());
+    + days[date.getDay()] + '\n' + date.getHours() + ":" + minut(date.getMinutes());
+    console.log(date.getDay());
     nli.appendChild(na);
     list.appendChild(nli);
     }, 1000);
