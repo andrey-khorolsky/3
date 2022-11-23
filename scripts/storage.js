@@ -30,20 +30,22 @@ function getCookie(){
 // document.body.appendChild(div);
 //     console.log(menu[i].href);
 // }
+// console.log(document.cookie);
     var menu = document.querySelectorAll("a");
     var countvisit;
+    var doccookie = document.cookie + ";";
     for (let i=0; i<7; i++){
         var div = document.createElement("div");
         var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:8080/web_hobby.html";
-        if (!document.cookie.includes(locate)){
+        if (!doccookie.includes(locate)){
             countvisit = 0;
             div.innerText = locate + " - " + countvisit;
             document.body.appendChild(div);
             continue;
         }
-        var ind = document.cookie.indexOf(locate);
-        var si = Number(document.cookie.indexOf(";", ind)) + Number(1);
-        var cookies = document.cookie.slice(ind, si);
+        var ind = doccookie.indexOf(locate);
+        var si = Number(doccookie.indexOf(";", ind)) + Number(1);
+        var cookies = doccookie.slice(ind, si);
         // console.log(cookies);
 
         ind = Number(cookies.indexOf("=")) + Number(1);
