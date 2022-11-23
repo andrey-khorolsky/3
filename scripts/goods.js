@@ -65,7 +65,7 @@ function glamMenu(){
         var leafs = menu[i].childNodes;
         leafs[0].src = "img/bulb.png";
         var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:8080/web_hobby.html";
-        console.log(i + " " + locate);
+        // console.log(i + " " + locate);
         if ( window.location.href.includes(locate)){
             leafs[0].src = "img/color_bulb.png";
             continue;
@@ -91,7 +91,7 @@ function createSeshStorage(){
 function createCookie(){
 
     var locate = (!window.location.href.includes("hobby")) ? window.location.href : "http://127.0.0.1:8080/web_hobby.html";
-    // console.log(" " + locate);
+    console.log(document.cookie);
     if (!document.cookie.includes(locate)){
         document.cookie = locate + "=1";
         return;
@@ -99,33 +99,14 @@ function createCookie(){
     var ind = document.cookie.indexOf(locate);
     var si = Number(document.cookie.indexOf(";", ind)) + Number(1);
     var cookies = document.cookie.slice(ind, si);
-    // console.log(cookies);
 
     ind = Number(cookies.indexOf("=")) + Number(1);
     si = Number(cookies.indexOf(";", ind));
     cookies = cookies.slice(ind, si);
-    // console.log(cookies);
 
     cookies = Number(cookies) + Number(1);
     
-    // console.log("coo " + cookies);
     document.cookie = locate + "=" + cookies;
-    // console.log("start");
-    // console.log(document.cookie);
-    // console.log("finish");
-
-    // document.cookie = window.location.href + "=NaN; max-age=0";
-    // var ind = texts.indexOf(window.location.href);
-    // console.log("ind = " + ind);
-    // var eq = texts.indexOf("=", ind);
-    // var inddot = texts.indexOf(";", ind);
-    // console.log("inddot = " + inddot);
-    // ind = Number(ind) + Number(1);
-    // var count = texts.slice(eq, inddot);
-    // console.log("count = " + count);
-    // count = Number(count) + Number(1);
-    // console.log("count + 1 = " + count);
-    // document.cookie = window.location.href + "=" + count;
 }
 
 
