@@ -109,7 +109,6 @@ function createCookie(){
     document.cookie = locate + "=" + cookies;
 }
 
-
 window.onload = glamMenu();
 window.onload = showtime();
 window.onload = createSeshStorage();
