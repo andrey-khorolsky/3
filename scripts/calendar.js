@@ -7,7 +7,6 @@ var inp = document.getElementById("birthID");
 
 // слушатель. при фокусировке открытие календаря
 document.getElementById("birthID").addEventListener("focus", function(){
-    console.log("bf");
     if (!flag_cal) flag_cal = true;
     else return;
 
@@ -37,7 +36,6 @@ function addCross(){
     cross.addEventListener("click", function(){
         flag_cal = false;
         first = true;
-        console.log("bb");
         div.remove();
     });
     return cross;
@@ -101,7 +99,6 @@ function addSelectYear(){
     };
     selYear.addEventListener("change", function(){
         current_year = selYear.value;
-        console.log("year = " + current_year);
         inp.value = inp.value.substring(0, 6) + current_year;
         printDays();
     });
@@ -116,11 +113,6 @@ function printDays(){
     div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
     var dat = new Date(current_year, current_month, 1);
-    // dat.setFullYear(current_year);
-    // dat.setMonth(current_month-1);
-    console.log(dat.getFullYear());
-    console.log(dat.getMonth());
-    console.log("dat.getDay() - " + dat.getDay());
     for (var i=0; i<dat.getDay()-1; i++){
         var void_div = document.createElement("div");
         void_div.classList.add("days-div-cal-void");
@@ -134,9 +126,7 @@ function printDays(){
         // установка выбранного числа в строку с датой
         divDay.addEventListener("click", function(){
             setDay(this.innerHTML);
-            console.log("17 = " + i);
         });
-        console.log(divDay.innerHTML+"-==-");
         // divDay.onclick = setDay(this.value);
         div_d.appendChild(divDay);
     }

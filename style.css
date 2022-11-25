@@ -451,3 +451,25 @@ th, td, tr, caption{
   width: 30%;
   float: left;
 }
+
+.buttons{
+  margin-top: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.contactsError{
+  margin-left: 10%;
+  color: red;
+}
+
+.contactsError :nth-child(n){
+  color: white;
+}
+
+.fieldError{
+  background-color: white;
+  border: red solid 1px;
+}
+
+

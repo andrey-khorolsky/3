@@ -24,13 +24,13 @@
 			<div class="tstf">
 				<label for="fioID">Укажите свои ФИО</label>
 				<br>
-				<input type="text" id="fioID" name="fio" placeholder="Введите ФИО">
+				<input class="contData" type="text" id="fioID" name="fio" placeholder="Введите ФИО">
 			</div>
 
 			<div class="tstf" id="forcal">
 				<label for="bitrhID">Укажите дату рождения</label>
 				<br>
-				<input id="birthID" name="birth" placeholder="01.01.2022" readonly>
+				<input class="contData" id="birthID" name="birth" placeholder="01.01.2022" readonly>
 			</div>
 
 			<div class="tstf">
@@ -43,8 +43,8 @@
 			<div class="tstf">
 				<label for="ageID">Укажите свой возраст:</label>
 				<br>
-				<select id="ageID" name="age" size="1">
-					<option>Укажите свой возраст</option>
+				<select class="contData" id="ageID" name="age" size="1">
+					<option value="">Укажите свой возраст</option>
 					<option>&lt;14</option>
 					<option>14 - 18</option>
 					<option>18 - 40</option>
@@ -56,22 +56,22 @@
 			<div class="tstf">
 				<label for="emailID">Укажите свой Email:</label>
 				<br>
-				<input type="email" id="emailID" name="email" placeholder="Введите Email">
+				<input class="contData" type="email" id="emailID" name="email" placeholder="Введите Email">
 			</div>
 
 			<div class="tstf">
 				<label for="telID">Укажите свой номер телефона:</label>
 				<br>
-				<input type="tel" id="telID" name="tel" placeholder="Введите номер телефона">
+				<input class="contData" type="tel" id="telID" name="tel" placeholder="Введите номер телефона">
 			</div>
 
-			<div class="tstf">
-				<button type="submit" id="sbb">Send</button>
+			<div class="buttons">
+				<button type="submit" id="sbb" disabled>Send</button>
 				<button type="reset">Reset</button>
 			</div>
 		</form>
 		<script src="scripts/goods.js"></script>
+		<script src="scripts/calendar.js"></script>
+		<script src="scripts/contactsIsRight.js"></script>
 	</body>
-	
-	<script src="scripts/calendar.js"></script>
 </html>

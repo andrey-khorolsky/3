@@ -66,7 +66,7 @@ function glamMenu(){
         leafs[0].src = "img/bulb.png";
         var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:8080/web_hobby.html";
         
-        if ( window.location.href.includes(locate)){
+        if (window.location.href.includes(locate)){
             leafs[0].src = "img/color_bulb.png";
             continue;
         }

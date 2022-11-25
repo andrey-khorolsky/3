@@ -47,34 +47,38 @@ function checktest(event){
     if (!chselect(lqf)) return false;
 }
 
-function checkcont(event){
-    var re = /^\+[37][0-9]{9,11}$/;
-    var fiof = document.getElementById("fioID");
-    var agef = document.getElementById("ageID");
-    var emailf = document.getElementById("emailID");
-    var telf = document.getElementById("telID");
-    var men = document.contform.sex[0].checked;
-    var women = document.contform.sex[1].checked;
-    if (!chFio(fiof)) return false;
-    if ((men==false) && (women == false)){
-        alert("Вы не выбрали пол");
-        return false;
-    }
-    if (!chselect(agef)) return false;
-    if (emailf.value == "") {
-        emailf.focus();
-        alert("Вы не ввели почту");
-        return false;
-    }
-    if (telf.value == ""){
-        telf.focus();
-        alert("Вы не ввели номер телефона");
-        return false;
-    }
-    if (!re.test(telf.value)){
-        telf.focus();
-        alert("Вы не правильно ввели номер телефона");
-        return false;
-    }
-    return true;
-}
+// function checkcont(event){
+//     var re = /^\+[37][0-9]{9,11}$/;
+//     var fiof = document.getElementById("fioID");
+//     var agef = document.getElementById("ageID");
+//     var emailf = document.getElementById("emailID");
+//     var telf = document.getElementById("telID");
+//     var men = document.contform.sex[0].checked;
+//     var women = document.contform.sex[1].checked;
+//     if (!chFio(fiof)){
+//         console.log("-fio");
+//         fiof.style.backgroundColor = "red";
+//         return false;
+//     }
+//     if ((men==false) && (women == false)){
+//         alert("Вы не выбрали пол");
+//         return false;
+//     }
+//     if (!chselect(agef)) return false;
+//     if (emailf.value == "") {
+//         emailf.focus();
+//         alert("Вы не ввели почту");
+//         return false;
+//     }
+//     if (telf.value == ""){
+//         telf.focus();
+//         alert("Вы не ввели номер телефона");
+//         return false;
+//     }
+//     if (!re.test(telf.value)){
+//         telf.focus();
+//         alert("Вы не правильно ввели номер телефона");
+//         return false;
+//     }
+//     return true;
+// }
