@@ -419,3 +419,37 @@ th, td, tr, caption{
   border-radius: 6px;
   border: 1px solid #532A05;
 }
+
+.showMetrics{
+  display: block;
+  float: left;
+  margin-top: 15%;
+  width: 30%;
+  text-align: center;
+  align-items: center;
+  /* margin-left: 15%; */
+  border-radius: 7px;
+  border: 1px solid grey;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* .showMetrics :first-child{
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid grey;
+  background-color: grey;
+} */
+
+.metrics :nth-child(odd){
+  color: aquamarine;
+  width: 40%;
+  float: left;
+  text-align: left;
+  /* padding-left: 32%; */
+}
+
+.metrics :nth-child(even){
+  width: 30%;
+  float: left;
+}
