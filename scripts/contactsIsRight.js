@@ -1,22 +1,20 @@
-var fieldsRight = [false, false, false, false, false];
 
-var fields = [
-    document.getElementById("fioID"),
-    document.getElementById("birthID"),
-    document.getElementById("ageID"),
-    document.getElementById("emailID"),
-    document.getElementById("telID"),
-]
-// console.log(fields);
 
 function openBut(){
-    for (let i=0; i<5; i++){
-        if (!fieldsRight[i]){
-            document.getElementById("sbb").disabled = true;
-            return;
-        }
-    }
-    document.getElementById("sbb").removeAttribute("disabled");
+    if (document.getElementsByClassName("fieldRight").length < 5)
+        document.getElementById("sbb").disabled = true;
+    else
+        document.getElementById("sbb").removeAttribute("disabled");
+}
+
+function addErrorDiv(place, textError){
+    let divErr = document.createElement("div");
+    divErr.classList.add("contactsError");
+    divErr.innerText = textError;
+    place.parentElement.appendChild(divErr);
+    place.classList.remove("fieldRight");
+    place.classList.add("fieldError");
+    openBut();
 }
 
 
@@ -29,31 +27,20 @@ document.getElementById("fioID").addEventListener("blur", function(e){
     if (this.value == ""){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы не заполнили ФИО";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[0] = false;
-        this.classList.add("fieldError");
-        openBut();
+        addErrorDiv(this, "Вы не заполнили ФИО");
         return;
     }
 
     if (!re.test(this.value)){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы неправильно заполнили ФИО";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[0] = false;
-        openBut();
+        addErrorDiv(this, "Вы неправильно заполнили ФИО");
         return;
     }
 
-    fieldsRight[0] = true;
     if (flag) divErr.remove();
     this.classList.remove("fieldError");
+    this.classList.add("fieldRight");
     openBut();
 });
 
@@ -65,18 +52,13 @@ document.getElementById("birthID").addEventListener("blur", function(e){
     if (this.value == ""){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы не заполнили дату рождения";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[1] = false;
-        openBut();
+        addErrorDiv(this, "Вы не заполнили дату рождения");
         return;
     }
 
-    
-    fieldsRight[1] = true;
     if (flag) divErr.remove();
+    this.classList.remove("fieldError");
+    this.classList.add("fieldRight");
     openBut();
 });
 
@@ -89,17 +71,13 @@ document.getElementById("ageID").addEventListener("blur", function(e){
     if (this.value == ""){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы не выбрали возраст";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[2] = false;
-        openBut();
+        addErrorDiv(this, "Вы не выбрали возраст");
         return;
     }
 
-    fieldsRight[2] = true;
     if (flag) divErr.remove();
+    this.classList.remove("fieldError");
+    this.classList.add("fieldRight");
     openBut();
 });
 
@@ -112,29 +90,20 @@ document.getElementById("emailID").addEventListener("blur", function(e){
     if (this.value == ""){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы не ввели почту";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[3] = false;
-        openBut();
+        addErrorDiv(this, "Вы не ввели почту");
         return;
     }
 
     if (!re.test(this.value)){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы неправильно заполнили почту";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[3] = false;
-        openBut();
+        addErrorDiv(this, "Вы неправильно заполнили почту");
         return;
     }
 
-    fieldsRight[3] = true;
     if (flag) divErr.remove();
+    this.classList.remove("fieldError");
+    this.classList.add("fieldRight");
     openBut();
 });
 
@@ -148,28 +117,19 @@ document.getElementById("telID").addEventListener("blur", function(e){
     if (this.value == ""){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы не ввели номер телефона";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[3] = false;
-        openBut();
+        addErrorDiv(this, "Вы не ввели номер телефона");
         return;
     }
 
     if (!re.test(this.value)){
         if (flag) divErr.remove();
         flag = false;
-        divErr = document.createElement("div");
-        divErr.classList.add("contactsError");
-        divErr.innerText = "Вы неправильно ввели номер телефона";
-        if (!flag) this.parentElement.appendChild(divErr);
-        fieldsRight[4] = false;
-        openBut();
+        addErrorDiv(this, "Вы неправильно ввели номер телефона");
         return;
     }
 
-    fieldsRight[4] = true;
     if (flag) divErr.remove();
+    this.classList.remove("fieldError");
+    this.classList.add("fieldRight");
     openBut();
 });

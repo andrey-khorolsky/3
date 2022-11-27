@@ -468,8 +468,11 @@ th, td, tr, caption{
 }
 
 .fieldError{
-  background-color: white;
-  border: red solid 1px;
+  background-color: rgba(252, 118, 118, 0.651);
+}
+
+.fieldRight{
+  background-color: rgba(118, 252, 125, 0.651);
 }
 
 
