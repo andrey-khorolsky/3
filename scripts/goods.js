@@ -64,7 +64,7 @@ function glamMenu(){
     for (var i=0; i<menu.length; i++){
         var leafs = menu[i].childNodes;
         leafs[0].src = "img/bulb.png";
-        var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:8080/web_hobby.html";
+        var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:5500/web_hobby.html";
         
         if (window.location.href.includes(locate)){
             leafs[0].src = "img/color_bulb.png";
@@ -89,10 +89,13 @@ function createSeshStorage(){
 
 function createCookie(){
 
-    var locate = (!window.location.href.includes("hobby")) ? window.location.href : "http://127.0.0.1:8080/web_hobby.html";
-    
+    var locate = (!window.location.href.includes("hobby")) ? window.location.href : "http://127.0.0.1:5500/web_hobby.html";
+    if (navigator.cookieEnabled === false){
+        alert("Cookies отключены!");
+    }
     if (!document.cookie.includes(locate)){
-        document.cookie = locate + "=1";
+        console.log("new");
+        document.cookie = locate + "=1; max-age=604800";
         return;
     }
 
@@ -106,7 +109,7 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locate + "=" + cookies;
+    document.cookie = locate + "=" + cookies + "; max-age=604800";
 }
 
 window.onload = glamMenu();
