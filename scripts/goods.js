@@ -64,7 +64,7 @@ function glamMenu(){
     for (var i=0; i<menu.length; i++){
         var leafs = menu[i].childNodes;
         leafs[0].src = "img/bulb.png";
-        var locate = (i != 2) ? menu[i].href : "http://127.0.0.1:5500/web_hobby.html";
+        var locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
         
         if (window.location.href.includes(locate)){
             leafs[0].src = "img/color_bulb.png";
@@ -84,12 +84,13 @@ function glamMenu(){
 }//переделать для сервера
 
 function createSeshStorage(){
-    sessionStorage.setItem(window.location.href, Number(sessionStorage.getItem(window.location.href)) + Number(1));
+    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    sessionStorage.setItem(locate, Number(sessionStorage.getItem(locate)) + Number(1));
 }
 
 function createCookie(){
 
-    var locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
     if (navigator.cookieEnabled === false){
         alert("Cookies отключены!");
     }

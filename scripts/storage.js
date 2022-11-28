@@ -15,8 +15,10 @@ metrDiv.classList.add("metrics");
 for (let i=0; i<menu.length; i++){
     let pageDiv = document.createElement("div");
     let countDiv = document.createElement("div");
+    
+    let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
 
-    countDiv.innerText = (sessionStorage.getItem(menu[i].href) == null) ? 0 : sessionStorage.getItem(menu[i].href);
+    countDiv.innerText = (sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate);
     pageDiv.innerText = pages[i];
 
     metrDiv.appendChild(pageDiv);
