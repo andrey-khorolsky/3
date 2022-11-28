@@ -45,7 +45,7 @@ function getCookie(){
 
     for (let i=0; i<7; i++){
 
-        let locate = (i != 2) ? menu[i].href : "http://127.0.0.1:8080/web_hobby.html";
+        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
 
         if (!doccookie.includes(locate)){
             countvisit = 0;

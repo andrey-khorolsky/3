@@ -89,7 +89,7 @@ function createSeshStorage(){
 
 function createCookie(){
 
-    var locate = (!window.location.href.includes("hobby")) ? window.location.href : "http://127.0.0.1:5500/web_hobby.html";
+    var locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
     if (navigator.cookieEnabled === false){
         alert("Cookies отключены!");
     }
