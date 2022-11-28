@@ -1,6 +1,9 @@
 // массив месяцев
 months = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 
+// дни недели
+var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
 // переменные
 var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
 var inp = document.getElementById("birthID");
@@ -41,9 +44,6 @@ function addCross(){
     return cross;
 }
 
-// дни недели
-var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
-
 // добавление названий дней
 function addWeek(){
     var div_w = document.createElement("div");
@@ -80,8 +80,6 @@ function addSelectMonth(){
     selMonth.addEventListener("change", function(){
         current_month = selMonth.value;
         current_day = getDaysCount(selMonth.value);
-        console.log("month = " + current_month);
-        console.log("day = " + current_day);
         setMonth();
         printDays();
     });
@@ -127,7 +125,6 @@ function printDays(){
         divDay.addEventListener("click", function(){
             setDay(this.innerHTML);
         });
-        // divDay.onclick = setDay(this.value);
         div_d.appendChild(divDay);
     }
 }

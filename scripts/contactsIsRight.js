@@ -1,5 +1,5 @@
 
-
+// проверка на кол-во правильно заполненных полей
 function openBut(){
     if (document.getElementsByClassName("fieldRight").length < 5)
         document.getElementById("sbb").disabled = true;
@@ -7,6 +7,8 @@ function openBut(){
         document.getElementById("sbb").removeAttribute("disabled");
 }
 
+
+// добавление ошибки возле поля, добавление класса ошибки к полю
 function addErrorDiv(place, textError){
     let divErr = document.createElement("div");
     divErr.classList.add("contactsError");
@@ -18,7 +20,7 @@ function addErrorDiv(place, textError){
 }
 
 
-
+// добавление слушателя к полю ФИО
 document.getElementById("fioID").addEventListener("blur", function(e){
     let re = /^[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+$/;
     let divErr = this.parentElement.getElementsByClassName("contactsError")[0];
@@ -45,6 +47,7 @@ document.getElementById("fioID").addEventListener("blur", function(e){
 });
 
 
+// добавление слушателя к полю дата рождения
 document.getElementById("birthID").addEventListener("blur", function(e){
     let divErr = this.parentElement.getElementsByClassName("contactsError")[0];
     let flag = (divErr) ? true : false;
@@ -63,7 +66,7 @@ document.getElementById("birthID").addEventListener("blur", function(e){
 });
 
 
-
+// добавление слушателя к полю возраст
 document.getElementById("ageID").addEventListener("blur", function(e){
     let divErr = this.parentElement.getElementsByClassName("contactsError")[0];
     let flag = (divErr) ? true : false;
@@ -82,6 +85,7 @@ document.getElementById("ageID").addEventListener("blur", function(e){
 });
 
 
+// добавление слушателя к полю email
 document.getElementById("emailID").addEventListener("blur", function(e){
     let re = /^[0-9a-zA-z][0-9a-zA-Z\.]*[0-9a-zA-z]?[^\.]\@[-a-zA-z]+\.[-a-zA-z]{2,}$/;
     let divErr = this.parentElement.getElementsByClassName("contactsError")[0];
@@ -108,7 +112,7 @@ document.getElementById("emailID").addEventListener("blur", function(e){
 });
 
 
-
+// добавление слушателя к полю номер телефона
 document.getElementById("telID").addEventListener("blur", function(e){
     let re = /^\+[37][0-9]{9,11}$/;
     let divErr = this.parentElement.getElementsByClassName("contactsError")[0];

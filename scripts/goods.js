@@ -3,7 +3,7 @@
 // вывод даты и вемени
 let days = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
 
-function minut(m){
+function minute(m){
     if (m < 10) return "0" + m;
     return m;
 }
@@ -16,7 +16,7 @@ function showtime(){
     setInterval( function(){
     var date = new Date();
     na.innerText = date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '\n'
-    + days[date.getDay()] + '\n' + date.getHours() + ":" + minut(date.getMinutes());
+    + days[date.getDay()] + '\n' + date.getHours() + ":" + minute(date.getMinutes());
     nli.appendChild(na);
     list.appendChild(nli);
     }, 1000);
@@ -81,7 +81,7 @@ function glamMenu(){
             leafs[0].src = "img/bulb.png";
         });
     }
-}//переделать для сервера
+}
 
 function createSeshStorage(){
     let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
@@ -113,7 +113,7 @@ function createCookie(){
     document.cookie = locate + "=" + cookies + "; max-age=604800";
 }
 
-window.onload = glamMenu();
-window.onload = showtime();
-window.onload = createSeshStorage();
-window.onload = createCookie();
+glamMenu();
+showtime();
+createSeshStorage();
+createCookie();

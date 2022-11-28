@@ -1,34 +1,36 @@
 
 var pages = ["Главная", "Обо мне", "Мои интересы", "Фото", "Контакты", "Тест", "История"];
 
-// вывод 
-let menu = document.querySelectorAll("a");
-let seshDiv = document.createElement("div");
-let histDiv = document.createElement("div");
-let metrDiv = document.createElement("div");
+// вывод истории текущего сеанса
+function getSesh(){
+    let menu = document.querySelectorAll("a");
+    let seshDiv = document.createElement("div");
+    let histDiv = document.createElement("div");
+    let metrDiv = document.createElement("div");
 
-histDiv.innerText = "История текущего сеанса";
-seshDiv.appendChild(histDiv);
-seshDiv.classList.add("showMetrics");
-metrDiv.classList.add("metrics");
+    histDiv.innerText = "История текущего сеанса";
+    seshDiv.appendChild(histDiv);
+    seshDiv.classList.add("showMetrics");
+    metrDiv.classList.add("metrics");
 
-for (let i=0; i<menu.length; i++){
-    let pageDiv = document.createElement("div");
-    let countDiv = document.createElement("div");
-    
-    let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+    for (let i=0; i<menu.length; i++){
+        let pageDiv = document.createElement("div");
+        let countDiv = document.createElement("div");
+        
+        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
 
-    countDiv.innerText = (sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate);
-    pageDiv.innerText = pages[i];
+        countDiv.innerText = (sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate);
+        pageDiv.innerText = pages[i];
 
-    metrDiv.appendChild(pageDiv);
-    metrDiv.appendChild(countDiv);
+        metrDiv.appendChild(pageDiv);
+        metrDiv.appendChild(countDiv);
+    }
+    seshDiv.appendChild(metrDiv);
+    document.body.appendChild(seshDiv);
 }
-seshDiv.appendChild(metrDiv);
-document.body.appendChild(seshDiv);
 
 
-
+// вывод истории за все время
 function getCookie(){
     
     let menu = document.querySelectorAll("a");
@@ -77,5 +79,6 @@ function getCookie(){
     document.body.appendChild(cookDiv);
 }
 
-window.onload = getCookie();
+getSesh();
+getCookie();
 
