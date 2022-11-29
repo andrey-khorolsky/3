@@ -102,14 +102,11 @@ function createCookie(){
     document.cookie = locate + "=" + cookies + "; max-age=604800";
 }
 
-// showtime();
 createSeshStorage();
 createCookie();
+
 $(document).ready(function(){
-
-
     glamMenu();
     showtime();
-    
 });
     
