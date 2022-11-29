@@ -128,7 +128,7 @@ var game = [
 ]
 
 function hobby(nsect, ...arr){
-    var i, j, sec, d, img, h, ho, hp, covername, artistname, disc;
+    let i, j, sec, d, img, h, ho, hp, covername, artistname, disc;
         for (i=0; i<arr.length; i++){
             d = document.createElement("div");
             d.classList.add("album");
