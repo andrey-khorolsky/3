@@ -31,7 +31,7 @@ $("#birthID").focus(function(){
 
 // добавлени крестика
 function addCross(){
-    var cross = $("<div>'&times'</div>", {"class" : "cross-cal"});
+    var cross = $('<div class="cross-cal">&times</div>');
     cross.click(function(){
         flag_cal = false;
         first = true;
@@ -66,13 +66,14 @@ function getDaysCount(mon){
 function addSelectMonth(){
     var selMonth = $("<select></select>");
     for (let i=0; i<12; i++){
-        var opt = $("<option>" + months[i] + "</option>");
-        opt.value = i;
+        var opt = $("<option></option>");
+        opt.text(months[i]);
+        opt.val(i);
         selMonth.append(opt);
     };
     selMonth.change(function(){
-        current_month = selMonth.value;
-        current_day = getDaysCount(selMonth.value);
+        current_month = $(selMonth).val();
+        current_day = getDaysCount($(selMonth).val());
         setMonth();
         printDays();
     });
@@ -83,12 +84,13 @@ function addSelectMonth(){
 function addSelectYear(){
     var selYear = $("<select></select>");
     for (var i=2022; i>1900; i--){
-        var opt = $("<option>" + i + "</option>");
-        opt.value = i;
+        var opt = $("<option></option>");
+        opt.text(i);
+        opt.val(i);
         selYear.append(opt);
     };
     selYear.change(function(){
-        current_year = selYear.value;
+        current_year = $(selYear).val();
         inp.value = inp.value.substring(0, 6) + current_year;
         printDays();
     });
@@ -107,11 +109,12 @@ function printDays(){
         div_d.append(void_div);
     }
     for (var i=1; i<current_day+1; i++){
-        var divDay = $("<div>" + i + "</div>", {"class" : "days-div-cal-num"});
-        divDay.value = i;
+        var divDay = $("<div></div>", {"class" : "days-div-cal-num"});
+        divDay.val(i);
+        divDay.text(i);
         // установка выбранного числа в строку с датой
         divDay.click(function(){
-            setDay(this.html());
+            setDay($(this).text());
         });
         div_d.append(divDay);
     }
