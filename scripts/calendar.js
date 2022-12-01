@@ -12,12 +12,10 @@ var inp = document.getElementById("birthID");
 $("#birthID").focus(function(){
     if (!flag_cal) flag_cal = true;
     else return;
-
     inp.value = "01.01.2022";
 
     div = $("<div></div>", {"class" : "main-div-cal"});
     div_h = $("<div></div>", {"class" : "head-div-cal"});
-
 
     div_h.append(addSelectYear());
     div_h.append(addSelectMonth());
@@ -64,7 +62,7 @@ function getDaysCount(mon){
 
 // создание выбора месяца. добавление слушателя для изменения
 function addSelectMonth(){
-    var selMonth = $("<select></select>");
+    var selMonth = $("<select id='selMn'></select>");
     for (let i=0; i<12; i++){
         var opt = $("<option></option>");
         opt.text(months[i]);
@@ -82,7 +80,7 @@ function addSelectMonth(){
 
 // создание выбора года. добавление слушателя для изменения
 function addSelectYear(){
-    var selYear = $("<select></select>");
+    var selYear = $("<select id='selYr'></select>");
     for (var i=2022; i>1900; i--){
         var opt = $("<option></option>");
         opt.text(i);
