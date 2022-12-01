@@ -3,49 +3,30 @@ var pages = ["Главная", "Обо мне", "Мои интересы", "Фо
 
 // вывод истории текущего сеанса
 function getSesh(){
-    let menu = document.querySelectorAll("a");
-    let seshDiv = document.createElement("div");
-    let histDiv = document.createElement("div");
-    let metrDiv = document.createElement("div");
-
-    histDiv.innerText = "История текущего сеанса";
-    seshDiv.appendChild(histDiv);
-    seshDiv.classList.add("showMetrics");
-    metrDiv.classList.add("metrics");
+    let menu = $("a");
+    let seshDiv = $("<div class='showMetrics'></div>").append($("<div>История текущего сеанса</div>"));
+    let metrDiv = $("<div class='metrics'></div>");
 
     for (let i=0; i<menu.length; i++){
-        let pageDiv = document.createElement("div");
-        let countDiv = document.createElement("div");
-        
         let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
 
-        countDiv.innerText = (sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate);
-        pageDiv.innerText = pages[i];
-
-        metrDiv.appendChild(pageDiv);
-        metrDiv.appendChild(countDiv);
+        metrDiv.append($("<div>" + pages[i] + "</div>"));
+        metrDiv.append($("<div>" + ((sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate)) + "</div>"));
     }
-    seshDiv.appendChild(metrDiv);
-    document.body.appendChild(seshDiv);
+    seshDiv.append(metrDiv);
+    $("body").append(seshDiv);
 }
 
 
 // вывод истории за все время
 function getCookie(){
     
-    let menu = document.querySelectorAll("a");
-    let cookDiv = document.createElement("div");
-    let histDiv = document.createElement("div");
-    let metrDiv = document.createElement("div");
-
-    histDiv.innerText = "История за все время";
-    cookDiv.appendChild(histDiv);
-    cookDiv.classList.add("showMetrics");
-    metrDiv.classList.add("metrics");
+    let menu = $("a");
+    let cookDiv = $("<div class='showMetrics'></div>").append($("<div>История за все время</div>"));
+    let metrDiv = $("<div class='metrics'></div>");
 
     let countvisit;
     let doccookie = document.cookie + ";";
-
 
     for (let i=0; i<7; i++){
 
@@ -65,18 +46,12 @@ function getCookie(){
             
         }
 
-        var pageDivC = document.createElement("div");
-        var countDivC = document.createElement("div");
-
-        pageDivC.innerText = pages[i];
-        countDivC.innerText = countvisit;
-
-        metrDiv.appendChild(pageDivC);
-        metrDiv.appendChild(countDivC);
+        metrDiv.append($("<div>" + pages[i] + "</div>"));
+        metrDiv.append($("<div>" + countvisit + "</div>"));
 
     }
-    cookDiv.appendChild(metrDiv);
-    document.body.appendChild(cookDiv);
+    cookDiv.append(metrDiv);
+    $("body").append(cookDiv);
 }
 
 getSesh();
