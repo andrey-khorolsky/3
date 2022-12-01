@@ -5,7 +5,7 @@ months = ["Январь", "Февраль", "Март", "Апрель", "Май"
 var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 // переменные
-var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
+var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=0, current_day=31, table_days;
 var inp = document.getElementById("birthID");
 
 // слушатель. при фокусировке открытие календаря
@@ -58,7 +58,15 @@ function addWeek(){
 
 // функция возвращает кол-во дней в текущем месяце
 function getDaysCount(mon){
-    if (mon == 1) return 28;
+    if (current_month == 1)
+    if (current_year%4 == 0){
+        if (current_year%100 == 0){
+            if (current_year%400 == 0) return 29;
+            else return 28;
+        }
+        else return 29;
+    } else return 28;
+
     if (mon < 7){
         if (mon % 2 == 1) return 30;
         if (mon % 2 == 0) return 31;
@@ -97,6 +105,7 @@ function addSelectYear(){
     };
     selYear.addEventListener("change", function(){
         current_year = selYear.value;
+        current_day = getDaysCount(current_month);
         inp.value = inp.value.substring(0, 6) + current_year;
         printDays();
     });
@@ -111,12 +120,15 @@ function printDays(){
     div_d.classList.add("days-div-cal");
     div.appendChild(div_d);
     var dat = new Date(current_year, current_month, 1);
-    for (var i=0; i<dat.getDay()-1; i++){
+    let days;
+    if (dat.getDay() == 0) days = 7;
+    else days = dat.getDay();
+    for (let i=0; i<days-1; i++){
         var void_div = document.createElement("div");
         void_div.classList.add("days-div-cal-void");
         div_d.appendChild(void_div);
     }
-    for (var i=1; i<current_day+1; i++){
+    for (let i=1; i<current_day+1; i++){
         var divDay = document.createElement("div");
         divDay.innerHTML = i;
         divDay.value = i;
