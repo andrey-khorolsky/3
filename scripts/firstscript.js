@@ -37,37 +37,29 @@ function carrs(){
     ];
 
         
-    var all = document.createElement("div");
+    var all = $("<div></div>");
         for (var i=0; i<fotos.length; i++){
-            var s = document.createElement("div");
-            var img = document.createElement("img");
-            var h = document.createElement("h5");
-            var elemText = document.createTextNode(titles[i]);
-            s.classList.add('phtalb');
-            img.src = fotos[i];
-            img.style.cursor = "pointer";
-            //открытие фото
-            img.addEventListener("click", function(e){
-                var d = document.createElement("div");
-                d.addEventListener("click", function(){
-                    document.body.style.overflow = "visible";
+            var s = $("<div class='phtalb'></div>");
+            var img = $("<img src=" + fotos[i] + ">");
+            var h = $("<h5>" + titles[i] +"</h5>");
+
+            // открытие фото
+            img.click(function(e){
+                console.log("open");
+                var d = $("<div class='openedPhoto'></div>");
+                d.click(function(){
                     this.remove();
                 });
-                var im = document.createElement("img");
-                im.src = this.src;
-                d.classList.add("openedPhoto");
-                d.appendChild(im);
-                document.body.style.overflow = "auto";
-                document.body.appendChild(d);
-        
+                var im = $("<img src=" + this.src + ">");
+                d.append(im);
+                $("body").append(d);
             });
-            h.appendChild(elemText);
-            s.appendChild(img);
-            s.appendChild(h);
-            all.appendChild(s);
+            s.append(img);
+            s.append(h);
+            all.append(s);
         }
-    all.classList.add('phtalb_d');
-    document.body.appendChild(all);
+    all.addClass('phtalb_d');
+    $("body").append(all);
 };
 
 window.onload = carrs();

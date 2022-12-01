@@ -271,6 +271,7 @@ th, td, tr, caption{
 }
 
 .openedPhoto img{
+  cursor: pointer;
   height: 60%;
   margin-left: 36%;
   margin-top: 10%;
