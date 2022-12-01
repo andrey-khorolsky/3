@@ -40,18 +40,41 @@ function carrs(){
     var all = $("<div></div>");
         for (var i=0; i<fotos.length; i++){
             var s = $("<div class='phtalb'></div>");
-            var img = $("<img src=" + fotos[i] + ">");
+            var img = $("<img src=" + fotos[i] + " alt='" + titles[i] + "'>");
             var h = $("<h5>" + titles[i] +"</h5>");
 
             // открытие фото
             img.click(function(e){
                 console.log("open");
                 var d = $("<div class='openedPhoto'></div>");
-                d.click(function(){
-                    this.remove();
+                let openimg = $("<img src=" + this.src + ">");
+                d.append(openimg);
+                d.append($("<div>" + this.alt + "</div>"));
+                
+                
+                let crosssaap = $("<span>&#10006;</span>");
+                let lsaap = $("<span>&#5130;</span>");
+                let rsaap = $("<span>&#5125;</span>");
+                let arrows = $("<div></div>");
+
+                arrows.append(lsaap, crosssaap, rsaap);
+
+                crosssaap.click(function(){
+                    console.log("exit");
+                    d.remove();
                 });
-                var im = $("<img src=" + this.src + ">");
-                d.append(im);
+                
+                lsaap.click(function(){
+                    console.log(openimg.src);
+                    console.log(titles.indexOf(openimg.alt));
+                    openimg.src = fotos[Number(titles.indexOf(openimg.alt)) - Number(1)];
+                });
+                
+                rsaap.click(function(){
+                    console.log("right");
+                });
+                
+                d.append(arrows);
                 $("body").append(d);
             });
             s.append(img);
