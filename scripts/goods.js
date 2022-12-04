@@ -82,16 +82,17 @@ function createSeshStorage(){
 
 function createCookie(){
 
-    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let locateCookie = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
    
-    if (!document.cookie.includes(locate)){
-        document.cookie = locate + "=1; max-age=604800";
+    let cook = document.cookie + ";";
+    if (!cook.includes(locateCookie)){
+        cook = locateCookie + "=1; max-age=604800;";
         return;
     }
 
-    let ind = document.cookie.indexOf(locate);
-    let si = Number(document.cookie.indexOf(";", ind)) + Number(1);
-    let cookies = document.cookie.slice(ind, si);
+    let ind = cook.indexOf(locateCookie);
+    let si = Number(cook.indexOf(";", ind)) + Number(1);
+    let cookies = cook.slice(ind, si);
 
     ind = Number(cookies.indexOf("=")) + Number(1);
     si = Number(cookies.indexOf(";", ind));
@@ -99,7 +100,7 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locate + "=" + cookies + "; max-age=604800";
+    document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
 }
 
 createSeshStorage();
