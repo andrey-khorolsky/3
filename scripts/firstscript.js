@@ -46,12 +46,10 @@ function carrs(){
 
             // открытие фото
             img.click(function(e){
-                console.log("open");
                 var d = $("<div class='openedPhoto'></div>");
                 let openimg = $("<img src=" + this.src + ">");
                 d.append(openimg);
-                d.append($("<div>" + this.alt + "</div>"));
-                
+                d.append($("<div class='title_for_foto'>" + this.alt + "</div>"));
                 
                 let crosssaap = $("<span>&#10006;</span>");
                 let lsaap = $("<span>&#5130;</span>");
@@ -61,14 +59,11 @@ function carrs(){
                 arrows.append(lsaap, crosssaap, rsaap);
 
                 crosssaap.click(function(){
-                    console.log("exit");
                     d.remove();
                 });
                 
                 lsaap.click(function(){
                     updCarrs(-1);
-                    // console.log(titles.indexOf(openimg.alt));
-                    openimg.src = fotos[Number(titles.indexOf(openimg.alt)) - Number(1)];
                 });
                 
                 rsaap.click(function(){
@@ -88,13 +83,13 @@ function carrs(){
 
 function updCarrs(inex){
     let neme = String($(" .openedPhoto > img").attr("src"));
-    console.log(neme.substring(neme.indexOf("img/")));
-    console.log(fotos.indexOf(neme.substring(neme.indexOf("img/"))));
     let curI = Number(fotos.indexOf(neme.substring(neme.indexOf("img/"))));
+
     if (curI+inex == fotos.length) curI = -1;
     if (curI+inex == -1) curI = fotos.length;
 
     $(" .openedPhoto > img").attr("src", fotos[curI+inex]);
+    $(" .openedPhoto > .title_for_foto").text(titles[curI+inex]);
 }
 
 window.onload = carrs();
