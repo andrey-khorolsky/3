@@ -145,39 +145,37 @@ popover("#telID", "shawty callin on my phone, i dont pick it up");
 function popover(element, textd){
     $(element).attr("inform", textd);
     $(element).attr("popexist", 'f');
-    // console.log(textd);
 
     $(element).mouseover(function(){
 
         if ($(this).attr("popexist") == 't') return;
 
+        if ($(".ppvr")) $(".ppvr").remove();
+
         let pop = $("<div class='ppvr'></div>");
         pop.text($(this).attr("inform"));
         $(this).parent().append(pop);
-        // console.log(11);
-        // console.log($(".ppvr"));
-        // console.log($(this).attr("inform"));
 
-        // console.log($(this).width());
-        // console.log($(this).offset());
-        // console.log($(window).width());
-        // console.log($(window).width()*0.5);
+        let offs = $(this).offset();
         
-        if ($(this).offset().left > $(window).width()*0.5){
+        if (offs.left > $(window).width()*0.5)
             $(pop).css( "margin-left", (-$(this).width()*0.5)-($(pop).width())-10);
-            // console.log(Number($(this).width()) + " - " + Number($(pop).width()));
-        }
-        if ($(this).offset().left < $(window).width()*0.5)
+            
+        if (offs.left < $(window).width()*0.5)
             $(pop).css( "margin-left", ($(this).width()*0.5));
 
-        console.log($(this));
+        if (offs.top > $(window).height()*0.5)
+            $(pop).css( "margin-top", (-$(this).height())-($(pop).height())-10);
+            
+        if (offs.top < $(window).height()*0.5)
+            $(pop).css( "margin-top", (offs.top+$(this).height()-$(pop).height()-$(pop).offset().top-10));
+
         $(element).attr("popexist", 't');
 
 
         setTimeout(function(){
-            // $(".ppvr").remove();
-            // console.log($(this));
-            // $(element).attr("popexist", 'f')
+            $(".ppvr").remove();
+            $(element).attr("popexist", 'f')
         }, 3000);
         
     });
