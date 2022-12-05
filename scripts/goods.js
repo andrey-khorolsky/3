@@ -16,7 +16,7 @@ function showtime(){
     setInterval( function(){
     let date = new Date();
     na.html(date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '<br>'
-    + days[date.getDay()] + '<br>' + date.getHours() + ":" + minute(date.getMinutes()) + ":" + date.getSeconds());
+    + days[date.getDay()] + '<br>' + date.getHours() + ":" + minute(date.getMinutes()) + ":" + minute(date.getSeconds()));
     }, 1000);
 }
 

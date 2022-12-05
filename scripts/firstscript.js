@@ -72,6 +72,9 @@ function carrs(){
                 d.append(arrows);
                 $("body").append(d);
             });
+
+            popover(img, titles[i]);
+            
             s.append(img);
             s.append(h);
             all.append(s);
