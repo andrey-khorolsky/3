@@ -491,4 +491,9 @@ th, td, tr, caption{
   background-color: rgba(118, 252, 125, 0.651);
 }
 
+.ppvr{
+  width: 400px;
+  height: 40px;
+  margin-left: 50%;
+}
 

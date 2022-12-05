@@ -101,7 +101,7 @@ function createCookie(){
     cookies = Number(cookies) + Number(1);
     
     document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
-}
+};
 
 createSeshStorage();
 createCookie();

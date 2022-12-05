@@ -85,7 +85,7 @@ $("#ageID").blur(function(e){
 
 
 // добавление слушателя к полю email
-document.getElementById("emailID").addEventListener("blur", function(e){
+$("#emailID").blur(function(e){
     let re = /^[0-9a-zA-z][0-9a-zA-Z\.]*[0-9a-zA-z]?[^\.]\@[-a-zA-z]+\.[-a-zA-z]{2,}$/;
     let divErr = $(".contactsError").get(0);
     let flag = (divErr) ? true : false;
@@ -112,7 +112,7 @@ document.getElementById("emailID").addEventListener("blur", function(e){
 
 
 // добавление слушателя к полю номер телефона
-document.getElementById("telID").addEventListener("blur", function(e){
+$("#telID").blur(function(e){
     let re = /^\+[37][0-9]{9,11}$/;
     let divErr = $(".contactsError").get(0);
     let flag = (divErr) ? true : false;
@@ -137,3 +137,32 @@ document.getElementById("telID").addEventListener("blur", function(e){
     openBut();
 });
 
+
+popover("#telID", "shawty callin on my phone, i dont pick it up");
+
+
+//popover
+function popover(element, textd){
+    $(element).attr("inform", textd);
+    $(element).attr("popexist", 'f');
+    // console.log(textd);
+    $(element).mouseover(function(){
+        // console.log(11);
+        // console.log($(".ppvr"));
+        // console.log($(this).attr("inform"));
+        if ($(this).attr("popexist") == 't') return;
+        let pop = $("<div class='ppvr'></div>");
+        pop.text($(this).attr("inform"));
+        $(this).parent().append(pop);
+        console.log($(this));
+        // $(".ppvr").remove();
+        $(element).attr("popexist", 't');
+
+        setTimeout(function(){
+            $(".ppvr").remove();
+            console.log($(this));
+            $(element).attr("popexist", 'f')
+        }, 3000);
+        
+    });
+};
