@@ -1,6 +1,5 @@
 
-
-    var fotos = [
+var fotos = [
     "img/nsx.jpg",
     "img/skyliner32.jpg",
     "img/s2k.jpg",

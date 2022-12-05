@@ -136,3 +136,4 @@ document.getElementById("telID").addEventListener("blur", function(e){
     $(this).addClass("fieldRight");
     openBut();
 });
+
