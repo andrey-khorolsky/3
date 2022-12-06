@@ -138,6 +138,38 @@ $("#telID").blur(function(e){
 });
 
 
+function modal_win(){
+    let policy = $(".tstf:last");
+
+    policy.click(function(){
+        if ($(this).attr("policy") == "t") return;
+        $(this).attr("policy", "t");
+        
+        let div_win = $("<div class='modal_window'></div>");
+        // div_win.click(function(){
+        //     this.remove();
+        // });
+
+        let div_mssg = $("<div>Продолжая пользоваться сайтом вы соглашаетесь с данными условиями. Всю полученную от вас информацию мы используем по своему усмотрению.</div>");
+        
+        let btn = $('<button>Понял</button>');
+        btn.click(function(){
+            div_win.remove();
+            $(policy).attr("policy", "f");
+        });
+
+        let div_btn =  $("<div id='div_btn_policy'></div>");
+        div_btn.append(btn);
+        div_btn.append($("<button>Не согласен</button>"));
+
+        div_mssg.append(div_btn);
+        div_win.append(div_mssg);
+        $('body').append(div_win);
+
+    });
+}
+
+modal_win();
 popover("#fioID", "Введите Фамилию, Имя и Отчество через пробел с заглавных букв");
 popover("#birthID", "Выберите дату рождения помощью календаря");
 popover("#ageID", "Выберите свой возрастной диапозон");
