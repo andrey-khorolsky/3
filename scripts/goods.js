@@ -103,6 +103,45 @@ function createCookie(){
     document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
 };
 
+//popover
+function popover(element, textd){
+    $(element).attr("inform", textd);
+    $(element).attr("popexist", 'f');
+
+    $(element).mouseover(function(){
+
+        if ($(this).attr("popexist") == 't') return;
+
+        let pop = $("<div class='ppvr'></div>");
+        pop.text($(this).attr("inform"));
+        $(this).parent().append(pop);
+
+        let offs = $(this).offset();
+        
+        if (offs.left > $(window).width()*0.5)
+            $(pop).css( "margin-left", (-$(this).width()*0.5)-($(pop).width())-10);
+            
+        if (offs.left < $(window).width()*0.5)
+            $(pop).css( "margin-left", ($(this).width()*0.5));
+
+        if (offs.top > $(window).height()*0.5)
+            $(pop).css( "margin-top", (-$(this).height())-($(pop).height())-10);
+            
+        if (offs.top < $(window).height()*0.5)
+            $(pop).css( "margin-top", (offs.top+$(this).height()-$(pop).height()-$(pop).offset().top-10));
+
+        $(element).attr("popexist", 't');
+
+
+        setTimeout(function(){
+            $(pop).remove();
+            $(element).attr("popexist", 'f')
+        }, 3000);
+        
+    });
+};
+ 
+
 createSeshStorage();
 createCookie();
 
@@ -110,4 +149,4 @@ $(document).ready(function(){
     glamMenu();
     showtime();
 });
-    
+

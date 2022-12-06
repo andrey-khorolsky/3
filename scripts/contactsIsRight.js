@@ -138,45 +138,9 @@ $("#telID").blur(function(e){
 });
 
 
-popover("#telID", "shawty callin on my phone, i dont pick it up");
+popover("#fioID", "Введите Фамилию, Имя и Отчество через пробел с заглавных букв");
+popover("#birthID", "Выберите дату рождения помощью календаря");
+popover("#ageID", "Выберите свой возрастной диапозон");
+popover("#emailID", "Введите адрес электронной почты в формате abcde@fgh.jkl");
+popover("#telID", "Введите номер телефона. Номер должен начинаться с +7 ил +3, количество цифр в номере - от 8 до 11");
 
-
-//popover
-function popover(element, textd){
-    $(element).attr("inform", textd);
-    $(element).attr("popexist", 'f');
-
-    $(element).mouseover(function(){
-
-        if ($(this).attr("popexist") == 't') return;
-
-        if ($(".ppvr")) $(".ppvr").remove();
-
-        let pop = $("<div class='ppvr'></div>");
-        pop.text($(this).attr("inform"));
-        $(this).parent().append(pop);
-
-        let offs = $(this).offset();
-        
-        if (offs.left > $(window).width()*0.5)
-            $(pop).css( "margin-left", (-$(this).width()*0.5)-($(pop).width())-10);
-            
-        if (offs.left < $(window).width()*0.5)
-            $(pop).css( "margin-left", ($(this).width()*0.5));
-
-        if (offs.top > $(window).height()*0.5)
-            $(pop).css( "margin-top", (-$(this).height())-($(pop).height())-10);
-            
-        if (offs.top < $(window).height()*0.5)
-            $(pop).css( "margin-top", (offs.top+$(this).height()-$(pop).height()-$(pop).offset().top-10));
-
-        $(element).attr("popexist", 't');
-
-
-        setTimeout(function(){
-            $(".ppvr").remove();
-            $(element).attr("popexist", 'f')
-        }, 3000);
-        
-    });
-};
