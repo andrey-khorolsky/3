@@ -256,6 +256,10 @@ th, td, tr, caption{
   margin-top: 60px;
 }
 
+.test :last-child{
+  cursor: pointer;
+}
+
 .tstf {
   margin-top: 20px;
   align-items: center;
@@ -267,14 +271,30 @@ th, td, tr, caption{
   height: 100%;
   width: 100%;
   margin-top: -80px;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.9);
 }
 
 .openedPhoto img{
+  cursor: pointer;
   height: 60%;
-  margin-left: 36%;
   margin-top: 10%;
   border-radius: 5px;
+}
+
+.openedPhoto div{
+  color: white;
+}
+
+.openedPhoto span{
+  color:white;
+  font-size: 40px;
+  cursor: pointer;
+  margin-right: 10vw;
+}
+
+.openedPhoto span:last-child{
+  margin-right: 0vw;
 }
 
 .ul_from_opened_menu{
@@ -333,17 +353,12 @@ th, td, tr, caption{
 }
 
 .week-div-cal{
-  /* padding-left: 7%; */
-  /* display: block;
-  float: left; */
   width: 100%;
   margin-top: 7px;
   margin-left: 10px;
-  /* text-align: center; */
 }
 
 .week-div-cal div{
-  /* text-align: center; */
   margin-left: 5px;
   width: 40px;
   display: block;
@@ -356,7 +371,6 @@ th, td, tr, caption{
   text-align: center;
   display: block;
   float: left;
-  /* margin-top: 2px; */
   margin-left: 10px;
 }
 
@@ -381,7 +395,6 @@ th, td, tr, caption{
   box-shadow: 0 0 1px;
 }
 
-
 .days-div-cal-void{
   border: none;
   text-align: center;
@@ -402,7 +415,6 @@ th, td, tr, caption{
 
 .sch{
   margin-top: 40px;
-  /* float: left; */
   display: block;
   text-align: center;
   align-items: center;
@@ -427,12 +439,10 @@ th, td, tr, caption{
   width: 30%;
   text-align: center;
   align-items: center;
-  /* margin-left: 15%; */
   border-radius: 7px;
   border: 1px solid grey;
   margin-left: 10%;
   margin-right: 10%;
-  /* padding-bottom: 2%; */
 }
 
 .metrics{
@@ -475,4 +485,51 @@ th, td, tr, caption{
   background-color: rgba(118, 252, 125, 0.651);
 }
 
+.ppvr{
+  display: inline;
+  margin-left: 50%;
+  padding: 5px;
+
+  background-color: rgba(255, 255, 255, 0.74);
+  border: 1px solid;
+  border-radius: 5px;
+
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.modal_window{
+  position: fixed;
+  height: 110%;
+  width: 100%;
+  margin-top: -30%;
+  text-align: center;
+  backdrop-filter: blur(5px);
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal_window :nth-child(n){
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 35vh;
+  margin-bottom: 3%;
+  padding: 1%;
+
+  border-radius: 5px;
+
+  background-color: white;
+}
+
+#div_btn_policy{
+  margin: 0;
+  margin-left: 30%;
+}
+
+#div_btn_policy button{
+  margin: 1%;
+  margin-top: 3%;
+  margin-bottom: 0;
+}
 

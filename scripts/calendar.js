@@ -5,53 +5,45 @@ months = ["Январь", "Февраль", "Март", "Апрель", "Май"
 var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 // переменные
-var div, div_h, div_d, flag_cal = false, first=true, current_year=2022, current_month=0, current_day=31, table_days;
-var inp = document.getElementById("birthID");
+var div, div_h, div_d, div_w, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
+var inp = $("#birthID");
 
 // слушатель. при фокусировке открытие календаря
-document.getElementById("birthID").addEventListener("focus", function(){
+$("#birthID").focus(function(){
     if (!flag_cal) flag_cal = true;
     else return;
-
     inp.value = "01.01.2022";
 
-    div = document.createElement("div");
-    div.classList.add("main-div-cal");
-    div_h = document.createElement("div");
-    div_h.classList.add("head-div-cal");
+    div = $("<div></div>", {"class" : "main-div-cal"});
+    div_h = $("<div></div>", {"class" : "head-div-cal"});
 
-
-    div_h.appendChild(addSelectYear());
-    div_h.appendChild(addSelectMonth());
-    div_h.appendChild(addCross());
-    div.appendChild(div_h);
-    div.appendChild(addWeek());
+    div_h.append(addSelectYear());
+    div_h.append(addSelectMonth());
+    div_h.append(addCross());
+    div.append(div_h);
+    div.append(addWeek());
     printDays();
-    document.getElementById("forcal").appendChild(div);
+    $("#forcal").append(div);
 });
 
 
 // добавлени крестика
 function addCross(){
-    var cross = document.createElement("div");
-    cross.innerHTML = "&times";
-    cross.classList.add("cross-cal");
-    cross.addEventListener("click", function(){
+    var cross = $('<div class="cross-cal">&times</div>');
+    cross.click(function(){
         flag_cal = false;
         first = true;
-        div.remove();
+        $(div).remove();
     });
     return cross;
 }
 
 // добавление названий дней
 function addWeek(){
-    var div_w = document.createElement("div");
-    div_w.classList.add("week-div-cal");
-    for (var i=0; i<7; i++){
-        var span = document.createElement("div");
-        span.innerText = days_of_week[i];
-        div_w.appendChild(span);
+    div_w = $("<div></div>", {"class" : "week-div-cal"});
+    for (let i=0; i<7; i++){
+        var span = $("<div>" + days_of_week[i] + "</div>");
+        div_w.append(span);
     }
     return div_w;
 }
@@ -78,16 +70,16 @@ function getDaysCount(mon){
 
 // создание выбора месяца. добавление слушателя для изменения
 function addSelectMonth(){
-    var selMonth = document.createElement("select");
-    for (var i=0; i<12; i++){
-        var opt = document.createElement("option");
-        opt.innerText = months[i];
-        opt.value = i;
-        selMonth.appendChild(opt);
+    var selMonth = $("<select id='selMn'></select>");
+    for (let i=0; i<12; i++){
+        var opt = $("<option></option>");
+        opt.text(months[i]);
+        opt.val(i);
+        selMonth.append(opt);
     };
-    selMonth.addEventListener("change", function(){
-        current_month = selMonth.value;
-        current_day = getDaysCount(selMonth.value);
+    selMonth.change(function(){
+        current_month = $(selMonth).val();
+        current_day = getDaysCount($(selMonth).val());
         setMonth();
         printDays();
     });
@@ -96,16 +88,15 @@ function addSelectMonth(){
 
 // создание выбора года. добавление слушателя для изменения
 function addSelectYear(){
-    var selYear = document.createElement("select");
+    var selYear = $("<select id='selYr'></select>");
     for (var i=2022; i>1900; i--){
-        var opt = document.createElement("option");
-        opt.innerText = i;
-        opt.value = i;
-        selYear.appendChild(opt);
+        var opt = $("<option></option>");
+        opt.text(i);
+        opt.val(i);
+        selYear.append(opt);
     };
-    selYear.addEventListener("change", function(){
-        current_year = selYear.value;
-        current_day = getDaysCount(current_month);
+    selYear.change(function(){
+        current_year = $(selYear).val();
         inp.value = inp.value.substring(0, 6) + current_year;
         printDays();
     });
@@ -116,28 +107,22 @@ function addSelectYear(){
 function printDays(){
     if (!first) div_d.remove();
     first = false;
-    div_d = document.createElement("div");
-    div_d.classList.add("days-div-cal");
-    div.appendChild(div_d);
+    div_d =  $("<div></div>", {"class" : "days-div-cal"});
+    div.append(div_d);
     var dat = new Date(current_year, current_month, 1);
-    let days;
-    if (dat.getDay() == 0) days = 7;
-    else days = dat.getDay();
-    for (let i=0; i<days-1; i++){
-        var void_div = document.createElement("div");
-        void_div.classList.add("days-div-cal-void");
-        div_d.appendChild(void_div);
+    for (var i=0; i<dat.getDay()-1; i++){
+        var void_div = $("<div></div>", {"class" : "days-div-cal-void"});
+        div_d.append(void_div);
     }
-    for (let i=1; i<current_day+1; i++){
-        var divDay = document.createElement("div");
-        divDay.innerHTML = i;
-        divDay.value = i;
-        divDay.classList.add("days-div-cal-num");
+    for (var i=1; i<current_day+1; i++){
+        var divDay = $("<div></div>", {"class" : "days-div-cal-num"});
+        divDay.val(i);
+        divDay.text(i);
         // установка выбранного числа в строку с датой
-        divDay.addEventListener("click", function(){
-            setDay(this.innerHTML);
+        divDay.click(function(){
+            setDay($(this).text());
         });
-        div_d.appendChild(divDay);
+        div_d.append(divDay);
     }
 }
 

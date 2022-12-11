@@ -128,32 +128,19 @@ var game = [
 ]
 
 function hobby(nsect, ...arr){
-    var i, j, sec, d, img, h, ho, hp, covername, artistname, disc;
+    let i, d;
         for (i=0; i<arr.length; i++){
-            d = document.createElement("div");
-            d.classList.add("album");
-            img = document.createElement("img");
-            img.src = arr[i].cover;
-            h = document.createElement("h4");
-            ho = document.createElement("h4");
-            hp = document.createElement("h5");
-            covername = document.createTextNode(arr[i].titles);
-            artistname = document.createTextNode(arr[i].artist);
-            disc = document.createTextNode(arr[i].disctiption);
-            h.appendChild(covername);
-            ho.appendChild(artistname);
-            hp.appendChild(disc);
-            d.appendChild(img);
-            d.appendChild(h);
-            d.appendChild(ho);
-            d.appendChild(hp);
-            sec = document.getElementById(nsect);
-            sec.appendChild(d);
+            d =$("<div class='album'></div>");
+            d.append($("<img src=" + arr[i].cover + ">"));
+            d.append($("<h4>" + arr[i].titles + "</h4>"));
+            d.append($("<h4>" + arr[i].artist + "</h4>"));
+            d.append($("<h5>" + arr[i].disctiption + "</h5>"));
+            $(nsect).append(d);
         }
     return;
 }
 
-hobby("sctn1", ...music);
-hobby("sctn2", ...book);
-hobby("sctn3", ...film);
-hobby("sctn4", ...game);
+hobby("#sctn1", ...music);
+hobby("#sctn2", ...book);
+hobby("#sctn3", ...film);
+hobby("#sctn4", ...game);

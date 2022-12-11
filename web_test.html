@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link type="image/x-icon" href="img/hotdog.ico" rel="icon">
 		<script src="scripts/testscript.js"></script>
+		<script src="../../jquery-3.6.1.js"></script>
 	</head>
 
 	<body>
@@ -32,11 +33,11 @@
 				<label for="groupID">Укажите группу</label>
 				<br>
 				<select id="groupID" name="group" size="1">
-					<option>Выберите группу</option>
-					<option>ПИ/б-20-1-о</option>
-					<option>ИС/б-20-1-о</option>
-					<option>ИС/б-20-2-о</option>
-					<option>ИС/б-20-3-о</option>
+					<option value="0">Выберите группу</option>
+					<option value="1">ПИ/б-20-1-о</option>
+					<option value="2">ИС/б-20-1-о</option>
+					<option value="3">ИС/б-20-2-о</option>
+					<option value="4">ИС/б-20-3-о</option>
 				</select>
 			</div>
 
@@ -67,7 +68,7 @@
 				<label for="lqID">Любимая тема?</label>
 				<br>
 				<select id="lqID" name="lq" size="1">
-					<option>Выберите любимую тему</option>
+					<option value="0">Выберите любимую тему</option>
 					<optgroup label="семестр 1">
 						<option>легкая тема
 						<option>непонятная тема

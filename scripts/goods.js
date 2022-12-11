@@ -1,5 +1,4 @@
 
-
 // вывод даты и вемени
 let days = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
 
@@ -9,76 +8,69 @@ function minute(m){
 }
 
 function showtime(){
-    var list = document.querySelector("ul");
-    var nli = document.createElement("li");
-    var na = document.createElement("a");
+    let nli = $("<li></li>");
+    let na = $("<a></a>");
+    nli.append(na);
+    $('ul').append(nli);
 
     setInterval( function(){
-    var date = new Date();
-    na.innerText = date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '\n'
-    + days[date.getDay()] + '\n' + date.getHours() + ":" + minute(date.getMinutes());
-    nli.appendChild(na);
-    list.appendChild(nli);
+    let date = new Date();
+    na.html(date.getDate() + "." + Number(date.getMonth() + 1) + "." + date.getFullYear() + '<br>'
+    + days[date.getDay()] + '<br>' + date.getHours() + ":" + minute(date.getMinutes()) + ":" + minute(date.getSeconds()));
     }, 1000);
 }
 
 // открытие меню "мои интересы"
-var flag = false;
-var u, na, l;
 var sctn = ["Музыка", "Книги", "Фильмы", "Игры"];
+let flag = false;
 
 function openMenu(){
+    let u, na, l;
+
     if (!flag) flag = true;
     else{
         flag = false
-        u.remove();
+        $('.ul_from_opened_menu').remove();
         return;
     }
-    u = document.createElement("ul");
-    l = document.createElement("li");
-    for (var i = 0; i<4; i++){
-        na = document.createElement("a");
-        na.addEventListener("mouseover", function(e){
+    u = $("<ul></ul>", {'class' : 'ul_from_opened_menu'});
+    l = $("<li></li>", {'width':'100%'});
+    for (let i = 0; i<4; i++){
+        na = $("<a></a>", {'href': 'web_hobby.html#sctn' + Number(i+1)});
+        na.mouseover(function(e){
             this.style.backgroundColor = "#CAA88A";
         });
-        na.addEventListener("mouseout", function(e){
+        na.mouseout(function(e){
             this.style.backgroundColor = "#FFF8F1";
         });
-        na.addEventListener("click", function(e){
+        na.click(function(e){
             flag = false;
-            u.remove();
+            $('.ul_from_opened_menu').remove();
         });
-        na.href = "web_hobby.html#sctn" + Number(i+1);
-        na.innerHTML = sctn[i];
-        l.appendChild(na);
+        na.html(sctn[i]);
+        l.append(na);
     }
-    l.style.width = "100%";
-    u.classList.add("ul_from_opened_menu");
-    u.appendChild(l);
-    document.querySelector("nav").appendChild(u);
+    u.append(l);
+    $(".nav").append(u);
 }
 
 // изменение меню при наведении
 function glamMenu(){
-    var menu = document.querySelectorAll("a");
-    for (var i=0; i<menu.length; i++){
-        var leafs = menu[i].childNodes;
+    let menu = $("a");
+    for (let i=0; i<7; i++){
+        let leafs = menu[i].children;
         leafs[0].src = "img/bulb.png";
-        var locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
         
         if (window.location.href.includes(locate)){
             leafs[0].src = "img/color_bulb.png";
             continue;
         }
 
-        menu[i].addEventListener("mouseover", function(e){
-            var leafs = this.childNodes;
-            leafs[0].src ="img/color_bulb.png";
-        });
-        
-        menu[i].addEventListener("mouseout", function(e){
-            var leafs = this.childNodes;
-            leafs[0].src = "img/bulb.png";
+        $(menu[i]).mouseover(function(e){
+            this.children[0].src ="img/color_bulb.png";
+        }).mouseout(function(e){
+            this.children[0].src = "img/bulb.png";
         });
     }
 }
@@ -90,19 +82,17 @@ function createSeshStorage(){
 
 function createCookie(){
 
-    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
-    if (navigator.cookieEnabled === false){
-        alert("Cookies отключены!");
-    }
-    if (!document.cookie.includes(locate)){
-        console.log("new");
-        document.cookie = locate + "=1; max-age=604800";
+    let locateCookie = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+   
+    let cook = document.cookie + ";";
+    if (!cook.includes(locateCookie)){
+        cook = locateCookie + "=1; max-age=604800;";
         return;
     }
 
-    var ind = document.cookie.indexOf(locate);
-    var si = Number(document.cookie.indexOf(";", ind)) + Number(1);
-    var cookies = document.cookie.slice(ind, si);
+    let ind = cook.indexOf(locateCookie);
+    let si = Number(cook.indexOf(";", ind)) + Number(1);
+    let cookies = cook.slice(ind, si);
 
     ind = Number(cookies.indexOf("=")) + Number(1);
     si = Number(cookies.indexOf(";", ind));
@@ -110,10 +100,53 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locate + "=" + cookies + "; max-age=604800";
-}
+    document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
+};
 
-glamMenu();
-showtime();
+//popover
+function popover(element, textd){
+    $(element).attr("inform", textd);
+    $(element).attr("popexist", 'f');
+
+    $(element).mouseover(function(){
+
+        if ($(this).attr("popexist") == 't') return;
+
+        let pop = $("<div class='ppvr'></div>");
+        pop.text($(this).attr("inform"));
+        $(this).parent().append(pop);
+
+        let offs = $(this).offset();
+        
+        if (offs.left > $(window).width()*0.5)
+            $(pop).css( "margin-left", (-$(this).width()*0.5)-($(pop).width())-10);
+            
+        if (offs.left < $(window).width()*0.5)
+            $(pop).css( "margin-left", ($(this).width()*0.5));
+
+        if (offs.top > $(window).height()*0.5)
+            $(pop).css( "margin-top", (-$(this).height())-($(pop).height())-10);
+            
+        if (offs.top < $(window).height()*0.5)
+            $(pop).css( "margin-top", (offs.top+$(this).height()-$(pop).height()-$(pop).offset().top-10));
+
+        $(element).attr("popexist", 't');
+
+
+        setTimeout(function(){
+            $(pop).remove();
+            $(element).attr("popexist", 'f')
+        }, 3000);
+        
+    });
+};
+ 
+
 createSeshStorage();
 createCookie();
+
+$(document).ready(function(){
+    glamMenu();
+    showtime();
+});
+
