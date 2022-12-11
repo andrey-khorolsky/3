@@ -50,7 +50,15 @@ function addWeek(){
 
 // функция возвращает кол-во дней в текущем месяце
 function getDaysCount(mon){
-    if (mon == 1) return 28;
+    if (current_month == 1)
+    if (current_year%4 == 0){
+        if (current_year%100 == 0){
+            if (current_year%400 == 0) return 29;
+            else return 28;
+        }
+        else return 29;
+    } else return 28;
+
     if (mon < 7){
         if (mon % 2 == 1) return 30;
         if (mon % 2 == 0) return 31;
