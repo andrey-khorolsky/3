@@ -6,7 +6,7 @@ var days_of_week = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
 // переменные
 var div, div_h, div_d, div_w, flag_cal = false, first=true, current_year=2022, current_month=1, current_day=31, table_days;
-var inp = document.getElementById("birthID");
+var inp = $("#birthID");
 
 // слушатель. при фокусировке открытие календаря
 $("#birthID").focus(function(){
