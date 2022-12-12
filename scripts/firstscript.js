@@ -84,14 +84,20 @@ function carrs(){
 };
 
 function updCarrs(inex){
+    let direction = "100";
+    if (inex == 1) direction = "-140";
+
+    $(" .openedPhoto > img").animate({marginLeft: direction+"%"}, 300, function(){$(" .openedPhoto > img").attr("src", fotos[curI+inex])});
+
     let neme = String($(" .openedPhoto > img").attr("src"));
     let curI = Number(fotos.indexOf(neme.substring(neme.indexOf("img/"))));
 
     if (curI+inex == fotos.length) curI = -1;
     if (curI+inex == -1) curI = fotos.length;
-
-    $(" .openedPhoto > img").attr("src", fotos[curI+inex]);
+    
+    $(" .openedPhoto > img").animate({marginLeft: "0"}, 0);
     $(" .openedPhoto > .title_for_foto").text(titles[curI+inex]);
+    
 }
 
 window.onload = carrs();
