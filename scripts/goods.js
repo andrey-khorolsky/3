@@ -86,7 +86,7 @@ function createCookie(){
    
     let cook = document.cookie + ";";
     if (!cook.includes(locateCookie)){
-        cook = locateCookie + "=1; max-age=604800;";
+        document.cookie = locateCookie + "=1; max-age=604800;";
         return;
     }
 
