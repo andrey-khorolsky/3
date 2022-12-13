@@ -75,11 +75,13 @@ function glamMenu(){
     }
 }
 
+//сохранение истории текущего сенаса
 function createSeshStorage(){
     let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
     sessionStorage.setItem(locate, Number(sessionStorage.getItem(locate)) + Number(1));
 }
 
+//сохранение истории за неделю
 function createCookie(){
 
     let locateCookie = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";

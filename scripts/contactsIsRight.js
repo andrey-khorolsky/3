@@ -138,6 +138,7 @@ $("#telID").blur(function(e){
 });
 
 
+//модальное окно
 function modal_win(){
     let policy = $(".tstf:last");
 
@@ -146,9 +147,6 @@ function modal_win(){
         $(this).attr("policy", "t");
         
         let div_win = $("<div class='modal_window'></div>");
-        // div_win.click(function(){
-        //     this.remove();
-        // });
 
         let div_mssg = $("<div>Продолжая пользоваться сайтом вы соглашаетесь с данными условиями. Всю полученную от вас информацию мы используем по своему усмотрению.</div>");
         
