@@ -12,7 +12,7 @@ var inp = $("#birthID");
 $("#birthID").focus(function(){
     if (!flag_cal) flag_cal = true;
     else return;
-    inp.value = "01.01.2022";
+    inp.val("01.01.2022");
 
     div = $("<div></div>", {"class" : "main-div-cal"});
     div_h = $("<div></div>", {"class" : "head-div-cal"});
@@ -97,7 +97,7 @@ function addSelectYear(){
     };
     selYear.change(function(){
         current_year = $(selYear).val();
-        inp.value = inp.value.substring(0, 6) + current_year;
+        inp.val(inp.val().substring(0, 6) + current_year);
         printDays();
     });
     return selYear;
@@ -130,13 +130,13 @@ function printDays(){
 function setMonth(){
     var monthInp = Number(current_month) + Number(1);
     if (monthInp < 10) monthInp = "0" + Number(monthInp);
-    inp.value = inp.value.substring(0, 3) + monthInp + inp.value.substring(5);
+    inp.val(inp.val().substring(0, 3) + monthInp + inp.val().substring(5));
 }
 
 // установак выбранного года в строку с датой
 function setDay(nday){
     var dayInp = Number(nday);
     if (dayInp < 10) dayInp = "0" + Number(dayInp);
-    inp.value = dayInp + inp.value.substring(2);
+    inp.val(dayInp + inp.val().substring(2));
 }
 
