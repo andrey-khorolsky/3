@@ -339,7 +339,7 @@ th, td, tr, caption
     background-color: rgba(197, 197, 197, 0.527)
     padding: 2%
 
-    :nth-child(2)
+    & :nth-child(2)
         margin-left: 10%
 
     select
@@ -415,13 +415,13 @@ th, td, tr, caption
 .metrics
     @include margin_top_bottom(2%)
 
-    :nth-child(odd)
+    & :nth-child(odd)
         width: 40%
         float: left
         text-align: left
         padding-left: 1%
 
-    :nth-child(even)
+    & :nth-child(even)
         width: 30%
         float: left
 
@@ -469,7 +469,7 @@ th, td, tr, caption
     backdrop-filter: blur(5px)
     background-color: rgba(0, 0, 0, 0.5)
 
-    :nth-child(n)
+    & :nth-child(n)
         @include margin_top_bottom(35vh, 3%)
         width: 40%
         margin-left: 30%
