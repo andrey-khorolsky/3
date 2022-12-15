@@ -1,0 +1,488 @@
+
+$navColor: #FFF8F1
+$heightMenu: 80px
+
+
+@mixin height_and_width($hei, $wid:$hei)
+    height: $hei
+    width: $wid
+
+
+@mixin margin_top_bottom($top, $bot:$top)
+    margin-top: $top
+    margin-bottom: $bot
+
+
+.center
+    align-items: center
+    text-align: center
+
+.block_left
+    display: block
+    float: left
+
+
+%days-div-cal-num-void
+    @extend .center
+    @extend .block_left
+    @include height_and_width(40px)
+    margin-top: 5px
+    margin-left: 5px
+
+
+%padding-left-right-3
+    padding-left: 3%
+    padding-right: 3%
+
+
+
+html 
+    box-sizing: border-box
+    font-size: 16px
+    font-family: sans-serif
+
+
+*, *:before, *:after
+    box-sizing: inherit
+
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul 
+    margin: 0
+    padding: 0
+    font-weight: normal
+
+
+ol, ul 
+    list-style: none
+
+
+img
+    @include height_and_width(100%, auto)
+
+
+p
+    text-align: center
+
+
+body
+    background-color: #E4C8AE
+
+
+.nav
+    background-color: $navColor
+    @include height_and_width($heightMenu, 100%)
+
+    a
+        @extend .center
+        @extend .block_left
+        @include height_and_width($heightMenu, 12.5%)
+        text-decoration: none
+        font-weight: 400
+        font-size: 23px
+        color: #532A05
+        cursor: pointer
+        overflow: hidden
+
+    img
+        height: 30px
+
+
+.header 
+    margin-top: 10%
+    background-size: cover
+    display: flex
+    align-items: center
+
+
+.col1 
+    width: 70%
+    float: left
+    display: flex
+    flex-direction: column
+    align-items: center
+
+
+
+.col2 
+    width: 30%
+    float: right
+
+
+.foto 
+    img 
+        display: block
+        width: 350px
+        border-radius: 25px
+
+
+.header__col
+    h1
+        line-height: 1.25
+        margin-bottom: 20px
+        padding-left: 10%
+
+    h4 
+        line-height: 2.17
+        margin-bottom: 20px
+        padding-left: 10%
+
+
+.nav_sctn
+    padding-bottom: 90px
+
+    a
+        @include height_and_width($heightMenu, 25%)
+        text-decoration: none
+        text-align: center
+        color: white
+        float: left
+        padding-top: 30px
+        font-size: 20px
+        border-style: solid
+        border-color: $navColor
+        border-left-width: 1.5px
+        border-right-width: 1.5px
+
+
+#sc1
+    background-image: url(img/Live_Forever.jpg)
+
+
+#sc2
+    background-image: url(img/mice_and_man_crop.jpeg)
+
+
+#sc3
+    background-image: url(img/dark_crop.jpg)
+
+
+#sc4
+    background-image: url(img/game.jpg)
+
+
+section
+    @extend %padding-left-right-3
+    height: 100vh
+    align-items: center
+
+
+.sec_hobby 
+    h1
+        text-align: center
+        font-size: 35px
+        padding: 10px
+
+
+#sctn1 
+    img
+        @include height_and_width(300px)
+        border-radius: 15px
+
+
+.album
+    @extend .center
+    @include margin_top_bottom(3%, 2%)
+    @extend %padding-left-right-3
+    width: 25%
+    float: left
+
+    h5
+        text-align: justify
+        margin-top: 10px
+
+
+#sctn2
+    img
+        @include height_and_width(480px, 300px)
+        border-radius: 5px
+
+
+#sctn3
+    img
+        @include height_and_width(450px, 300px)
+        border-radius: 5px
+
+
+#sctn4
+    .album
+        width: 33%
+
+    img
+        @include height_and_width(300px, 450px)
+        border-radius: 5px
+
+
+.about
+    @extend .center
+    margin-top: 40vh
+
+
+table
+    @extend .center
+    table-layout: fixed
+    border: 1px solid black
+    border-collapse: collapse
+
+
+th, td, tr, caption
+    border: 1px solid black
+ 
+
+#tblhead
+    text-align: center
+    padding-top: 20vh
+    width: 100%
+    margin-bottom: 20px
+
+
+.tbl
+    padding-left: 27vw
+    width: 100%
+
+
+.phtalb_d
+    align-items: center
+    padding-left: 2%
+    padding-right: 2%
+
+
+.phtalb
+    @extend .center
+    @extend %padding-left-right-3
+    @include margin_top_bottom(3%, 2%)
+    width: 20%
+    float: left
+    overflow: hidden
+
+    img
+        @include height_and_width(100%)
+        cursor: pointer
+        object-fit: cover
+        align-items: center
+        border-radius: 5px
+    
+    h5
+        text-align: center
+        word-wrap: break-word
+        margin-top: 10px
+
+
+.test
+    text-align: center
+    margin-top: 60px
+
+
+.tstf
+    @extend .center
+    margin-top: 20px
+
+
+.openedPhoto
+    @include height_and_width(100%, 100%)
+    position: fixed
+    top: 0px
+    text-align: center
+    background-color: rgba(0, 0, 0, 0.9)
+
+    img
+        cursor: pointer
+        height: 60%
+        margin-top: 10%
+        border-radius: 5px
+
+    div
+        color: white
+
+    span
+        color: white
+        font-size: 40px
+        cursor: pointer
+        margin-right: 10vw
+        
+        &:last-of-type
+            margin-right: 0vw
+
+
+.ul_from_opened_menu
+    position: absolute
+    margin-top: $heightMenu
+    margin-left: 25%
+    background-color: $navColor
+    width: 12.5%
+    text-align: center
+
+    a
+        @include height_and_width(60px, 100%)
+        display: block
+        line-height: 60px
+
+
+.main-div-cal
+    @extend .center
+    @include height_and_width(340px, 345px)
+    background-color: $navColor
+    margin-left: 41%
+    margin-top: 10px
+    border: 1px solid black
+    border-radius: 5px
+    box-shadow: 5px 5px 5px rgb(136, 136, 136)
+
+
+.cross-cal
+    float: right
+    cursor: pointer
+
+
+.head-div-cal
+    @extend .center
+    @include height_and_width(10%, 100%)
+    background-color: rgba(197, 197, 197, 0.527)
+    padding: 2%
+
+    & :nth-child(2)
+        margin-left: 10%
+
+    select
+        @include height_and_width(100%, 30%)
+        text-align: center
+        border-radius: 4px
+        box-shadow: inset 1px 1px 1px rgba(136, 136, 136, 0.6)
+
+
+.week-div-cal
+    width: 100%
+    margin-top: 7px
+    margin-left: 10px
+
+    div
+        @extend .center
+        @extend .block_left
+        margin-left: 5px
+        width: 40px
+
+
+.days-div-cal
+    @extend .block_left
+    text-align: center
+    margin-left: 10px
+
+
+.days-div-cal-num
+    @extend %days-div-cal-num-void
+    cursor: pointer
+    border: 1px black solid
+    line-height: 40px
+    border-radius: 2px
+
+    &:hover
+        background-color: rgba(197, 197, 197, 0.527)
+        box-shadow: 0 0 1px
+
+
+.days-div-cal-void
+    @extend %days-div-cal-num-void
+    border: none
+
+
+.sch
+    @extend .center
+    margin-top: 40px
+    display: block
+
+    a
+        text-decoration: none
+        height: $heightMenu
+        font-weight: 400
+        font-size: 15px
+        padding: 6px
+        color: #532A05
+        cursor: pointer
+        border-radius: 6px
+        border: 1px solid #532A05
+
+
+.showMetrics
+    @extend .center
+    @extend .block_left
+    margin-top: 15%
+    width: 30%
+    border-radius: 7px
+    border: 1px solid grey
+    margin-left: 10%
+    margin-right: 10%
+
+
+.metrics
+    @include margin_top_bottom(2%)
+
+    & :nth-child(odd)
+        width: 40%
+        float: left
+        text-align: left
+        padding-left: 1%
+
+    & :nth-child(even)
+        width: 30%
+        float: left
+
+
+.buttons
+    @extend .center
+    margin-top: 20px
+
+
+.contactsError
+    margin-left: 10%
+    color: red
+
+
+.fieldError
+    background-color: rgba(252, 118, 118, 0.651)
+
+
+.fieldRight
+    background-color: rgba(118, 252, 125, 0.651)
+
+
+.ppvr
+    display: inline
+    margin-left: 50%
+    padding: 5px
+    background-color: rgba(255, 255, 255, 0.74)
+    border: 1px solid
+    border-radius: 5px
+    position: absolute
+    margin-top: 0
+    margin-left: 0
+
+
+.policy
+    @extend .tstf
+    cursor: pointer
+
+
+.modal_window
+    @include height_and_width(100%)
+    position: fixed
+    top: 0px
+    text-align: center
+    backdrop-filter: blur(5px)
+    background-color: rgba(0, 0, 0, 0.5)
+
+    & :nth-child(n)
+        @include margin_top_bottom(35vh, 3%)
+        width: 40%
+        margin-left: 30%
+        padding: 1%
+        border-radius: 5px
+        background-color: white
+
+
+#div_btn_policy
+    margin: 0
+    margin-left: 30%
+
+    button
+        @include margin_top_bottom(3%, 0)
+        margin: 1%
+

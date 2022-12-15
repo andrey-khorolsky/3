@@ -140,7 +140,7 @@ $("#telID").blur(function(e){
 
 //модальное окно
 function modal_win(){
-    let policy = $(".tstf:last");
+    let policy = $(".policy");
 
     policy.click(function(){
         if ($(this).attr("policy") == "t") return;
