@@ -8,8 +8,10 @@ class Router{
 
         // echo json_encode($_GET);
         // if (isset($_REQUEST["controller"])) echo $_REQUEST["controller"];
-        if (!isset($_REQUEST["controller"])) require("app/views/main_view.php");
-        else
+        if (!isset($_REQUEST["controller"])){
+            require("app/views/main_view.php");
+            return;
+        }
         // if ($_REQUEST["controller"] === "photoalbum") require("app/views/photo_view.php");
 
         // switch ($_REQUEST["controller"]){

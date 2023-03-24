@@ -5,21 +5,21 @@ namespace photoalbum;
 class Photoalbum_model{
 
     public static $fotos = [
-        "public/assets/img/nsx.jpg",
-        "public/assets/img/skyliner32.jpg",
-        "public/assets/img/s2k.jpg",
-        "public/assets/img/prelude.jpg",
-        "public/assets/img/skyline32.jpg",
-        "public/assets/img/por.jpg",
-        "public/assets/img/por911.jpg",
-        "public/assets/img/rx7.jpg",
-        "public/assets/img/miata.jpg",
-        "public/assets/img/miata2.jpg",
-        "public/assets/img/datsun.jpg",
-        "public/assets/img/fairl.jpg",
-        "public/assets/img/180sx.jpg",
-        "public/assets/img/180sx2.jpg",
-        "public/assets/img/180sx3.jpg"
+        "nsx.jpg",
+        "skyliner32.jpg",
+        "s2k.jpg",
+        "prelude.jpg",
+        "skyline32.jpg",
+        "por.jpg",
+        "por911.jpg",
+        "rx7.jpg",
+        "miata.jpg",
+        "miata2.jpg",
+        "datsun.jpg",
+        "fairl.jpg",
+        "180sx.jpg",
+        "180sx2.jpg",
+        "180sx3.jpg"
     ];
 
     static $titles = [
