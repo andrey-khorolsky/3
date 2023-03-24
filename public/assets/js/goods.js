@@ -8,6 +8,7 @@ function minute(m){
 }
 
 function showtime(){
+    // console.log("time");
     let nli = $("<li></li>");
     let na = $("<a></a>");
     nli.append(na);
@@ -55,22 +56,23 @@ function openMenu(){
 }
 
 // изменение меню при наведении
-function glamMenu(){
+async function glamMenu(){
     let menu = $("a");
     for (let i=0; i<7; i++){
         let leafs = menu[i].children;
-        leafs[0].src = "img/bulb.png";
-        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+        // console.log("a");
+        leafs[0].src = "http://web-my-site/public/assets/img/bulb.png";
+        let locate = (i != 2) ? menu[i].href : "/web_hobby.html";
         
         if (window.location.href.includes(locate)){
-            leafs[0].src = "img/color_bulb.png";
+            leafs[0].src = "http://web-my-site/public/assets/img/color_bulb.png";
             continue;
         }
 
         $(menu[i]).mouseover(function(e){
-            this.children[0].src ="img/color_bulb.png";
+            this.children[0].src ="http://web-my-site/public/assets/img/color_bulb.png";
         }).mouseout(function(e){
-            this.children[0].src = "img/bulb.png";
+            this.children[0].src = "http://web-my-site/public/assets/img/bulb.png";
         });
     }
 }
