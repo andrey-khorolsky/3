@@ -2,4 +2,7 @@
 
 class Controller{
     
+    public $model;
+    public $view;
+
 }
