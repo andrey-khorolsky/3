@@ -83,20 +83,31 @@
 //     $("body").append(all);
 // };
 
-function updCarrs(inex){
+function updCarrs(inex, curImg){
+    let ph;
     let direction = "100";
-    if (inex == 1) direction = "-140";
+    if (inex == 1){
+        direction = "-140";
+        ph = $(curImg.parentElement.nextElementSibling);
+    } else {
+        ph = $(curImg.parentElement.previousElementSibling);
+    }
 
-    $(" .openedPhoto > img").animate({marginLeft: direction+"%"}, 300, function(){$(" .openedPhoto > img").attr("src", fotos[curI+inex])});
-
-    let neme = String($(" .openedPhoto > img").attr("src"));
-    let curI = Number(fotos.indexOf(neme.substring(neme.indexOf("img/"))));
-
-    if (curI+inex == fotos.length) curI = -1;
-    if (curI+inex == -1) curI = fotos.length;
+    if (ph.length == 0){
+        if (inex == 1){
+            ph = $(".phtalb_d > .phtalb");
+            console.log("arar");
+        } else {
+            ph = $(".phtalb_d > .phtalb:last");
+            console.log(ph);
+        }
+    }
+    
+    $(" .openedPhoto > img").attr("src", $(ph[0].childNodes[1]).attr("src"));
+    $(" .openedPhoto > .title_for_foto").text($(ph[0].childNodes[3]).text());
     
     $(" .openedPhoto > img").animate({marginLeft: "0"}, 0);
-    $(" .openedPhoto > .title_for_foto").text(titles[curI+inex]);
+    return ph[0].childNodes[1];
     
 }
 
@@ -115,6 +126,7 @@ function carrsPhp(){
             let lsaap = $("<span>&#5130;</span>");
             let rsaap = $("<span>&#5125;</span>");
             let arrows = $("<div></div>");
+            let photo = this;
 
             arrows.append(lsaap, crosssaap, rsaap);
 
@@ -123,11 +135,11 @@ function carrsPhp(){
             });
             
             lsaap.click(function(){
-                updCarrs(-1);
+                photo = updCarrs(-1, photo);
             });
             
             rsaap.click(function(){
-                updCarrs(1);
+                photo = updCarrs(1, photo);
             });
             
             d.append(arrows);
