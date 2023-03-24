@@ -20,8 +20,9 @@
 				<li> <a href="web_history.html"><img src="">История</a></li>
 			</ul>
 		</nav>
+
 		<script src="scripts/goods.js"></script>
 		<script src="./scripts/contactsIsRight.js"></script>
-		<script src="scripts/firstscript.js"></script>
+		<!-- <script src="scripts/firstscript.js"></script> -->
 	</body>
 </html>
