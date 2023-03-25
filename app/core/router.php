@@ -6,7 +6,10 @@ class Router{
         
         $controller = null;
 
-        if (!isset($_REQUEST["controller"])) header("Location: http://web-my-site/main/");
+        if (!isset($_REQUEST["controller"])){
+            header("Location: http://web-my-site/main/");
+            exit();
+        }
 
         $controller_name = $_REQUEST["controller"]."_controller";
         require_once("app/controllers/".$controller_name.".php");

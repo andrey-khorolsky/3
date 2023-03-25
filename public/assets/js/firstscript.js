@@ -32,7 +32,7 @@ function updCarrs(inex, curImg){
     
 };
 
-function carrsPhp(){
+function carrs(){
     fotos = $(".phtalb > img");
     for (var i=0; i<fotos.length; i++){
 
