@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">
@@ -6,9 +6,9 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link type="image/x-icon" href="img/hotdog.ico" rel="icon">
 		<script src="../../jquery-3.6.1.js"></script>
-	</head>
+	</head> -->
 
-	<body>
+	<!-- <body>
 		<nav class="nav">
 				<ul>
 				<li> <a href="http://web-my-site/main/"><img src="">Главная</a></li>
@@ -19,9 +19,9 @@
 				<li> <a href="http://web-my-site/test/"><img src="">Тест</a></li>
 				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 				</ul>
-		</nav>
+		</nav> -->
         
-		<script src="scripts/goods.js"></script>
-        <script src="scripts/storage.js"></script>
-    </body>
-</html>
+		<!-- <script src="scripts/goods.js"></script> -->
+        <script src="/public/assets/js/storage.js"></script>
+    <!-- </body>
+</html> -->

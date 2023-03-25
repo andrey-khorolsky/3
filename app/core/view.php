@@ -1,5 +1,5 @@
 <?php
-
+namespace core\view;
 class View{
 
     private $layout = "layoutView.php";
@@ -13,6 +13,7 @@ class View{
                     <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css">
                     <link type="image/x-icon" href="img/hotdog.ico" rel="icon">
                     <script src="/jquery-3.6.1.js"></script>
+                    <script src="/public/assets/js/goods.js"></script>
                 </head>
 
                 <body>
@@ -30,8 +31,7 @@ class View{
 
         if (isset($content)) require_once("app/views/".$content);
 
-        echo '      <script src="/public/assets/js/goods.js"></script>
-                </body>
+        echo '  </body>
             </html>';
     }
 }

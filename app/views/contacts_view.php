@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!-- <!DOCTYPE html>
+<html lang="ru"> -->
 	<head>
-		<meta charset="utf-8">
+		<!-- <meta charset="utf-8">
 		<title>Контакты</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link type="image/x-icon" href="img/hotdog.ico" rel="icon">
-		<script src="scripts/testscript.js"></script>
-		<script src="../../jquery-3.6.1.js"></script>
+		<link type="image/x-icon" href="img/hotdog.ico" rel="icon"> -->
+		<script src="/public/assets/js/testscript.js"></script>
+		<!-- <script src="../../jquery-3.6.1.js"></script> -->
 	</head>
 
-	<body>
+	<!-- <body>
 		<nav class="nav">
 			<ul>
 				<li> <a href="http://web-my-site/main/"><img src="">Главная</a></li>
@@ -20,7 +20,8 @@
 				<li> <a href="http://web-my-site/test/"><img src="">Тест</a></li>
 				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 			</ul>
-		</nav>
+		</nav> -->
+
 		<form class="test" method="post" name="contform" onsubmit="return checkcont();" action="mailto:horolskyandrey@gmail.com">
 			<div class="tstf">
 				<label for="fioID">Укажите свои ФИО</label>
@@ -76,8 +77,8 @@
 			</div>
 		</form>
 		
-		<script src="scripts/goods.js"></script>
-		<script src="scripts/calendar.js"></script>
-		<script src="scripts/contactsIsRight.js"></script>
-	</body>
-</html>
+		<!-- <script src="scripts/goods.js"></script> -->
+		<script src="/public/assets/js/calendar.js"></script>
+		<script src="/public/assets/js/contactsIsRight.js"></script>
+	<!-- </body>
+</html> -->

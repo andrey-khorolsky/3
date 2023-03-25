@@ -35,6 +35,6 @@
 				</div>
 			</div>
 		</header>
-		<script src="/public/assets/js/goods.js"></script>
+		<!-- <script src="/public/assets/js/goods.js"></script> -->
 	<!-- </body> -->
 <!-- </html> -->
