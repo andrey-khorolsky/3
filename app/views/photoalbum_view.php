@@ -19,7 +19,7 @@
 				<li> <a href="http://web-my-site/about/"><img src="">Обо мне</a> </li>
 				<li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
 				<li> <a href="http://web-my-site/photoalbum/"><img src="">Фото</a></li>
-				<li> <a href="http://web-my-site/contscts/"><img src="">Контакты</a></li>
+				<li> <a href="http://web-my-site/contacts/"><img src="">Контакты</a></li>
 				<li> <a href="http://web-my-site/test/"><img src="">Тест</a></li>
 				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 			</ul>

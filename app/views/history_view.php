@@ -11,13 +11,13 @@
 	<body>
 		<nav class="nav">
 				<ul>
-					<li> <a href="index.html"><img src="">Главная</a></li>
-					<li> <a href="web_about.html"><img src="">Обо мне</a> </li>
-					<li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
-					<li> <a href="web_photo.html"><img src="">Фото</a></li>
-					<li> <a href="web_cont.html"><img src="">Контакты</a></li>
-					<li> <a href="web_test.html"><img src="">Тест</a></li>
-					<li> <a href="web_history.html"><img src="">История</a></li>
+				<li> <a href="http://web-my-site/main/"><img src="">Главная</a></li>
+				<li> <a href="http://web-my-site/about/"><img src="">Обо мне</a> </li>
+				<li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
+				<li> <a href="http://web-my-site/photoalbum/"><img src="">Фото</a></li>
+				<li> <a href="http://web-my-site/contacts/"><img src="">Контакты</a></li>
+				<li> <a href="http://web-my-site/test/"><img src="">Тест</a></li>
+				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 				</ul>
 		</nav>
         
