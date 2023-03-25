@@ -1,8 +1,9 @@
 <?php
 
-class Contacts_controller{
+require_once("app/core/controller.php");
+class Contacts_controller extends core\controller\Controller{
 
     function show(){
-        require_once("app/views/contacts_view.php");
+        $this->view->render("contacts_view.php");
     }
 }

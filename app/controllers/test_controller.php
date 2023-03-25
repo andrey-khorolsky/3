@@ -1,8 +1,9 @@
 <?php
 
-class Test_controller{
+require_once("app/core/controller.php");
+class Test_controller extends core\controller\Controller{
 
     function show(){
-        require_once("app/views/test_view.php");
+        $this->view->render("test_view.php");
     }
 }

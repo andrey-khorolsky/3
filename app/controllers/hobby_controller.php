@@ -1,8 +1,9 @@
 <?php
 
-class Hobby_controller{
+require_once("app/core/controller.php");
+class Hobby_controller extends core\controller\Controller{
 
     function show(){
-        require_once("app/views/hobby_view.php");
+        $this->view->render("hobby_view.php");
     }
 }

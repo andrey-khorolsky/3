@@ -1,4 +1,5 @@
 <?php
+namespace core\controller;
 require_once("app/core/view.php");
 class Controller{
     
@@ -6,7 +7,7 @@ class Controller{
     public $view;
 
     function __construct(){
-        $this->view = new View();
+        $this->view = new \core\view\View();
     }
 
 }

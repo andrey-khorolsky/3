@@ -1,8 +1,9 @@
 <?php
 
-class History_controller{
+require_once("app/core/controller.php");
+class History_controller extends core\controller\Controller{
 
     function show(){
-        require_once("app/views/history_view.php");
+        $this->view->render("history_view.php");
     }
 }

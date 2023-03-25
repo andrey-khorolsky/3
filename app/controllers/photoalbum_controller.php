@@ -1,8 +1,9 @@
 <?php
 
-class Photoalbum_controller{
+require_once("app/core/controller.php");
+class Photoalbum_controller extends core\controller\Controller{
     
     function show(){
-        require_once("app/views/photoalbum_view.php");
+        $this->view->render("photoalbum_view.php");
     }
 }
