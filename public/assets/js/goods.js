@@ -37,7 +37,8 @@ function openMenu(){
     u = $("<ul></ul>", {'class' : 'ul_from_opened_menu'});
     l = $("<li></li>", {'width':'100%'});
     for (let i = 0; i<4; i++){
-        na = $("<a></a>", {'href': 'web_hobby.html#sctn' + Number(i+1)});
+        console.log("h");
+        na = $("<a></a>", {'href': 'http://web-my-site/hobby/#sctn' + Number(i+1)});
         na.mouseover(function(e){
             this.style.backgroundColor = "#CAA88A";
         });
@@ -79,18 +80,27 @@ async function glamMenu(){
 
 //сохранение истории текущего сенаса
 function createSeshStorage(){
-    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let currentPage = window.location.href;
+    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.indexOf("/"));
+    currentPage = currentPage.slice(1, currentPage.length-1);
+
+    let locate = (!currentPage.includes("hobby")) ? currentPage : "hobby";
     sessionStorage.setItem(locate, Number(sessionStorage.getItem(locate)) + Number(1));
 }
 
 //сохранение истории за неделю
 function createCookie(){
+    let currentPage = window.location.href;
+    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.indexOf("/"));
+    currentPage = currentPage.slice(1, currentPage.length-1);
 
-    let locateCookie = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let locateCookie = (!currentPage.includes("hobby")) ? currentPage : "hobby";
    
     let cook = document.cookie + ";";
     if (!cook.includes(locateCookie)){
-        document.cookie = locateCookie + "=1; max-age=604800;";
+        document.cookie = locateCookie + "=1; max-age=604800; path=/; domain=web-my-site";
         return;
     }
 
@@ -104,7 +114,7 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
+    document.cookie = locateCookie + "=" + cookies + "; max-age=604800; path=/; domain=web-my-site";
 };
 
 //popover

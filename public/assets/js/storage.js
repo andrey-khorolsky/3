@@ -6,9 +6,10 @@ function getSesh(){
     let menu = $("a");
     let seshDiv = $("<div class='showMetrics'></div>").append($("<div>История текущего сеанса</div>"));
     let metrDiv = $("<div class='metrics'></div>");
+    let pagesName = ["main", "about", "hobby", "photoalbum", "contacts", "test", "history"];
 
     for (let i=0; i<menu.length; i++){
-        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+        let locate = pagesName[i];
 
         metrDiv.append($("<div>" + pages[i] + "</div>"));
         metrDiv.append($("<div>" + ((sessionStorage.getItem(locate) == null) ? 0 : sessionStorage.getItem(locate)) + "</div>"));
@@ -21,16 +22,18 @@ function getSesh(){
 // вывод истории за все время
 function getCookie(){
     
-    let menu = $("a");
+    // let menu = $("a");
     let cookDiv = $("<div class='showMetrics'></div>").append($("<div>История за все время</div>"));
     let metrDiv = $("<div class='metrics'></div>");
 
     let countvisit;
     let doccookie = document.cookie + ";";
+    let pagesName = ["main", "about", "hobby", "photoalbum", "contacts", "test", "history"];
 
     for (let i=0; i<7; i++){
 
-        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+        let locate = pagesName[i];
+
 
         if (!doccookie.includes(locate)){
             countvisit = 0;
