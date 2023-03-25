@@ -31,7 +31,6 @@ class Router{
         $controller_name = ucfirst($controller_name);
         $controller = new $controller_name;
         
-        if (!is_null($controller))
-        $controller->show();
+        if (!is_null($controller)) $controller->show();
     }
 }
