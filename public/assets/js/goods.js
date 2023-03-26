@@ -37,7 +37,6 @@ function openMenu(){
     u = $("<ul></ul>", {'class' : 'ul_from_opened_menu'});
     l = $("<li></li>", {'width':'100%'});
     for (let i = 0; i<4; i++){
-        console.log("h");
         na = $("<a></a>", {'href': 'http://web-my-site/hobby/#sctn' + Number(i+1)});
         na.mouseover(function(e){
             this.style.backgroundColor = "#CAA88A";
@@ -61,9 +60,8 @@ async function glamMenu(){
     let menu = $("a");
     for (let i=0; i<7; i++){
         let leafs = menu[i].children;
-        // console.log("a");
         leafs[0].src = "http://web-my-site/public/assets/img/bulb.png";
-        let locate = (i != 2) ? menu[i].href : "/web_hobby.html";
+        let locate = (i != 2) ? menu[i].href : "http://web-my-site/hobby/";
         
         if (window.location.href.includes(locate)){
             leafs[0].src = "http://web-my-site/public/assets/img/color_bulb.png";
