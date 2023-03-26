@@ -31,22 +31,30 @@
 		<div class = "sec_hobby">
 			<section id="sctn1">
 				<h1>Музыка</h1>
+				<?
+					require_once("app/models/hobby_model.php");
+					$a = new models\hobby\Hobby_model();
+					$a->showHobby("music");
+				?>
 			</section>
 			
 			<section id="sctn2">
 				<h1>Книги</h1>
+				<? $a->showHobby("books");?>
 			</section>
 
 			<section id="sctn3">
 				<h1>Фильмы</h1>
+				<? $a->showHobby("films");?>
 			</section>
 
 			<section id="sctn4">
 				<h1>Игры</h1>
+				<? $a->showHobby("games");?>
 			</section>
 		</div>
 		
-		<script src="/public/assets/js/hobbylist.js"></script>
+		<!-- <script src="/public/assets/js/hobbylist.js"></script> -->
 		<!-- <script src="scripts/goods.js"></script> -->
 	<!-- </body>
 </html> -->
