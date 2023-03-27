@@ -22,6 +22,13 @@
 		</nav> -->
         
 		<!-- <script src="scripts/goods.js"></script> -->
+		<head>
+			<!-- <meta charset="utf-8"> -->
+			<title>История</title>
+			<!-- <link rel="stylesheet" type="text/css" href="style.css">
+			<link type="image/x-icon" href="img/hotdog.ico" rel="icon">
+			<script src="../../jquery-3.6.1.js"></script> -->
+		</head>
         <script src="/public/assets/js/storage.js"></script>
     <!-- </body>
 </html> -->

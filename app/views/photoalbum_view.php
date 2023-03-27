@@ -24,6 +24,10 @@
 				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 			</ul>
 		</nav> -->
+		
+		<head>
+			<title>Фотоальбом</title>
+		</head>
 
         <?
 			require_once("app/models/photoalbum_model.php");

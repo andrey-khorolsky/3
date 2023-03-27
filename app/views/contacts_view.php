@@ -1,9 +1,9 @@
 <!-- <!DOCTYPE html>
 <html lang="ru"> -->
 	<head>
-		<!-- <meta charset="utf-8">
+		<!-- <meta charset="utf-8"> -->
 		<title>Контакты</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<!-- <link rel="stylesheet" type="text/css" href="style.css">
 		<link type="image/x-icon" href="img/hotdog.ico" rel="icon"> -->
 		<script src="/public/assets/js/testscript.js"></script>
 		<!-- <script src="../../jquery-3.6.1.js"></script> -->

@@ -21,6 +21,10 @@
 			</ul>
 		</nav> -->
 
+		<head>
+			<title>Мои интересы</title>
+		</head>
+
 		<nav class="nav_sctn">
 			<a id="sc1" href="#sctn1">Музыка</a>
 			<a id="sc2" href="#sctn2">Книги</a>
