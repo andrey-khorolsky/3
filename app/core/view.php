@@ -9,7 +9,6 @@ class View{
             <html lang="ru">
                 <head>
                     <meta charset="utf-8">
-                    <title>Не определено</title>
                     <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css">
                     <link type="image/x-icon" href="http://web-my-site/public/assets/img/hotdog.ico" rel="icon">
                     <script src="/jquery-3.6.1.js"></script>

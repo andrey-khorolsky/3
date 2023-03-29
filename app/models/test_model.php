@@ -13,7 +13,6 @@ class Test_model{
         $this->formValidator->setRule("fio", "isNotEmpty");
         $this->formValidator->setRule("group", "isNotEmpty");
         $this->formValidator->setRule("hm", "isNotEmpty");
-        $this->formValidator->setRule("hm", "isLess 5");
         $this->formValidator->setRule("lq", "isNotEmpty");
 
         return $this->formValidator->validate($array);
@@ -22,4 +21,5 @@ class Test_model{
     function getErrorsValidate(){
         $this->formValidator->showErrors();
     }
+    
 }
