@@ -2,9 +2,9 @@
 <html lang="ru"> -->
 	<head>
 		<!-- <meta charset="utf-8">
-		<title>Тест</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link type="image/x-icon" href="img/hotdog.ico" rel="icon"> -->
+		<title>Тест</title>
 		<script src="/public/assets/js/testscript.js"></script>
 		<!-- <script src="../../jquery-3.6.1.js"></script> -->
 	</head>
@@ -21,8 +21,9 @@
 				<li> <a href="http://web-my-site/history/"><img src="">История</a></li>
 			</ul>
 		</nav> -->
-
-		<form class="test" name="testform" method="post" onsubmit="return checktest();">
+		
+		
+		<form class="test" name="testform" method="POST" onsubmit="return checktest();" action="http://web-my-site/test/check">
 			<div class="tstf">
 				<label for="fioID">Укажите свои ФИО</label>
 				<br>
@@ -34,10 +35,10 @@
 				<br>
 				<select id="groupID" name="group" size="1">
 					<option value="0">Выберите группу</option>
-					<option value="1">ПИ/б-20-1-о</option>
-					<option value="2">ИС/б-20-1-о</option>
-					<option value="3">ИС/б-20-2-о</option>
-					<option value="4">ИС/б-20-3-о</option>
+					<option value="Pi-20-1">ПИ/б-20-1-о</option>
+					<option value="Is-20-1">ИС/б-20-1-о</option>
+					<option value="Is-20-2">ИС/б-20-2-о</option>
+					<option value="Is-20-3">ИС/б-20-3-о</option>
 				</select>
 			</div>
 
@@ -48,19 +49,19 @@
 
 			<div class="tstf">
 				<p>Высшая математика?</p>
-				<input type="checkbox" id="q21ID" name="q21">
+				<input type="checkbox" id="q21ID" name="q21" value="д">
 				<label for="q21ID">д</label>
 				<br>
-				<input type="checkbox" id="q22ID" name="q22">
+				<input type="checkbox" id="q22ID" name="q22" value="а">
 				<label for="q22ID">а</label>
 				<br>
-				<input type="checkbox" id="q23ID" name="q23">
+				<input type="checkbox" id="q23ID" name="q23" value="н">
 				<label for="q23ID">н</label>
 				<br>
-				<input type="checkbox" id="q24ID" name="q24">
+				<input type="checkbox" id="q24ID" name="q24" value="е">
 				<label for="q24ID">е</label>
 				<br>
-				<input type="checkbox" id="q25ID" name="q25">
+				<input type="checkbox" id="q25ID" name="q25" value="т">
 				<label for="q25ID">т</label>
 			</div>
 
@@ -102,6 +103,7 @@
 		<div class="sch">
 			<a href="http://web-my-site/school/">Перейти к разделу "Учеба"</a>
 		</div>
+
 	<!-- </body>
 	<script src="scripts/goods.js"></script>
 </html> -->
