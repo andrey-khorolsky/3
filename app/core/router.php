@@ -10,13 +10,20 @@ class Router{
             header("Location: http://web-my-site/main/");
             exit();
         }
-
+        
         $controller_name = $_REQUEST["controller"]."_controller";
         require_once("app/controllers/".$controller_name.".php");
 
         $controller_name = ucfirst($controller_name);
         $controller = new $controller_name;
+
+        $action = $_REQUEST["action"] === "" ? null : $_REQUEST["action"];
         
-        if (!is_null($controller)) $controller->show();
+        if (!is_null($controller) && is_null($action)) $controller->show();
+        elseif (!is_null($controller) && !is_null($action)) $controller->$action();
+        else {
+            header("Location: http://web-my-site/main/");
+            exit();
+        }
     }
 }
