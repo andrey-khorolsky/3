@@ -22,7 +22,7 @@
 			</ul>
 		</nav> -->
 
-		<form class="test" method="post" name="contform" onsubmit="return checkcont();" action="mailto:horolskyandrey@gmail.com">
+		<form class="test" method="post" name="contform" onsubmit="return checkcont();" action="http://web-my-site/contacts/check">
 			<div class="tstf">
 				<label for="fioID">Укажите свои ФИО</label>
 				<br>
@@ -38,8 +38,8 @@
 			<div class="tstf">
 				<p>Укажите свой пол:</p>
 				<br>
-				<label for="s1ID"><input type="radio" name="sex" id="s1ID">Men</label>
-				<label for="s2ID"><input type="radio" name="sex" id="s2ID">Women</label>
+				<label for="s1ID"><input type="radio" name="sex" id="s1ID" value="men">Men</label>
+				<label for="s2ID"><input type="radio" name="sex" id="s2ID" value="women">Women</label>
 			</div>
 
 			<div class="tstf">
