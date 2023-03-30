@@ -2,24 +2,33 @@
 
 class Test_model{
 
-    private $formValidator;
+    private $validator;
 
     function __construct(){
-        require_once("app/models/validators/formValidator.php");
-       $this->formValidator = new FormValidator();
+        require_once("app/models/validators/resultVerificator.php");
+       $this->validator = new ResultVerificator();
     }
 
     function validForm($array){
-        $this->formValidator->setRule("fio", "isNotEmpty");
-        $this->formValidator->setRule("group", "isNotEmpty");
-        $this->formValidator->setRule("hm", "isNotEmpty");
-        $this->formValidator->setRule("lq", "isNotEmpty");
+        $this->validator->setRule("fio", "isNotEmpty");
+        $this->validator->setRule("group", "isNotEmpty");
+        $this->validator->setRule("hm", "isNotEmpty");
+        $this->validator->setRule("q2", "isNotEmpty");
+        $this->validator->setRule("lq", "isNotEmpty");
+        
+        $this->validator->setRule("group", "isGroup");
+        $this->validator->setRule("hm", "isHighMath");
+        $this->validator->setRule("q2", "isHighMathTwo");
 
-        return $this->formValidator->validate($array);
+        return $this->validator->validate($array);
+    }
+
+    function verificationResults($array){
+        return $this->validator->verificationResults($array);
     }
 
     function getErrorsValidate(){
-        $this->formValidator->showErrors();
+        $this->validator->showErrors();
     }
     
 }

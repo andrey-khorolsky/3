@@ -14,13 +14,17 @@ class Test_controller extends core\controller\Controller{
 			require_once("app/models/test_model.php");
 			$testModel = new Test_model();
 
+            $q2 = ($_POST["q21"] ?? "")." ".($_POST["q22"] ?? "")." ".($_POST["q23"] ?? "")." ".($_POST["q24"] ?? "")." ".($_POST["q25"] ?? "");
+            $_POST["q2"] = $q2;
+
 			//валидация
 			if ($testModel->validForm($_POST)){
 
-                $q2 = ($_POST["q21"] ?? "")." ".($_POST["q22"] ?? "")." ".($_POST["q23"] ?? "")." ".($_POST["q24"] ?? "")." ".($_POST["q25"] ?? "");
-                $_POST["q2"] = $q2;
-                //вывод сообщения об удачной отправке
-                $this->view->render("answers/test_right_answer_view.php") ;
+                //вывод сообщения об удачной отправке и проверка результатов
+                $this->view->render("answers/test_right_answer_view.php", $testModel) ;
+
+                //проверка результатов
+                // $testModel->verificationResults($_POST);
 
 			} else {
                 //вывод сообщения о неудачной отправке
