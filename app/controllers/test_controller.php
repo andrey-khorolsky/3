@@ -20,11 +20,8 @@ class Test_controller extends core\controller\Controller{
 			//валидация
 			if ($testModel->validForm($_POST)){
 
-                //вывод сообщения об удачной отправке и проверка результатов
+                //вывод сообщения об удачной отправке и проверка (вывод) результатов
                 $this->view->render("answers/test_right_answer_view.php", $testModel) ;
-
-                //проверка результатов
-                // $testModel->verificationResults($_POST);
 
 			} else {
                 //вывод сообщения о неудачной отправке

@@ -2,8 +2,6 @@
 namespace core\view;
 class View{
 
-    private $layout = "layoutView.php";
-
     function render($content, $var = null){
         echo '<!DOCTYPE html>
             <html lang="ru">

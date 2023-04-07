@@ -18,7 +18,8 @@ class ResultVerificator extends CustomFormValidator{
             $result[2] = 1;
         }
 
-        echo '<p>Итог: '.($result[0]+$result[1]+$result[2]).' из 3</p>
+        echo '<br>
+                <p>Итог: '.($result[0]+$result[1]+$result[2]).' из 3</p>
                 <p>Высшая математика: '.$result[0].' баллов</p>
                 <p>Высшая математика: '.$result[1].' баллов</p>
                 <p>Любимая тема: '.$result[2].' баллов</p>';

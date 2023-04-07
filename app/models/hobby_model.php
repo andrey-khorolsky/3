@@ -3,7 +3,7 @@
 namespace models\hobby;
 
 class Hobby_model{
-    private $music = [
+    public $music = [
         [
             "titles"=> "Live Forever, 2015",
             "artist"=> "Lil Peep",
@@ -46,7 +46,7 @@ class Hobby_model{
         ]
     ];
 
-    private $books = [
+    public $books = [
         [
             "titles"=> "О мышах и людях, 1937",
             "artist"=> "Джон Стейнбек",
@@ -73,7 +73,7 @@ class Hobby_model{
         ]
     ];
 
-    private $films = [
+    public $films = [
         [
             "titles"=> "Тьма, 2017",
             "artist"=> "Сериал, 3 сезона",
@@ -100,7 +100,7 @@ class Hobby_model{
         ]
     ];
 
-    private $games = [
+    public $games = [
         [
             "titles"=> "S.T.A.L.K.E.R.",
             "artist"=> "Серия игр",
@@ -120,27 +120,5 @@ class Hobby_model{
             "disctiption"=> "Действие игры происходит на тропическом острове, омываемом Индийским и Тихим океанами. Игрок принимает роль Джейсона Броди, молодого американца, отправившегося с друзьями на отдых, но в дальнейшем попавшего в плен банды пиратов. После побега он прилагает все усилия, чтобы спасти своих друзей и убить главаря банды пиратов, Вааса Монтенегро. Игра достигла высоких показателей продаж. Спустя два года после релиза Ubisoft объявил, что было продано 10 млн копий Far Cry 3. 18 ноября 2014 года вышел его преемник Far Cry 4."
         ]
     ];
-
-    function showHobby($section){
-
-        if ($section === "music"){
-            for ($i=0; $i<count($this->music); $i++){
-                echo '<div class="album">
-                        <img src='.$this->music[$i]["cover"].'>
-                        <h4>'.$this->music[$i]["titles"].'</h4>
-                        <h4>'.$this->music[$i]["artist"].'</h4>
-                    </div>';
-            };
-        } else {
-            for ($i=0; $i<count($this->$section); $i++){
-                echo '<div class="album">
-                        <img src='.$this->$section[$i]["cover"].'>
-                        <h4>'.$this->$section[$i]["titles"].'</h4>
-                        <h4>'.$this->$section[$i]["artist"].'</h4>
-                        <h4>'.$this->$section[$i]["disctiption"].'</h4>
-                    </div>';
-            };
-        }
-    }
 
 }

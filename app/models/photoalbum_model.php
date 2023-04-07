@@ -1,7 +1,5 @@
 <?php
 
-namespace photoalbum;
-
 class Photoalbum_model{
 
     public static $fotos = [
