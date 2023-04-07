@@ -7,6 +7,5 @@
   3 - js
   4 - jquery
   5 - sass
-  6 - vue (micro lr)
   8 - php 
   9 - active record and sql
