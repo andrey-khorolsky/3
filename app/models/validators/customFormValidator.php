@@ -14,4 +14,9 @@ class CustomFormValidator extends FormValidator{
         if (count_chars($data) < 2) return "второй вопрос \"Высшая математика\" - неверный формат ответа";
     }
 
+    function isFIO($data){
+        $re = "/^[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+$/";
+        if (preg_match($re, $data) !== 1) return $data." - неподходящий ормат для ФИО";
+    }
+
 }

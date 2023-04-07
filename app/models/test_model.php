@@ -19,6 +19,7 @@ class Test_model{
         $this->validator->setRule("group", "isGroup");
         $this->validator->setRule("hm", "isHighMath");
         $this->validator->setRule("q2", "isHighMathTwo");
+        $this->validator->setRule("fio", "isFIO");
 
         return $this->validator->validate($array);
     }

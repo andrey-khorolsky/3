@@ -6,20 +6,20 @@ class FormValidator{
     private $errors = [];
 
     function isNotEmpty($data){
-        if (is_null($data) || trim($data) === "") return "some value is empty";
+        if (is_null($data) || trim($data) === "") return "некоторые поля не заполнены";
     }
 
     function isInteger($data){
-        if (!is_int($data)) return $data." is not integer";
+        if (!is_int($data)) return $data." не число";
     }
 
     function isLess($data, $value){
-        if (!is_int($data)) return "not int";
-        if ($data > $value) return $data." is less than ".$value;
+        if (!is_int($data)) return "не число";
+        if ($data > $value) return $data." меньше чем ".$value;
     }
 
     function isGreater($data, $value){
-        if (!is_int($data) || $data < $value) return $data." is greater than ".$value;
+        if (!is_int($data) || $data < $value) return $data." больше чем ".$value;
     }
 
     function isEmail($data){

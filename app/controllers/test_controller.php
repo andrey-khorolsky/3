@@ -21,11 +21,11 @@ class Test_controller extends core\controller\Controller{
 			if ($testModel->validForm($_POST)){
 
                 //вывод сообщения об удачной отправке и проверка (вывод) результатов
-                $this->view->render("answers/test_right_answer_view.php", $testModel) ;
+                $this->view->render("answers/test_right_answer_view.php", $testModel);
 
 			} else {
                 //вывод сообщения о неудачной отправке
-                $this->view->render("answers/test_wrong_answer_view.php", $testModel);
+                $this->view->render("test_view.php", $testModel);
 			}
             
 		} else $this->show();
