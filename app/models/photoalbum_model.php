@@ -2,7 +2,7 @@
 
 class Photoalbum_model{
 
-    public static $fotos = [
+    public $fotos = [
         "nsx.jpg",
         "skyliner32.jpg",
         "s2k.jpg",
@@ -20,7 +20,7 @@ class Photoalbum_model{
         "180sx3.jpg"
     ];
 
-    static $titles = [
+    public $titles = [
         "Honda NSX",
         "Nissan Skyline GT-R R32",
         "Honda S2000",

@@ -13,27 +13,22 @@
 <div class = "sec_hobby">
 	<section id="sctn1">
 		<h1>Музыка</h1>
-		<?
-			require_once("app/models/hobby_model.php");
-			$a = new models\hobby\Hobby_model();
-
-			showHobby("music", $a);
-		?>
+		<? showHobby("music", $var);?>
 	</section>
 	
 	<section id="sctn2">
 		<h1>Книги</h1>
-		<? showHobby("books", $a);?>
+		<? showHobby("books", $var);?>
 	</section>
 
 	<section id="sctn3">
 		<h1>Фильмы</h1>
-		<? showHobby("films", $a);?>
+		<? showHobby("films", $var);?>
 	</section>
 
 	<section id="sctn4">
 		<h1>Игры</h1>
-		<? showHobby("games", $a);?>
+		<? showHobby("games", $var);?>
 	</section>
 </div>
 

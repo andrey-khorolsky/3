@@ -26,7 +26,7 @@ class View{
                         </ul>
                     </nav>';
 
-        if (isset($content)) require_once("app/views/".$content);
+                if (isset($content)) require_once("app/views/".$content);
 
         echo '  </body>
             </html>';
