@@ -9,7 +9,7 @@ class View{
                     <meta charset="utf-8">
                     <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css">
                     <link type="image/x-icon" href="http://web-my-site/public/assets/img/hotdog.ico" rel="icon">
-                    <script src="/jquery-3.6.1.js"></script>
+                    <script src="/public/assets/js/jquery-3.6.1.js"></script>
                     <script src="/public/assets/js/goods.js"></script>
                 </head>
 
