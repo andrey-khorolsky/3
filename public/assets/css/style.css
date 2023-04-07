@@ -1,3 +1,25 @@
+.center, .buttons, .showMetrics, .sch, .week-div-cal div, .head-div-cal, .main-div-cal, .tstf, .policy, .phtalb, table, .about, .album, .nav a, .days-div-cal-void, .days-div-cal-num {
+  align-items: center;
+  text-align: center;
+}
+
+.block_left, .showMetrics, .days-div-cal, .week-div-cal div, .nav a, .days-div-cal-void, .days-div-cal-num {
+  display: block;
+  float: left;
+}
+
+.days-div-cal-void, .days-div-cal-num {
+  height: 40px;
+  width: 40px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.phtalb, .album, section {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
 html {
   box-sizing: border-box;
   font-size: 16px;
@@ -19,40 +41,34 @@ ol, ul {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
-p{
-	text-align: center;
+p {
+  text-align: center;
 }
 
-body{
-  background-color:  #E4C8AE;
+body {
+  background-color: #E4C8AE;
 }
 
 .nav {
   background-color: #FFF8F1;
-  width: 100%; 
   height: 80px;
+  width: 100%;
 }
-
 .nav a {
-  float: left;
-  display: block;
-  text-align: center;
-  align-items: center;
-  text-decoration: none;
-  width: 12.5%;
   height: 80px;
+  width: 12.5%;
+  text-decoration: none;
   font-weight: 400;
   font-size: 23px;
   color: #532A05;
   cursor: pointer;
   overflow: hidden;
 }
-
-.nav img{
+.nav img {
   height: 30px;
 }
 
@@ -69,13 +85,11 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .col2 {
   width: 30%;
   float: right;
-
 }
 
 .foto img {
@@ -84,29 +98,27 @@ body{
   border-radius: 25px;
 }
 
-.header__col h1{
+.header__col h1 {
   line-height: 1.25;
   margin-bottom: 20px;
   padding-left: 10%;
 }
-
 .header__col h4 {
   line-height: 2.17;
   margin-bottom: 20px;
   padding-left: 10%;
 }
 
-.nav_sctn{
+.nav_sctn {
   padding-bottom: 90px;
 }
-
-.nav_sctn a{
+.nav_sctn a {
+  height: 80px;
+  width: 25%;
   text-decoration: none;
   text-align: center;
   color: white;
-  width: 25%;
   float: left;
-  height: 80px;
   padding-top: 30px;
   font-size: 20px;
   border-style: solid;
@@ -115,189 +127,162 @@ body{
   border-right-width: 1.5px;
 }
 
-#sc1{
-  background-image: url(img/Live_Forever.jpg);
+#sc1 {
+  background-image: url(http://web-my-site/public/assets/img/hobby//Live_Forever.jpg);
 }
 
-#sc2{
-  background-image: url(img/mice_and_man_crop.jpeg);
+#sc2 {
+  background-image: url(http://web-my-site/public/assets/img/hobby//mice_and_man_crop.jpeg);
 }
 
-#sc3{
-  background-image: url(img/dark_crop.jpg);
+#sc3 {
+  background-image: url(http://web-my-site/public/assets/img/hobby//dark_crop.jpg);
 }
 
-#sc4{
-  background-image: url(img/game.jpg);
+#sc4 {
+  background-image: url(http://web-my-site/public/assets/img/hobby//game.jpg);
 }
 
-section{
+section {
   height: 100vh;
   align-items: center;
-  padding-left: 3%;
-  padding-right: 3%;
 }
 
-.sec_hobby h1{
+.sec_hobby h1 {
   text-align: center;
   font-size: 35px;
   padding: 10px;
 }
 
-#sctn1 img{
-  width: 300px;
+#sctn1 img {
   height: 300px;
+  width: 300px;
   border-radius: 15px;
 }
 
-.album{
-  width: 25%;
-  margin-bottom: 2%;
+.album {
   margin-top: 3%;
-  padding-left: 3%;
-  padding-right: 3%;
-  text-align: center;
-  align-items: center;
+  margin-bottom: 2%;
+  width: 25%;
   float: left;
 }
-
-.album h5{
+.album h5 {
   text-align: justify;
   margin-top: 10px;
 }
 
-#sctn2 img{
-  width: 300px;
+#sctn2 img {
   height: 480px;
-  border-radius: 5px;
-}
-
-#sctn3 img{
   width: 300px;
-  height: 450px;
   border-radius: 5px;
 }
 
-#sctn4 .album{
+#sctn3 img {
+  height: 450px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+#sctn4 .album {
   width: 33%;
 }
-
-#sctn4 img{
-  width: 450px;
+#sctn4 img {
   height: 300px;
+  width: 450px;
   border-radius: 5px;
 }
 
-.about{
-  align-items: center;
-  text-align: center;
+.about {
   margin-top: 40vh;
 }
 
-table{
+table {
   table-layout: fixed;
   border: 1px solid black;
-  text-align: center;
-  align-items: center;
   border-collapse: collapse;
 }
 
-th, td, tr, caption{
+th, td, tr, caption {
   border: 1px solid black;
-} 
+}
 
-#tblhead{
+#tblhead {
   text-align: center;
   padding-top: 20vh;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.tbl{
+.tbl {
   padding-left: 27vw;
   width: 100%;
 }
 
-.phtalb_d{
+.phtalb_d {
   align-items: center;
   padding-left: 2%;
   padding-right: 2%;
 }
 
-.phtalb{
-  width: 20%;
-  margin-bottom: 2%;
+.phtalb {
   margin-top: 3%;
-  padding-left: 3%;
-  padding-right: 3%;
-  text-align: center;
-  align-items: center;
+  margin-bottom: 2%;
+  width: 20%;
   float: left;
   overflow: hidden;
 }
-
-.phtalb img{
-  cursor: pointer; 
-  width: 100%;
+.phtalb img {
   height: 100%;
-  object-fit: cover;
+  width: 100%;
+  cursor: pointer;
+  -o-object-fit: cover;
+     object-fit: cover;
   align-items: center;
   border-radius: 5px;
 }
-
-.phtalb h5{
+.phtalb h5 {
   text-align: center;
   word-wrap: break-word;
   margin-top: 10px;
 }
 
-.test{
+.test {
   text-align: center;
   margin-top: 60px;
 }
 
-.test :last-child{
-  cursor: pointer;
-}
-
-.tstf {
+.tstf, .policy {
   margin-top: 20px;
-  align-items: center;
-  text-align: center;
 }
 
-.openedPhoto{
-  position: fixed;
+.openedPhoto {
   height: 100%;
   width: 100%;
-  margin-top: -80px;
+  position: fixed;
+  top: 0px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.9);
 }
-
-.openedPhoto img{
+.openedPhoto img {
   cursor: pointer;
   height: 60%;
   margin-top: 10%;
   border-radius: 5px;
 }
-
-.openedPhoto div{
+.openedPhoto div {
   color: white;
 }
-
-.openedPhoto span{
-  color:white;
+.openedPhoto span {
+  color: white;
   font-size: 40px;
   cursor: pointer;
   margin-right: 10vw;
 }
-
-.openedPhoto span:last-child{
+.openedPhoto span:last-of-type {
   margin-right: 0vw;
 }
 
-.ul_from_opened_menu{
+.ul_from_opened_menu {
   position: absolute;
   margin-top: 80px;
   margin-left: 25%;
@@ -305,20 +290,17 @@ th, td, tr, caption{
   width: 12.5%;
   text-align: center;
 }
-
-.ul_from_opened_menu a{
-  width: 100%;
+.ul_from_opened_menu a {
   height: 60px;
+  width: 100%;
   display: block;
   line-height: 60px;
 }
 
-.main-div-cal{
-  align-items: center;
-  text-align: center;
-  background-color: #FFF8F1;
+.main-div-cal {
   height: 340px;
   width: 345px;
+  background-color: #FFF8F1;
   margin-left: 41%;
   margin-top: 10px;
   border: 1px solid black;
@@ -326,101 +308,63 @@ th, td, tr, caption{
   box-shadow: 5px 5px 5px rgb(136, 136, 136);
 }
 
-.cross-cal{
+.cross-cal {
   float: right;
   cursor: pointer;
 }
 
-.head-div-cal{
-  width: 100%;
+.head-div-cal {
   height: 10%;
+  width: 100%;
   background-color: rgba(197, 197, 197, 0.527);
-  text-align: center;
-  align-items: center;
   padding: 2%;
 }
-
-.head-div-cal :nth-child(2){
+.head-div-cal :nth-child(2) {
   margin-left: 10%;
 }
-
-.head-div-cal select{
-  width: 30%;
+.head-div-cal select {
   height: 100%;
+  width: 30%;
   text-align: center;
   border-radius: 4px;
   box-shadow: inset 1px 1px 1px rgba(136, 136, 136, 0.6);
 }
 
-.week-div-cal{
+.week-div-cal {
   width: 100%;
   margin-top: 7px;
   margin-left: 10px;
 }
-
-.week-div-cal div{
+.week-div-cal div {
   margin-left: 5px;
   width: 40px;
-  display: block;
-  float: left;
-  text-align: center;
-  align-items: center;
 }
 
-.days-div-cal{
+.days-div-cal {
   text-align: center;
-  display: block;
-  float: left;
   margin-left: 10px;
 }
 
-.days-div-cal-num{
+.days-div-cal-num {
   cursor: pointer;
-  text-align: center;
-  display: block;
-  float: left;
-
-  border:  1px black solid;
+  border: 1px black solid;
   line-height: 40px;
   border-radius: 2px;
-
-  width: 40px;
-  height: 40px;
-  margin-top: 5px;
-  margin-left: 5px;
 }
-
-.days-div-cal-num:hover{
+.days-div-cal-num:hover {
   background-color: rgba(197, 197, 197, 0.527);
   box-shadow: 0 0 1px;
 }
 
-.days-div-cal-void{
+.days-div-cal-void {
   border: none;
-  text-align: center;
-  display: block;
-  float: left;
-
-  width: 40px;
-  height: 40px;
-  margin-top: 5px;
-  margin-left: 5px;
 }
 
-.days-div-cal-num .days-div-cal-void{
-  margin-left: 10px;
-  text-align: left;
-  align-items: center;
-}
-
-.sch{
+.sch {
   margin-top: 40px;
   display: block;
-  text-align: center;
-  align-items: center;
 }
-
-.sch a{
+.sch a {
   text-decoration: none;
   height: 80px;
   font-weight: 400;
@@ -432,110 +376,89 @@ th, td, tr, caption{
   border: 1px solid #532A05;
 }
 
-.showMetrics{
-  display: block;
-  float: left;
+.showMetrics {
   margin-top: 15%;
   width: 30%;
-  text-align: center;
-  align-items: center;
   border-radius: 7px;
   border: 1px solid grey;
   margin-left: 10%;
   margin-right: 10%;
 }
 
-.metrics{
+.metrics {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-
-.metrics :nth-child(odd){
+.metrics :nth-child(odd) {
   width: 40%;
   float: left;
   text-align: left;
   padding-left: 1%;
 }
-
-.metrics :nth-child(even){
+.metrics :nth-child(even) {
   width: 30%;
   float: left;
 }
 
-.buttons{
+.buttons {
   margin-top: 20px;
-  align-items: center;
-  text-align: center;
 }
 
-.contactsError{
+.contactsError {
   margin-left: 10%;
   color: red;
 }
 
-.fieldError{
-  background-color: rgba(255, 166, 166, 0.651);
+.fieldError {
+  background-color: rgba(252, 118, 118, 0.651);
 }
 
-.fieldRight{
-  background-color: rgba(175, 255, 175, 0.651);
+.fieldRight {
+  background-color: rgba(118, 252, 125, 0.651);
 }
 
-.ppvr{
+.ppvr {
   display: inline;
   margin-left: 50%;
   padding: 5px;
-
   background-color: rgba(255, 255, 255, 0.74);
   border: 1px solid;
   border-radius: 5px;
-
   position: absolute;
   margin-top: 0;
   margin-left: 0;
 }
 
-.modal_window{
-  position: fixed;
-  height: 110%;
-  width: 100%;
-  margin-top: -30%;
-  text-align: center;
-  backdrop-filter: blur(5px);
-
-  background-color: rgba(0, 0, 0, 0.5);
+.policy {
+  cursor: pointer;
 }
 
-.modal_window :nth-child(n){
-  width: 40%;
-  margin-left: 30%;
+.modal_window {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  text-align: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal_window :nth-child(n) {
   margin-top: 35vh;
   margin-bottom: 3%;
+  width: 40%;
+  margin-left: 30%;
   padding: 1%;
-
   border-radius: 5px;
-
   background-color: white;
 }
 
-#div_btn_policy{
+#div_btn_policy {
   margin: 0;
   margin-left: 30%;
 }
-
-#div_btn_policy button{
-  margin: 1%;
+#div_btn_policy button {
   margin-top: 3%;
   margin-bottom: 0;
-}
-
-.openedPhoto img{
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-@keyframes zoom{
-  from {transform: scale(0);}
-  to {transform: scale(1);}
-}
-
+  margin: 1%;
+}/*# sourceMappingURL=style.css.map */

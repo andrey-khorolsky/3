@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-	<head>
-		<meta charset="utf-8">
-		<title>Учёба</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link type="image/x-icon" href="img/hotdog.ico" rel="icon">
-		<script src="../../jquery-3.6.1.js"></script>
-	</head>
 
-	<body>
-		<nav class="nav">
-			<ul>
-				<li> <a href="index.html"><img src="">Главная</a></li>
-				<li> <a href="web_about.html"><img src="">Обо мне</a> </li>
-				<li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
-				<li> <a href="web_photo.html"><img src="">Фото</a></li>
-				<li> <a href="web_cont.html"><img src="">Контакты</a></li>
-				<li> <a href="web_test.html"><img src="">Тест</a></li>
-				<li> <a href="web_history.html"><img src="">История</a></li>
-			</ul>
-		</nav>
+		<head>
+			<title>Учёба</title>
+		</head>
 
 		<div id="tblhead">
 			<h4>Севастопольский Государственный Университет</h4>
@@ -178,6 +160,4 @@
 				</tbody>
 			</table>
 		</div>
-		<script src="scripts/goods.js"></script>
-	</body>
-</html>
+		

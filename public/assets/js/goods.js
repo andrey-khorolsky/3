@@ -8,6 +8,7 @@ function minute(m){
 }
 
 function showtime(){
+    // console.log("time");
     let nli = $("<li></li>");
     let na = $("<a></a>");
     nli.append(na);
@@ -36,7 +37,7 @@ function openMenu(){
     u = $("<ul></ul>", {'class' : 'ul_from_opened_menu'});
     l = $("<li></li>", {'width':'100%'});
     for (let i = 0; i<4; i++){
-        na = $("<a></a>", {'href': 'web_hobby.html#sctn' + Number(i+1)});
+        na = $("<a></a>", {'href': 'http://web-my-site/hobby/#sctn' + Number(i+1)});
         na.mouseover(function(e){
             this.style.backgroundColor = "#CAA88A";
         });
@@ -55,40 +56,49 @@ function openMenu(){
 }
 
 // изменение меню при наведении
-function glamMenu(){
+async function glamMenu(){
     let menu = $("a");
     for (let i=0; i<7; i++){
         let leafs = menu[i].children;
-        leafs[0].src = "img/bulb.png";
-        let locate = (i != 2) ? menu[i].href.substring(menu[i].href.lastIndexOf("/")) : "/web_hobby.html";
+        leafs[0].src = "http://web-my-site/public/assets/img/bulb.png";
+        let locate = (i != 2) ? menu[i].href : "http://web-my-site/hobby/";
         
         if (window.location.href.includes(locate)){
-            leafs[0].src = "img/color_bulb.png";
+            leafs[0].src = "http://web-my-site/public/assets/img/color_bulb.png";
             continue;
         }
 
         $(menu[i]).mouseover(function(e){
-            this.children[0].src ="img/color_bulb.png";
+            this.children[0].src ="http://web-my-site/public/assets/img/color_bulb.png";
         }).mouseout(function(e){
-            this.children[0].src = "img/bulb.png";
+            this.children[0].src = "http://web-my-site/public/assets/img/bulb.png";
         });
     }
 }
 
 //сохранение истории текущего сенаса
 function createSeshStorage(){
-    let locate = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let currentPage = window.location.href;
+    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.indexOf("/"));
+    currentPage = currentPage.slice(1, currentPage.length-1);
+
+    let locate = (!currentPage.includes("hobby")) ? currentPage : "hobby";
     sessionStorage.setItem(locate, Number(sessionStorage.getItem(locate)) + Number(1));
 }
 
 //сохранение истории за неделю
 function createCookie(){
+    let currentPage = window.location.href;
+    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.indexOf("/"));
+    currentPage = currentPage.slice(1, currentPage.length-1);
 
-    let locateCookie = (!window.location.href.includes("hobby")) ? window.location.href.substring(window.location.href.lastIndexOf("/")) : "/web_hobby.html";
+    let locateCookie = (!currentPage.includes("hobby")) ? currentPage : "hobby";
    
     let cook = document.cookie + ";";
     if (!cook.includes(locateCookie)){
-        document.cookie = locateCookie + "=1; max-age=604800;";
+        document.cookie = locateCookie + "=1; max-age=604800; path=/; domain=web-my-site";
         return;
     }
 
@@ -102,7 +112,7 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locateCookie + "=" + cookies + "; max-age=604800;";
+    document.cookie = locateCookie + "=" + cookies + "; max-age=604800; path=/; domain=web-my-site";
 };
 
 //popover
