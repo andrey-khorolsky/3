@@ -1,6 +1,6 @@
 <?php
 
-require_once("app/models/photoActiveR.php");
+require_once("app/models/photoActiveRecord.php");
 class Photoalbum_model{
 
 
