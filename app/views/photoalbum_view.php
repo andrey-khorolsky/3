@@ -7,8 +7,8 @@
 	echo '<div class="phtalb_d">';
 	for ($i=0; $i<count($var->photos); $i++)
 		echo '<div class="phtalb">
-			<img src='.$var->photos[$i].' alt='.escapeshellarg($var->titles[$i]).'>
-			<h5>'.$var->titles[$i].'</h5>
+			<img src='.$var->getPhoto($i).' alt='.escapeshellarg($var->getTitle($i)).'>
+			<h5>'.$var->getTitle($i).'</h5>
 		</div>';
 	echo '</div>';
 ?>

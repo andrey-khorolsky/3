@@ -1,10 +1,12 @@
 <?php
 
-require_once("app/core/basicActiveRecord.php");
-class Photoalbum_model extends BasicActiveRecord{
+require_once("app/models/photoActiveR.php");
+class Photoalbum_model{
 
 
-    public $photos = [
+    public $photos = [];
+
+    // public $photos = [
         // "/public/assets/img/cars/nsx.jpg",
         // "/public/assets/img/cars/skyliner32.jpg",
         // "/public/assets/img/cars/s2k.jpg",
@@ -20,9 +22,9 @@ class Photoalbum_model extends BasicActiveRecord{
         // "/public/assets/img/cars/180sx.jpg",
         // "/public/assets/img/cars/180sx2.jpg",
         // "/public/assets/img/cars/180sx3.jpg"
-    ];
+    // ];
 
-    public $titles = [
+    // public $titles = [
         // "Honda NSX",
         // "Nissan Skyline GT-R R32",
         // "Honda S2000",
@@ -38,21 +40,30 @@ class Photoalbum_model extends BasicActiveRecord{
         // "Nissan 180SX",
         // "Nissan 180SX",
         // "Nissan 180SX"
-    ];
+    // ];
     
     function __construct(){
     
-        parent::__construct();
-        $stmt = "SELECT * FROM `carPhotos`";
-        $res = static::$pdo->query($stmt);
-        while($row = $res->fetch()){
-            $this->photos[] = $row["photo"];
-            $this->titles[] = $row["title"];
-        }
+        $this->photos = Photo::FindAll();
+
+        // $stmt = "SELECT * FROM `carPhotos`";
+        // $res = static::$pdo->query($stmt);
+        // while($row = $res->fetch()){
+        //     $this->photos[] = $row["photo"];
+        //     $this->titles[] = $row["title"];
+        // }
 
         // for($i=0; $i<count($this->photos); $i++){
         //     static::$pdo->query("INSERT INTO `carPhotos` (`photo`, `title`) VALUES ('".$this->photos[$i]."', '".$this->titles[$i]."');");
         // }
+    }
+
+    function getPhoto($id){
+        return $this->photos[$id]->photo;
+    }
+
+    function getTitle($id){
+        return $this->photos[$id]->title;
     }
 
 }
