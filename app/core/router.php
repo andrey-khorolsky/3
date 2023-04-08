@@ -7,7 +7,7 @@ class Router{
         $controller = null;
 
         if (!isset($_REQUEST["controller"])){
-            header("Location: http://web-my-site/main/");
+            header("Location: /main/");
             exit();
         }
         
@@ -22,7 +22,7 @@ class Router{
         if (!is_null($controller) && is_null($action)) $controller->show();
         elseif (!is_null($controller) && !is_null($action)) $controller->$action();
         else {
-            header("Location: http://web-my-site/main/");
+            header("Location: /main/");
             exit();
         }
     }

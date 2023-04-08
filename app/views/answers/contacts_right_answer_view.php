@@ -10,6 +10,6 @@
         <p>Номер телефона: <?echo $_POST["tel"]?></p>
     </div>
     <div class="sch">
-        <a href="http://web-my-site/contacts/">Вернуться</a>
+        <a href="/contacts/">Вернуться</a>
     </div>
 </div>

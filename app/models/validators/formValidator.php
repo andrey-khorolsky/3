@@ -24,7 +24,7 @@ class FormValidator{
 
     function isEmail($data){
         $re = "/^[0-9a-zA-z][0-9a-zA-Z\.]*[0-9a-zA-z]?[^\.]\@[-a-zA-z]+\.[-a-zA-z]{2,}$/";
-        if (preg_match($re, $data) !== 1) return "is not email";
+        if (preg_match($re, $data) !== 1) return $data." is not email";
     }
 
     function setRule($field_name, $validator_name){

@@ -15,7 +15,7 @@
 			}
 		?>
 
-		<form class="test" name="testform" method="POST" onsubmit="return checktest();" action="http://web-my-site/test/check">
+		<form class="test" name="testform" method="POST" onsubmit="return checktest();" action="/test/check">
 			<div class="tstf">
 				<label for="fioID">Укажите свои ФИО</label>
 				<br>
@@ -86,7 +86,7 @@
 			</div>
 		</form>
 		<div class="sch">
-			<a href="http://web-my-site/school/">Перейти к разделу "Учеба"</a>
+			<a href="/school/">Перейти к разделу "Учеба"</a>
 		</div>
 
 		<?

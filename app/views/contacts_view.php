@@ -4,7 +4,7 @@
 	<script src="/public/assets/js/testscript.js"></script>
 </head>
 
-	<form class="test" method="post" name="contform" onsubmit="return checkcont();" action="http://web-my-site/contacts/check">
+	<form class="test" method="post" name="contform" onsubmit="return checkcont();" action="/contacts/check">
 		<div class="tstf">
 			<label for="fioID">Укажите свои ФИО</label>
 			<br>

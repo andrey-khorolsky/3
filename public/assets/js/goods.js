@@ -37,7 +37,7 @@ function openMenu(){
     u = $("<ul></ul>", {'class' : 'ul_from_opened_menu'});
     l = $("<li></li>", {'width':'100%'});
     for (let i = 0; i<4; i++){
-        na = $("<a></a>", {'href': 'http://web-my-site/hobby/#sctn' + Number(i+1)});
+        na = $("<a></a>", {'href': '/hobby/#sctn' + Number(i+1)});
         na.mouseover(function(e){
             this.style.backgroundColor = "#CAA88A";
         });
@@ -60,18 +60,18 @@ async function glamMenu(){
     let menu = $("a");
     for (let i=0; i<7; i++){
         let leafs = menu[i].children;
-        leafs[0].src = "http://web-my-site/public/assets/img/bulb.png";
-        let locate = (i != 2) ? menu[i].href : "http://web-my-site/hobby/";
+        leafs[0].src = "/public/assets/img/bulb.png";
+        let locate = (i != 2) ? menu[i].href : "/hobby/";
         
         if (window.location.href.includes(locate)){
-            leafs[0].src = "http://web-my-site/public/assets/img/color_bulb.png";
+            leafs[0].src = "/public/assets/img/color_bulb.png";
             continue;
         }
 
         $(menu[i]).mouseover(function(e){
-            this.children[0].src ="http://web-my-site/public/assets/img/color_bulb.png";
+            this.children[0].src ="/public/assets/img/color_bulb.png";
         }).mouseout(function(e){
-            this.children[0].src = "http://web-my-site/public/assets/img/bulb.png";
+            this.children[0].src = "/public/assets/img/bulb.png";
         });
     }
 }
@@ -79,7 +79,7 @@ async function glamMenu(){
 //сохранение истории текущего сенаса
 function createSeshStorage(){
     let currentPage = window.location.href;
-    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.lastIndexOf("andrews-site/"));
     currentPage = currentPage.slice(currentPage.indexOf("/"));
     currentPage = currentPage.slice(1, currentPage.length-1);
 
@@ -90,7 +90,7 @@ function createSeshStorage(){
 //сохранение истории за неделю
 function createCookie(){
     let currentPage = window.location.href;
-    currentPage = currentPage.slice(currentPage.lastIndexOf("web-my-site/"));
+    currentPage = currentPage.slice(currentPage.lastIndexOf("andrews-site/"));
     currentPage = currentPage.slice(currentPage.indexOf("/"));
     currentPage = currentPage.slice(1, currentPage.length-1);
 
@@ -98,7 +98,7 @@ function createCookie(){
    
     let cook = document.cookie + ";";
     if (!cook.includes(locateCookie)){
-        document.cookie = locateCookie + "=1; max-age=604800; path=/; domain=web-my-site";
+        document.cookie = locateCookie + "=1; max-age=604800; path=/; domain=andrews-site";
         return;
     }
 
@@ -112,7 +112,7 @@ function createCookie(){
 
     cookies = Number(cookies) + Number(1);
     
-    document.cookie = locateCookie + "=" + cookies + "; max-age=604800; path=/; domain=web-my-site";
+    document.cookie = locateCookie + "=" + cookies + "; max-age=604800; path=/; domain=andrews-site";
 };
 
 //popover

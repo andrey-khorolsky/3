@@ -16,7 +16,7 @@ class CustomFormValidator extends FormValidator{
 
     function isFIO($data){
         $re = "/^[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+$/";
-        if (preg_match($re, $data) !== 1) return $data." - неподходящий ормат для ФИО";
+        if (preg_match($re, $data)) return $data." - неподходящий ормат для ФИО";
     }
 
 }

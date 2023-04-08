@@ -4,6 +4,6 @@
         <?$var->getErrorsValidate()?>
     </div>
     <div class="sch">
-        <a href="http://web-my-site/contacts/">Вернуться</a>
+        <a href="/contacts/">Вернуться</a>
     </div>
 </div>
