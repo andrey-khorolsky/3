@@ -8,7 +8,7 @@
         <p>Высшая математика: <?echo $_POST["q2"]?></p>
         <p>Любимая тема: <?echo $_POST["lq"]?></p>
         <!-- <br> -->
-        <?$var->verificationResults($_POST)?>
+        <?$model->verificationResults($_POST)?>
     <!-- </div> -->
     <div class="sch">
         <a href="/test/">Отправить еще</a>

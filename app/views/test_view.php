@@ -5,11 +5,11 @@
 	</head>
 
 		<?
-			if (isset($var)){
+			if (isset($model)){
 				echo '<div calss="test">
 					<div class="tstf">
 						<p>Возникли ошибки с данными</p>
-						'.$var->getErrorsValidate().'
+						'.$model->getErrorsValidate().'
 					</div>
 				</div>';
 			}

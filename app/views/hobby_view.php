@@ -13,22 +13,22 @@
 <div class = "sec_hobby">
 	<section id="sctn1">
 		<h1>Музыка</h1>
-		<? showHobby("music", $var);?>
+		<? showHobby("music", $model);?>
 	</section>
 	
 	<section id="sctn2">
 		<h1>Книги</h1>
-		<? showHobby("books", $var);?>
+		<? showHobby("books", $model);?>
 	</section>
 
 	<section id="sctn3">
 		<h1>Фильмы</h1>
-		<? showHobby("films", $var);?>
+		<? showHobby("films", $model);?>
 	</section>
 
 	<section id="sctn4">
 		<h1>Игры</h1>
-		<? showHobby("games", $var);?>
+		<? showHobby("games", $model);?>
 	</section>
 </div>
 
