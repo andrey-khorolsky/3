@@ -8,15 +8,17 @@ class BasicActiveRecord{
     private $id;
 
     function __construct(){
-        $this->createConnect();
+        if (!static::$pdo)
+            $this->createConnect();
     }
 
     static function createConnect(){
-        try{
-        static::$pdo = new PDO("mysql:host=localhost; dbname=web-my-site", "root", "123");
-        } catch (PDOException $e){
-            echo "troubles with dpo connection - ".$e;
-        }
+        if (!static::$pdo)
+            try{
+                static::$pdo = new PDO("mysql:host=localhost; dbname=web-my-site", "root", "123");
+            } catch (PDOException $e){
+                echo "troubles with dpo connection - ".$e;
+            }
     }
 
 
@@ -46,20 +48,31 @@ class BasicActiveRecord{
     }
 
     static function FindAll(){
+        $f = fopen("findAllLog.txt", 'a');
+        $st = microtime(true);
+
         static::createConnect();
+
+        fwrite($f, "connect - ".microtime(true)-$st."\n");
+        $st = microtime(true);
         
         $objs = [];
         
         try{
-            // echo static::$table." - ";
+
             $res = static::$pdo->query("SELECT * FROM `".static::$table."`");
 
-            while ($val = $res->fetch()){
+            while ($val = $res->fetch(PDO::FETCH_ASSOC)){
+
                 $obj = new static();
+
                 foreach ($val as $key=>$value)
                     $obj->$key = $value;
+
                 $objs[] = $obj;
             }
+            fwrite($f, "arr created - ".microtime(true)-$st);
+            fclose($f);
 
         } catch (PDOException $ex){
             echo "trouble ".$ex." end\n";

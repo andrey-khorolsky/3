@@ -4,7 +4,7 @@ require_once("app/models/photoActiveRecord.php");
 class Photoalbum_model{
 
 
-    public $photos = [];
+    public $photos;
 
     // public $photos = [
         // "/public/assets/img/cars/nsx.jpg",
@@ -44,7 +44,13 @@ class Photoalbum_model{
     
     function __construct(){
     
+        $f = fopen("findAllLog.txt", 'a');
+        $st = microtime(true);
+
         $this->photos = Photo::FindAll();
+        
+        fwrite($f, "\nfindall - ".microtime(true)-$st."\n");
+        fclose($f);
 
         // $stmt = "SELECT * FROM `carPhotos`";
         // $res = static::$pdo->query($stmt);
@@ -59,11 +65,11 @@ class Photoalbum_model{
     }
 
     function getPhoto($id){
-        return $this->photos[$id]->photo;
+        return $this->photos["$id"]->photo;
     }
 
     function getTitle($id){
-        return $this->photos[$id]->title;
+        return $this->photos["$id"]->title;
     }
 
 }
