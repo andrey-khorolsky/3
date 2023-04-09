@@ -38,18 +38,18 @@
         if ($section === "music"){
             for ($i=0; $i<count($model->$section); $i++){
                 echo '<div class="album">
-                        <img src='.$model->music[$i]["cover"].'>
-                        <h4>'.$model->music[$i]["titles"].'</h4>
-                        <h4>'.$model->music[$i]["artist"].'</h4>
+                        <img src='.$model->getCover($section, $i).'>
+                        <h4>'.$model->getTitle($section, $i).'</h4>
+                        <h4>'.$model->getArtist($section, $i).'</h4>
                     </div>';
             };
         } else {
             for ($i=0; $i<count($model->$section); $i++){
                 echo '<div class="album">
-                        <img src='.$model->$section[$i]["cover"].'>
-                        <h4>'.$model->$section[$i]["titles"].'</h4>
-                        <h4>'.$model->$section[$i]["artist"].'</h4>
-                        <h5>'.$model->$section[$i]["disctiption"].'</h5>
+                        <img src='.$model->getCover($section, $i).'>
+                        <h4>'.$model->getTitle($section, $i).'</h4>
+                        <h4>'.$model->getArtist($section, $i).'</h4>
+                        <h5>'.$model->getDisc($section, $i).'</h5>
                     </div>';
             };
         }

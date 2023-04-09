@@ -1,6 +1,6 @@
 <?php
 
-include("app/core/basicActiveRecord.php");
+require_once("app/core/basicActiveRecord.php");
 
 class Photo extends BasicActiveRecord{
 
