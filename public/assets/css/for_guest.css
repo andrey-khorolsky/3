@@ -1,0 +1,14 @@
+.guestform{
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    border: 2px, black;
+}
+
+.twoinp{
+    width: 80%;
+}
+
+.twoinp input{
+    width: 40%;
+}
