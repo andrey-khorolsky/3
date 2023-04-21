@@ -17,7 +17,7 @@ class View{
                     <nav class="nav">
                         <ul>
                             <li> <a href="/main/"><img src="">Главная</a></li>
-                            <li> <a href="/about/"><img src="">Обо мне</a> </li>
+                            <li> <a href="/guest/"><img src="">Гостевая книга</a> </li>
                             <li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
                             <li> <a href="/photoalbum/"><img src="">Фото</a></li>
                             <li> <a href="/contacts/"><img src="">Контакты</a></li>
