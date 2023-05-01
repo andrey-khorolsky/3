@@ -1,17 +1,25 @@
 <head>
     <title>Гостевая книга</title>
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/for_guest.css">
     <script src="/public/assets/js/testguest.js"></script>
 </head>
 
-<form class="guestform" method="post" name="guestform" onsubmit="return checkguest();" action="/contacts/check">
+<div class="newcomm">
+    <a href="/guest/newComment">Write new</a>
+    <a href="/guest/addCommentsFromFile">Add from file</a>
+</div>
+
+<div class="book">
+    <?
     
-    <div class="twoinp">
-        <input type="text" id="fio" name="fio" placeholder="Фамилия Имя Отчество">
-        <input type="text" id="email" name="email" placeholder="email@email.com">
-    </div>
-
-    <div>
-        <textarea cols="50" rows="4" placeholder="Напишите тут свой отзыв"></textarea>
-    </div>
-
-</form>
+    foreach($model->getAllComments() as $comment){
+        ?>
+        <div class="card">
+            <h6><?=$comment["date"]?></h6>
+            <h3><?=$comment["fio"]?></h3>
+            <h5><?=$comment["text"]?></h5>
+        </div>
+        <?
+    }
+    ?>
+</div>
