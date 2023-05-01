@@ -12,20 +12,19 @@ class Test_controller extends core\controller\Controller{
         if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 			require_once("app/models/test_model.php");
-			$testModel = new Test_model();
-
-            $q2 = ($_POST["q21"] ?? "")." ".($_POST["q22"] ?? "")." ".($_POST["q23"] ?? "")." ".($_POST["q24"] ?? "")." ".($_POST["q25"] ?? "");
-            $_POST["q2"] = $q2;
+			$this->model = new Test_model($_POST);
 
 			//валидация
-			if ($testModel->validForm($_POST)){
+			if ($this->model->validForm($this->model->getAnswers())){
 
                 //вывод сообщения об удачной отправке и проверка (вывод) результатов
-                $this->view->render("answers/test_right_answer_view.php", $testModel);
+                $this->model->verificationResults($this->model->getAnswers());
+                $this->model->saveResults();
+                $this->view->render("answers/test_right_answer_view.php", $this->model);
 
 			} else {
                 //вывод сообщения о неудачной отправке
-                $this->view->render("test_view.php", $testModel);
+                $this->view->render("test_view.php", $this->model);
 			}
             
 		} else $this->show();
