@@ -24,12 +24,13 @@ class BasicActiveRecord{
 
     function save(){
 
+        // foreach ($this as $key=>$val)
+        //     static::$pdo->query("INSERT INTO `".$this->table."` (`photo`, `title`) VALUES ('".$this."', '".$this-."');");
 
     }
 
     function delete(){
         static::$pdo->query("DELETE FROM `".static::$table."` WHERE id = ".$this->id);
-
     }
 
     static function find($id){
@@ -41,7 +42,7 @@ class BasicActiveRecord{
 
         $obj = new static();
         foreach ($res as $key => $value) {
-            $obj ->$key = $value;
+            $obj->$key = $value;
         }
         return $obj;
 
@@ -53,7 +54,7 @@ class BasicActiveRecord{
 
         static::createConnect();
 
-        fwrite($f, "connect - ".microtime(true)-$st."\n");
+        fwrite($f, "\nconnect - ".microtime(true)-$st."\n");
         $st = microtime(true);
         
         $objs = [];

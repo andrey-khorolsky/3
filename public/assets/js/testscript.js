@@ -9,17 +9,17 @@ function chselect(form){
 }
 
 function checktest(event){
-    var fiof = $("#fioID");
-    var groupf = $("#groupID");
-    var hmf = $("#hmID");
-    var lqf = $("#lqID");
+    let fiof = $("#fioID");
+    let groupf = $("#groupID");
+    let hmf = $("#hmID");
+    let lqf = $("#lqID");
     
     if (fiof.val() == "") {
         fiof.focus();
         alert("Вы не заполнили ФИО");
         return false;
     }
-    var re = /^[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+$/;
+    let re = /^[А-Я][а-я]+\s[А-Я][а-я]+\s[А-Я][а-я]+$/;
     if (!re.test(fiof.val())){
         fiof.focus();
         alert("Вы не правильно заполнили ФИО");
@@ -33,7 +33,7 @@ function checktest(event){
         return false;
     }
     
-    var res = 0;
+    let res = 0;
     if (document.testform.q21.checked) res++;
     if (document.testform.q22.checked) res++;
     if (document.testform.q23.checked) res++;
