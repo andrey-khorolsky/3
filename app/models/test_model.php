@@ -44,8 +44,16 @@ class Test_model{
 
     function saveResults(){
         require_once("app/models/activeRecords/testAnswerAR.php");
-        $this->answerAR = new Answer($this->answers, $this->results);
+        $this->answerAR = Answer::createFromAnswRes($this->answers, $this->results);
         $this->answerAR->save();
+    }
+
+    function findLastAnswers($count){
+        $this->answerAR = Answer::getLastAnswers($count);
+    }
+
+    function getAnswersAR(){
+        return $this->answerAR;
     }
 
     function getAnswers(){

@@ -214,6 +214,7 @@ th, td, tr, caption {
 }
 
 .tbl {
+  margin-top: 2%;
   padding-left: 27vw;
   width: 100%;
 }

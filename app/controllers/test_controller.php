@@ -4,6 +4,7 @@ require_once("app/core/controller.php");
 class Test_controller extends core\controller\Controller{
 
     function show(){
+
         $this->view->render("test_view.php");
     }
 
@@ -16,6 +17,8 @@ class Test_controller extends core\controller\Controller{
 
 			//валидация
 			if ($this->model->validForm($this->model->getAnswers())){
+            
+                require_once("app/models/activeRecords/testAnswerAR.php");
 
                 //вывод сообщения об удачной отправке и проверка (вывод) результатов
                 $this->model->verificationResults($this->model->getAnswers());

@@ -12,18 +12,23 @@ class Answer extends BasicActiveRecord{
     public $mark2;
     public $answer3;
     public $mark3;
-    public $res;
+    private $res;
 
-    function __construct($answ, $res){
-        $this->fio = $answ["fio"];
-        $this->answer1 = $answ["hm"];
-        $this->answer2 = $answ["q2"];
-        $this->answer3 = $answ["lq"];
-        $this->mark1 = $res["1"];
-        $this->mark2 = $res["2"];
-        $this->mark3 = $res["3"];
-        $this->res = $res["0"];
+    
+    static function createFromAnswRes($answ = null, $res = null){
+        $obj = new self();
+        $obj->fio = $answ["fio"];
+        $obj->answer1 = $answ["hm"];
+        $obj->answer2 = $answ["q2"];
+        $obj->answer3 = $answ["lq"];
+        $obj->mark1 = $res["1"];
+        $obj->mark2 = $res["2"];
+        $obj->mark3 = $res["3"];
+        $obj->res = $res["0"];
+
+        return $obj;
     }
+    
 
     function save(){
         $this->createConnect();
@@ -40,5 +45,89 @@ class Answer extends BasicActiveRecord{
 
         $stmt->execute();
     }
+
+    static function getLastAnswers($count){
+        static::createConnect();
+        $stmt = static::$pdo->prepare("SELECT * FROM `answers` ORDER BY `date` DESC LIMIT ".$count);
+
+        $stmt->execute();
+
+        $answers = [];
+
+        for ($i=0; $i<$count; $i++){
+            $data = $stmt->fetch();
+            if (!$data) break;
+            $ans = new self();
+            foreach($ans as $key=>$val)
+                $ans->$key = $data[$key];
+            $answers[] = $ans;
+        }
+
+        return $answers;
+    }
     
+
+    /**
+     * Get the value of fio
+     */ 
+    public function getFio()
+    {
+        return $this->fio;
+    }
+
+    /**
+     * Get the value of mark3
+     */ 
+    public function getMark1()
+    {
+        return $this->mark1;
+    }
+
+    /**
+     * Get the value of answer3
+     */ 
+    public function getAnswer1()
+    {
+        return $this->answer1;
+    }
+
+    /**
+     * Get the value of mark3
+     */ 
+    public function getMark2()
+    {
+        return $this->mark2;
+    }
+
+    /**
+     * Get the value of answer3
+     */ 
+    public function getAnswer2()
+    {
+        return $this->answer2;
+    }
+
+    /**
+     * Get the value of mark3
+     */ 
+    public function getMark3()
+    {
+        return $this->mark3;
+    }
+
+    /**
+     * Get the value of answer3
+     */ 
+    public function getAnswer3()
+    {
+        return $this->answer3;
+    }
+
+    /**
+     * Get the value of res
+     */ 
+    public function getRes()
+    {
+        return $this->res;
+    }
 }

@@ -49,13 +49,13 @@ class BasicActiveRecord{
     }
 
     static function FindAll(){
-        $f = fopen("findAllLog.txt", 'a');
-        $st = microtime(true);
+        // $f = fopen("findAllLog.txt", 'a');
+        // $st = microtime(true);
 
         static::createConnect();
 
-        fwrite($f, "\nconnect - ".microtime(true)-$st."\n");
-        $st = microtime(true);
+        // fwrite($f, "\nconnect - ".microtime(true)-$st."\n");
+        // $st = microtime(true);
         
         $objs = [];
         
@@ -72,8 +72,8 @@ class BasicActiveRecord{
 
                 $objs[] = $obj;
             }
-            fwrite($f, "arr created - ".microtime(true)-$st);
-            fclose($f);
+            // fwrite($f, "arr created - ".microtime(true)-$st);
+            // fclose($f);
 
         } catch (PDOException $ex){
             echo "trouble ".$ex." end\n";
