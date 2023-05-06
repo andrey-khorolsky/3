@@ -52,18 +52,7 @@ class Answer extends BasicActiveRecord{
 
         $stmt->execute();
 
-        $answers = [];
-
-        for ($i=0; $i<$count; $i++){
-            $data = $stmt->fetch();
-            if (!$data) break;
-            $ans = new self();
-            foreach($ans as $key=>$val)
-                $ans->$key = $data[$key];
-            $answers[] = $ans;
-        }
-
-        return $answers;
+        return static::createFromData($stmt);
     }
     
 

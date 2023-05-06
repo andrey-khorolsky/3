@@ -83,4 +83,20 @@ class BasicActiveRecord{
 
     }
 
+    static function createFromData($stmt){
+
+        $result = [];
+
+        while($data = $stmt->fetch()){
+            if (!$data) break;
+            $ans = new static();
+            foreach($data as $key=>$val){
+                $ans->$key = $data[$key];
+            }
+            $result[] = $ans;
+        }
+
+        return $result;
+    }
+
 }
