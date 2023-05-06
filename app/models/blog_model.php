@@ -18,4 +18,9 @@ class Blog_model{
         Article::writeArticle($array);
         move_uploaded_file($_FILES["file"]["tmp_name"], "public/assets/img/blog/".$_FILES["file"]["name"]);
     }
+
+    function getPagesCount(){
+        require_once("app/models/activeRecords/articleAR.php");
+        return count(Article::FindAll());
+    }
 }

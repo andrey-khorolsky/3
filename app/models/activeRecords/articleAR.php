@@ -3,6 +3,8 @@
 require_once("app/core/basicActiveRecord.php");
 
 class Article extends BasicActiveRecord{
+    
+    protected static $table = "articles";
     protected $id;
     protected $date;
     protected $title;

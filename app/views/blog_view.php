@@ -12,9 +12,10 @@
 
 <div class="book">
     <?
-    $page = $_GET["page"] ?? 1;
     $articlesOnPage = 3;
-    echo $page, $articlesOnPage;
+    $page = $_GET["page"] ?? 1;
+    $pageCount = ceil($model->getPagesCount()/$articlesOnPage);
+    
     foreach($model->getArticles(($page-1)*3, $articlesOnPage) as $article){
         ?>
         <div class="card">
@@ -29,5 +30,15 @@
 </div>
 
 <div class="pages">
-    <a href="?page=2">2</a>
+    <a href="/blog/">Первая страница</a>
+
+    <?= $page-2 > 0 ? "<a href='?page=".($page-2)."'>".($page-2)."</a>" : ""?>
+    <?= $page-1 > 0 ? "<a href='?page=".($page-1)."'>".($page-1)."</a>" : ""?>
+    <a><?=$page?></a>
+    <?= $page+1 <= $pageCount ? "<a href='?page=".($page+1)."'>".($page+1)."</a>" : ""?>
+    <?= $page+2 <= $pageCount ? "<a href='?page=".($page+2)."'>".($page+2)."</a>" : ""?>
+
+    <a href="?page=<?=$pageCount?>">Последняя страница</a>
+
+    <span>Всего страниц:<a href="?page=<?=$pageCount?>"><?=$pageCount?></a></span>
 </div>
