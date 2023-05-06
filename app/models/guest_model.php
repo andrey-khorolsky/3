@@ -39,12 +39,8 @@ class Guest_model{
     }
 
     function findComment(){
-        // $str = null;
-        // while (is_null($str)){
-        // $str = fgets($this->openFile);
-// }
+        
         if ($str = fgets($this->openFile)){
-        // while ($str = fgets($this->openFile)){
             $str = explode(";", $str);
             $res["date"] = $str["0"];
             $res["fio"] = $str["1"];
@@ -68,7 +64,6 @@ class Guest_model{
 
     function getAllComments(){
         $this->getComments();
-        // echo json_encode($this->comments)."---";
         return $this->comments;
     }
 }
