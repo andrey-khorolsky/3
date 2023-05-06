@@ -44,24 +44,8 @@ class Photoalbum_model{
     
     function __construct(){
     
-        $f = fopen("findAllLog.txt", 'a');
-        $st = microtime(true);
-
         $this->photos = Photo::FindAll();
         
-        fwrite($f, "\nfindall - ".microtime(true)-$st."\n");
-        fclose($f);
-
-        // $stmt = "SELECT * FROM `carPhotos`";
-        // $res = static::$pdo->query($stmt);
-        // while($row = $res->fetch()){
-        //     $this->photos[] = $row["photo"];
-        //     $this->titles[] = $row["title"];
-        // }
-
-        // for($i=0; $i<count($this->photos); $i++){
-        //     static::$pdo->query("INSERT INTO `carPhotos` (`photo`, `title`) VALUES ('".$this->photos[$i]."', '".$this->titles[$i]."');");
-        // }
     }
 
     function getPhoto($id){
