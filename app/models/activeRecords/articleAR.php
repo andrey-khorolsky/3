@@ -24,8 +24,10 @@ class Article extends BasicActiveRecord{
     static function writeArticle($array){
         static::createConnect();
 
-        $stmt = static::$pdo->prepare("INSERT INTO `articles` (`id`, `date`, `title`, `text`, `img`) VALUES (NULL, CURRENT_TIMESTAMP, :title, :text, :img)");
+        $stmt = static::$pdo->prepare("INSERT INTO `articles` (`id`, `date`, `title`, `text`, `img`) VALUES (NULL, :date, :title, :text, :img)");
 
+        $date = $array["date"] ?? date("y.m.d G:i:s");
+        $stmt->bindParam("date", $date);
         $stmt->bindParam("title", $array["title"]);
         $stmt->bindParam("text", $array["text"]);
         $stmt->bindParam("img", $array["img"]);

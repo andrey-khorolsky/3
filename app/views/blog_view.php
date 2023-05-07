@@ -6,7 +6,7 @@
 
 <div class="newcomm">
     <a href="/blog/newArticle">Write new</a>
-    <!-- <a href="/guest/addCommentsFromFile">Add from file</a> -->
+    <a href="/blog/addFileWithArticles">Add from file</a>
     <a href="/guest/">Гостевая книга</a>
 </div>
 
