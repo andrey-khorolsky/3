@@ -5,24 +5,24 @@ class FormValidator{
     private $rules = [];
     private $errors = [];
 
-    function isNotEmpty($data){
+    protected function isNotEmpty($data){
         if (is_null($data) || trim($data) === "") return "некоторые поля не заполнены";
     }
 
-    function isInteger($data){
+    protected function isInteger($data){
         if (!is_int($data)) return $data." не число";
     }
 
-    function isLess($data, $value){
+    protected function isLess($data, $value){
         if (!is_int($data)) return "не число";
         if ($data > $value) return $data." меньше чем ".$value;
     }
 
-    function isGreater($data, $value){
+    protected function isGreater($data, $value){
         if (!is_int($data) || $data < $value) return $data." больше чем ".$value;
     }
 
-    function isEmail($data){
+    protected function isEmail($data){
         $re = "/^[0-9a-zA-z][0-9a-zA-Z\.]*[0-9a-zA-z]?[^\.]\@[-a-zA-z]+\.[-a-zA-z]{2,}$/";
         if (preg_match($re, $data) !== 1) return $data." is not email";
     }
@@ -36,6 +36,11 @@ class FormValidator{
         $this->rules[] = ["field"=>$field_name, "validator"=>$validator_name, "param"=>$param];
     }
 
+    /**
+     * Summary of validate
+     * @param mixed $post_arr массив для проверки значений
+     * @return bool возвращает true если ошибок валидации нет, иначе - false
+     */
     function validate($post_arr){
 
         for ($i=0; $i<count($this->rules); $i++){

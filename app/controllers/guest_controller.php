@@ -20,6 +20,10 @@ class Guest_controller extends Controller{
     function create(){
         require_once("app/models/guest_model.php");
         $this->model = new Guest_model();
+        if (!$this->model->validate($_POST)){
+            header("Location: /guest/newComment");
+        }
+        
         $this->model->writeComment($_POST);
         header("Location: /guest/");
     }

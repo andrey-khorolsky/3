@@ -3,6 +3,7 @@
 class Blog_model{
 
     private $articles;
+    private $validator;
 
 
 
@@ -35,7 +36,20 @@ class Blog_model{
                 "text" => $str["1"],
                 "author" => $str["2"]
             ];
+            if (!$this->validate($str)) continue;
             Article::writeArticle($arr);
         }
+    }
+
+    function validate($array){
+        
+        require_once("app/models/validators/formValidator.php");
+        $this->validator = new FormValidator();
+        // $this->validator->setRule("date", "isNotEmpty");
+        $this->validator->setRule("title", "isNotEmpty");
+        $this->validator->setRule("text", "isNotEmpty");
+        // $this->validator->setRule("author", "isNotEmpty");
+
+        return $this->validator->validate($array);
     }
 }

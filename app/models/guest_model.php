@@ -4,6 +4,7 @@ class Guest_model{
 
     private $file = "public/assets/messages.inc";
     private $openFile;
+    private $validator;
 
     private $comments;
 
@@ -65,6 +66,19 @@ class Guest_model{
     function getAllComments(){
         $this->getComments();
         return $this->comments;
+    }
+
+    function validate($array){
+        require_once("app/models/validators/formValidator.php");
+        $this->validator = new FormValidator();
+
+        $this->validator->setRule("fio", "isNotEmpty");
+        $this->validator->setRule("email", "isNotEmpty");
+        $this->validator->setRule("text", "isNotEmpty");
+
+        $this->validator->setRule("email", "isEmail");
+
+        return $this->validator->validate($array);
     }
 }
 

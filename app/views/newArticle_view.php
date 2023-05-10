@@ -6,7 +6,7 @@
     
     <div class="twoinp">
         <input type="text" id="title" name="title" placeholder="Title">
-        <textarea cols="50" rows="4" type="text" id="text" name="text" placeholder="Text"></textarea>
+        <textarea cols="50" rows="4" type="text" id="text" name="text" placeholder="Text" required></textarea>
         <input type="file" id="file" name="file">
     </div>
 

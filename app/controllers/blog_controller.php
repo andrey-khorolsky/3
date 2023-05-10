@@ -18,8 +18,12 @@ class Blog_controller extends core\controller\Controller{
     function create(){
         require_once("app/models/blog_model.php");
         $this->model = new Blog_model();
+
+        if (!$this->model->validate($_POST)){
+            header("Location: /blog/newArticle");
+            exit;
+        }
         $this->model->newArticle($_POST);
-        
         header("Location: /blog/");
     }
 
