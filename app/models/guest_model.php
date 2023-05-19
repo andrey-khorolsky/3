@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Models;
+
 class Guest_model{
 
-    private $file = "public/assets/messages.inc";
+    private $file = "messages.inc";
     private $openFile;
     private $validator;
 
@@ -21,7 +23,7 @@ class Guest_model{
         fclose($this->openFile);
     }
 
-    function getComments($start = 0, $countComments = 10){
+    function getComments($start = 0, $countComments = 20){
         $this->openFileForRead();
 
         for ($i=0; $i<$start; $i++)
@@ -57,9 +59,20 @@ class Guest_model{
 
         $this->openFileForWrite();
         fwrite($this->openFile, "\n".date('d.m.y').";");
-        fwrite($this->openFile, $array["fio"].";");
-        fwrite($this->openFile, $array["email"].";");
-        fwrite($this->openFile, $array["text"].";");
+        fwrite($this->openFile, str_replace(";", "", $array["fio"]).";");
+        fwrite($this->openFile, str_replace(";", "", $array["email"].";"));
+        fwrite($this->openFile, str_replace(";", "", $array["text"].";"));
+        $this->closeFile();
+    }
+
+    function uploadFromFile($files){
+        $fil = fopen($files["messages"]["tmp_name"], "r");
+        $this->openFileForWrite();
+
+        while($str = fgets($fil)){
+            fwrite($this->openFile, "\n".$str);
+        }
+        fclose($fil);
         $this->closeFile();
     }
 
@@ -67,19 +80,4 @@ class Guest_model{
         $this->getComments();
         return $this->comments;
     }
-
-    function validate($array){
-        require_once("app/models/validators/formValidator.php");
-        $this->validator = new FormValidator();
-
-        $this->validator->setRule("fio", "isNotEmpty");
-        $this->validator->setRule("email", "isNotEmpty");
-        $this->validator->setRule("text", "isNotEmpty");
-
-        $this->validator->setRule("email", "isEmail");
-
-        return $this->validator->validate($array);
-    }
 }
-
-//переделать для ооп - добавить класс для сообщений

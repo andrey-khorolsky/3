@@ -1,6 +1,7 @@
 <?php
-require_once("app/models/validators/customFormValidator.php");
-class ResultVerificator extends CustomFormValidator{
+namespace App\Models\Validators;
+
+class ResultVerificator{
 
     function verificationResults($array){
 

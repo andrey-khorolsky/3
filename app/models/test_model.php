@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+use App\Models\Validators\ResultVerificator;
+use App\Models\AR\Answer;
+
 class Test_model{
 
     private $validator;
@@ -9,7 +13,6 @@ class Test_model{
     private $answerAR;
 
     function __construct($array){
-        require_once("app/models/validators/resultVerificator.php");
         $this->validator = new ResultVerificator();
 
         $this->answers["fio"] = $array["fio"];
@@ -19,31 +22,12 @@ class Test_model{
         $this->answers["lq"] = $array["lq"];
     }
 
-    function validForm($array){
-        $this->validator->setRule("fio", "isNotEmpty");
-        $this->validator->setRule("group", "isNotEmpty");
-        $this->validator->setRule("hm", "isNotEmpty");
-        $this->validator->setRule("q2", "isNotEmpty");
-        $this->validator->setRule("lq", "isNotEmpty");
-        
-        $this->validator->setRule("group", "isGroup");
-        $this->validator->setRule("hm", "isHighMath");
-        $this->validator->setRule("q2", "isHighMathTwo");
-        $this->validator->setRule("fio", "isFIO");
-
-        return $this->validator->validate($array);
-    }
-
     function verificationResults($array){
         $this->results = $this->validator->verificationResults($array);
     }
 
-    function getErrorsValidate(){
-        $this->validator->showErrors();
-    }
 
     function saveResults(){
-        require_once("app/models/activeRecords/testAnswerAR.php");
         $this->answerAR = Answer::createFromAnswRes($this->answers, $this->results);
         $this->answerAR->save();
     }
