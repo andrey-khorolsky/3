@@ -1,4 +1,4 @@
-# web-my-site
+# andrew's site
 
 ЛР по вебу.
 Темы и стек лр:
@@ -8,4 +8,5 @@
   4 - jquery
   5 - sass
   8 - php 
-  9 - active record and sql
+  9 - active record and sql (upd to Laravel)
+  10 - session and admin

@@ -1,35 +1,71 @@
 <?php
 
+namespace App\Models;
+use App\Models\Validators\ResultVerificator;
+use App\Models\AR\Answer;
+
 class Test_model{
 
     private $validator;
+    private $answers;
+    private $results;
 
-    function __construct(){
-        require_once("app/models/validators/resultVerificator.php");
-       $this->validator = new ResultVerificator();
-    }
+    private $answerAR;
 
-    function validForm($array){
-        $this->validator->setRule("fio", "isNotEmpty");
-        $this->validator->setRule("group", "isNotEmpty");
-        $this->validator->setRule("hm", "isNotEmpty");
-        $this->validator->setRule("q2", "isNotEmpty");
-        $this->validator->setRule("lq", "isNotEmpty");
-        
-        $this->validator->setRule("group", "isGroup");
-        $this->validator->setRule("hm", "isHighMath");
-        $this->validator->setRule("q2", "isHighMathTwo");
-        $this->validator->setRule("fio", "isFIO");
+    function __construct($array){
+        $this->validator = new ResultVerificator();
 
-        return $this->validator->validate($array);
+        $this->answers["fio"] = $array["fio"];
+        $this->answers["group"] = $array["group"];
+        $this->answers["hm"] = $array["hm"];
+        $this->answers["q2"] = ($array["q21"] ?? "")." ".($array["q22"] ?? "")." ".($array["q23"] ?? "")." ".($array["q24"] ?? "")." ".($array["q25"] ?? "");
+        $this->answers["lq"] = $array["lq"];
     }
 
     function verificationResults($array){
-        return $this->validator->verificationResults($array);
+        $this->results = $this->validator->verificationResults($array);
     }
 
-    function getErrorsValidate(){
-        $this->validator->showErrors();
+
+    function saveResults(){
+        $this->answerAR = Answer::createFromAnswRes($this->answers, $this->results);
+        $this->answerAR->save();
+    }
+
+    function findLastAnswers($count){
+        $this->answerAR = Answer::getLastAnswers($count);
+    }
+
+    function getAnswersAR(){
+        return $this->answerAR;
+    }
+
+    function getAnswers(){
+        return $this->answers;
+    }
+
+    function getFio(){
+        return $this->answers["fio"];
+    }
+
+    function getGroup(){
+        return $this->answers["group"];
+    }
+
+    function getHm(){
+        return $this->answers["hm"];
+    }
+
+    function getQ2(){
+        return $this->answers["q2"];
+    }
+
+    function getLq(){
+        return $this->answers["lq"];
+    }
+
+    function getRes($q){
+        return $this->results[$q];
     }
     
 }
