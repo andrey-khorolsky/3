@@ -18,7 +18,7 @@
         <p>Любимая тема: <?= $model->getRes(3)?> баллов</p>
             
         <div class="sch">
-            <a href="/test/">Отправить еще</a>
+            <a href="/test">Отправить еще</a>
         </div>
 
         <!-- last 5 answers -->

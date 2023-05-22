@@ -11,7 +11,7 @@ class Test_controller extends Controller{
         $this->model->verificationResults($this->model->getAnswers());
         $this->model->saveResults();
 
-        return view("answers.test_right_answer", ["model" => $this->model]);
+        return view("test.answer", ["model" => $this->model]);
     }
 
 }

@@ -60,8 +60,8 @@ class Guest_model{
         $this->openFileForWrite();
         fwrite($this->openFile, "\n".date('d.m.y').";");
         fwrite($this->openFile, str_replace(";", "", $array["fio"]).";");
-        fwrite($this->openFile, str_replace(";", "", $array["email"].";"));
-        fwrite($this->openFile, str_replace(";", "", $array["text"].";"));
+        fwrite($this->openFile, str_replace(";", "", $array["email"]).";");
+        fwrite($this->openFile, str_replace(";", "", $array["text"]).";");
         $this->closeFile();
     }
 

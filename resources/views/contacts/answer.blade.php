@@ -13,7 +13,7 @@
             <p>Номер телефона: <?echo $_POST["tel"]?></p>
         </div>
         <div class="sch">
-            <a href="/contacts/">Вернуться</a>
+            <a href="/contacts">Вернуться</a>
         </div>
     </div>
 @endsection
