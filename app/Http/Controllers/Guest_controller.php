@@ -6,11 +6,11 @@ use App\Http\Requests\GuestRequest;
 class Guest_controller extends Controller{
 
     function show(){
-        return view("guest", ["model" => $this->model]);
+        return view("guest.guest", ["model" => $this->model]);
     }
 
     function newComment(){
-        return view("newComment");
+        return view("guest.newComment");
     }
 
     function create(GuestRequest $guestRequest){
@@ -19,7 +19,7 @@ class Guest_controller extends Controller{
     }
 
     function addCommentsFromFile(){
-        return view("addCommentFromFile");
+        return view("guest.addCommentFromFile");
     }
 
     function uploadComments(){

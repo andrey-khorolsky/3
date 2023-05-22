@@ -17,6 +17,6 @@ class Contact_controller extends Controller{
         //     Электронная почта: '.$_POST["email"].'
         //     Номер телефона: '.$_POST["tel"];
 
-        return view("answers.contacts_right_answer");
+        return view("contacts.answer");
     }
 }

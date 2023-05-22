@@ -93,7 +93,7 @@ Route::get("photoalbum", function(){
 
 
 
-Route::view("contacts", "contacts");
+Route::view("contacts", "contacts.contacts");
 
 Route::post("/contacts", function(ContactRequest $contactRequest){
     $token = $contactRequest->session()->token();
@@ -103,7 +103,7 @@ Route::post("/contacts", function(ContactRequest $contactRequest){
 
 
 
-Route::view("test", "test");
+Route::view("test", "test.test");
 
 Route::post("test", function(TestRequest $testRequest){
     $token = $testRequest->session()->token();

@@ -19,7 +19,6 @@
         $page = $_GET["page"] ?? 1;
         $pageCount = ceil($model->getPagesCount()/$articlesOnPage);
         
-        // foreach($model->getArticles(($page-1)*3, $articlesOnPage) as $article){
             foreach(App\Models\AR\Article::paginate($articlesOnPage) as $article){
             ?>
             <div class="card">

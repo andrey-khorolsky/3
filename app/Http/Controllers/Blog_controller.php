@@ -7,11 +7,11 @@ use App\Http\Requests\BlogRequest;
 class Blog_controller extends Controller{
 
     function show(){
-        return view("blog", ["model" => $this->model]);
+        return view("blog.blog", ["model" => $this->model]);
     }
 
     function newArticle(){
-        return view("newArticle");
+        return view("blog.newArticle");
     }
 
     function create(BlogRequest $blogRequest){
@@ -20,7 +20,7 @@ class Blog_controller extends Controller{
     }
 
     function addFileWithArticles(){
-        return view("addFileWithArticle");
+        return view("blog.addFileWithArticle");
     }
 
     function uploadArticles(){
