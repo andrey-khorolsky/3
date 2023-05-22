@@ -1,10 +1,12 @@
 @extends('layout')
 
-@section('content')
-	<head>
-		<title>История</title>
-	</head>
 
+@section('head')
+	<title>История</title>
+@endsection
+
+
+@section('content')
 	<div>
 		<a href="/sign_in">Войти</a>
 	</div>

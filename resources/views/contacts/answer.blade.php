@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @section("content")
     <div calss="test">
         <div class="tstf">

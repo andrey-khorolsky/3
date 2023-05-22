@@ -1,9 +1,12 @@
 @extends('layout')
 
+
+@section('head')
+	<title>Мои интересы</title>
+@endsection
+
+
 @section('content')
-	<head>
-		<title>Мои интересы</title>
-	</head>
 
 	<nav class="nav_sctn">
 		<a id="sc1" href="#sctn1">Музыка</a>
@@ -38,7 +41,6 @@
 		function showHobby($section, $model){
 
 			if ($section === "music"){
-				// for ($i=0; $i<count($model->$section); $i++){
 				foreach ($model->$section as $fav) {
 					echo '<div class="album">
 							<img src='.$fav["cover"].'>
@@ -47,7 +49,6 @@
 						</div>';
 				};
 			} else {
-				// for ($i=0; $i<count($model->$section); $i++){
 				foreach ($model->$section as $fav) {
 					echo '<div class="album">
 							<img src='.$fav["cover"].'>

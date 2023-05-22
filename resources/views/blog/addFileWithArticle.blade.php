@@ -1,9 +1,12 @@
 @extends('layout')
 
+
+@section('head')
+    <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
+@endsection
+
+
 @section('content')
-    <head>
-        <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
-    </head>
 
 	@if ($errors->any())
 		<div class="alert alert-danger">

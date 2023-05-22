@@ -1,12 +1,14 @@
 @extends('layout')
 
+
+@section('head')
+	<title>Фотоальбом</title>
+@endsection
+
+
 @section('content')
-	<head>
-		<title>Фотоальбом</title>
-	</head>
 
 	<?
-
 		echo '<div class="phtalb_d">';
 		foreach ($model->photos as $photo)
 			echo '<div class="phtalb">
@@ -14,7 +16,6 @@
 				<h5>'.$photo->title.'</h5>
 			</div>';
 		echo '</div>';
-
 	?>
 	
 	<script src="/js/firstscript.js"></script>

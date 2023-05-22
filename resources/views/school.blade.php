@@ -1,17 +1,21 @@
 @extends('layout')
 
-@section("content")
-	<head>
-		<title>Учёба</title>
-	</head>
+
+@section("head")
+	<title>Учёба</title>
+@endsection
+
+
+@section('content')
 
 	<div id="tblhead">
 		<h4>Севастопольский Государственный Университет</h4>
 		<h4>Институт информационных технологий и управления в технических системах</h4>
 	</div>
+	
 	<div class="tbl">
 		<table>
-				<caption>План учебного процесса</caption>
+			<caption>План учебного процесса</caption>
 			<tbody>
 				<tr>
 					<th rowspan="2">№</th>

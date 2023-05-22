@@ -1,6 +1,7 @@
 @extends('layout')
 
-@section("content")
+
+@section('content')
     <div calss="test">
         <br>
         <p>Ответ отправлен</p>
@@ -59,9 +60,8 @@
                         }
                     ?>
                 </tbody>
-
             </table>
         </div>
-
     </div>
+
 @endsection

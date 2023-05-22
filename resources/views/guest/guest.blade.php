@@ -1,11 +1,14 @@
-@extends("layout")
+@extends('layout')
 
-@section("content")
-    <head>
-        <title>Гостевая книга</title>
-        <link rel="stylesheet" type="text/css" href="/css/for_guest.css">
-        <script src="/js/testguest.js"></script>
-    </head>
+
+@section('head')
+    <title>Гостевая книга</title>
+    <link rel="stylesheet" type="text/css" href="/css/for_guest.css">
+    <script src="/js/testguest.js"></script>
+@endsection
+
+
+@section('content')
 
     <div class="newcomm">
         <a href="/guest/newComment">Write new</a>
@@ -27,4 +30,5 @@
         }
         ?>
     </div>
+
 @endsection

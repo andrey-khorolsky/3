@@ -1,12 +1,13 @@
 @extends("layout")
 
-@section("content")
-    <head>
-        <title>Блог</title>
-        <link rel="stylesheet" type="text/css" href="/public/css/for_blog.css">
-    </head>
+
+@section("head")
+    <title>Блог</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/for_blog.css">
+@endsection
 
 
+@section('content')
     <div class="newcomm">
         <a href="/blog/newArticle">Write new</a>
         <a href="/blog/addFileWithArticles">Add from file</a>

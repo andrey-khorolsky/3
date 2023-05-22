@@ -1,9 +1,12 @@
 @extends('layout')
 
+
+@section('head')
+    <link rel="stylesheet" type="text/css" href="/css/for_guest.css">
+@endsection
+
+
 @section('content')
-    <head>    
-        <link rel="stylesheet" type="text/css" href="/css/for_guest.css">
-    </head>
 
     <form class="guestform" method="post" name="guestform" action="/guest/uploadComments" enctype="multipart/form-data">
         @csrf
@@ -15,5 +18,6 @@
 
         <button type="submit">Отправить!</button>
 
-    </form>    
+    </form>  
+      
 @endsection

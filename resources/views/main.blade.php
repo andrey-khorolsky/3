@@ -1,10 +1,12 @@
 @extends("layout")
 
-@section("content")
-    <head>
-        <title>Главная</title>
-    </head>
 
+@section("head")
+    <title>Главная</title> 
+@endsection
+
+
+@section('content')
     <header class = "header">
         
         <div class ="col1"> 
@@ -18,5 +20,6 @@
                 <img src="/public/img/photo.jpg" alt="Me">
             </div>
         </div>
+        
     </header>
 @endsection

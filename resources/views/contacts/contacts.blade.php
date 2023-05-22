@@ -1,10 +1,13 @@
 @extends('layout')
 
+
+@section('head')
+	<title>Контакты</title>
+	<script src="/js/testscript.js"></script>
+@endsection
+
+
 @section('content')
-	<head>
-		<title>Контакты</title>
-		<script src="/js/testscript.js"></script>
-	</head>
 
 	@if ($errors->any())
 		<div class="alert alert-danger">
@@ -76,5 +79,6 @@
 	
 	<script src="/js/calendar.js"></script>
 	<script src="/js/contactsIsRight.js"></script>
+
 @endsection
 	

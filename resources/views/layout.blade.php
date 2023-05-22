@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/style.css') }}">
         <link type="image/x-icon" href="/public/img/hotdog.ico" rel="icon">
         <script src="/public/js/jquery-3.6.1.js"></script>
         <script src="/public/js/goods.js"></script>
+        @yield('head')
     </head>
 
     <body>
@@ -21,7 +23,8 @@
             </ul>
         </nav>
 
-    @yield("content")
+        @yield("content")
 
     </body>
+    
 </html>

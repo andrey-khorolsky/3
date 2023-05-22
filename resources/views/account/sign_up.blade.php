@@ -1,7 +1,6 @@
 @extends('layout')
 
-@section('content')
-    <head>
-        <title>Зарегистрироваться</title>
-    </head>
+
+@section('head')
+    <title>Регистрация</title>
 @endsection
