@@ -17,7 +17,7 @@
                 <li> <a href="/photoalbum"><img src="">Фото</a></li>
                 <li> <a href="/contacts"><img src="">Контакты</a></li>
                 <li> <a href="/test"><img src="">Тест</a></li>
-                <li> <a href="/history"><img src="">История</a></li>
+                <li> <a href="/account"><img src="">История</a></li>
             </ul>
         </nav>
 

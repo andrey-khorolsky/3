@@ -113,7 +113,7 @@ Route::post("test", function(TestRequest $testRequest){
 
 
 
-Route::view("history", "history");
+Route::view("account", "account.account");
 
 
 
