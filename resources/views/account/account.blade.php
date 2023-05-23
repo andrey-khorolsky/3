@@ -2,7 +2,7 @@
 
 
 @section('head')
-	<title>История</title>
+	<title>Аккаунт</title>
 @endsection
 
 
