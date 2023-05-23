@@ -31,6 +31,7 @@ use Illuminate\Http\Request;
 */
 
 
+
 Route::view("/", "main");
 
 
@@ -118,3 +119,8 @@ Route::view("account", "account.account");
 
 
 Route::view("school", "school");
+
+
+
+
+Route::view("admin", "admin.main");
