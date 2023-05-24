@@ -3,6 +3,7 @@
 
 @section("head")
 	<title>Учёба</title>
+	<link rel="stylesheet" href="/css/school.css">
 @endsection
 
 
