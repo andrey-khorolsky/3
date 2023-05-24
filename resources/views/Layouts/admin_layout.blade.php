@@ -28,10 +28,10 @@
         </nav>
 
         <div class="admpanel">
-            <a href="/guest/addCommentsFromFile">Добавить комментарии из файла</a>
-            <a href="/blog/newArticle">Добавить запись в блог</a>
-            <a href="/blog/addFileWithArticles">Добавить запись в блог из файла</a>
-            <a href="admin/statistic">Статистика посещений</a>
+            <a href="/admin/addCommentsFromFile">Добавить комментарии из файла</a>
+            <a href="/admin/newArticle">Добавить запись в блог</a>
+            <a href="/admin/addFileWithArticles">Добавить запись в блог из файла</a>
+            <a href="/admin/statistic">Статистика посещений</a>
         </div>
 
         @yield("content")

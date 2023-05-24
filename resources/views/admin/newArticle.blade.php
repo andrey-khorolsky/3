@@ -18,13 +18,13 @@
 		</div>
 	@endif
 
-    <form class="guestform" method="post" enctype="multipart/form-data" name="guestform" onsubmit="return checkguest();" action="/blog/create">
+    <form class="guestform" method="post" enctype="multipart/form-data" name="guestform" onsubmit="return checkguest();" action="/admin/newArticle">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         
         <div class="guestform__row">
             <input type="text" id="title" name="title" placeholder="Title" value="{{ old("title") }}">
-            <textarea cols="50" rows="4" type="text" id="text" name="text" placeholder="Text" required value="{{ old("text") }}"></textarea>
+            <textarea cols="50" rows="4" type="text" id="text" name="text" placeholder="Text">{{ old("text") }}</textarea>
             <input type="file" id="file" name="file" value="{{ old("file") }}">
 
             <button class="btn" type="submit">Отправить!</button>

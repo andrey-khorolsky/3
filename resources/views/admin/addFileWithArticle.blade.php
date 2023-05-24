@@ -2,23 +2,16 @@
 
 
 @section('head')
-    <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
+    <link rel="stylesheet" type="text/css" href="/css/for_admin.css">
 @endsection
 
 
 @section('content')
-
-	@if ($errors->any())
-		<div class="alert alert-danger">
-			<div class="test">
-				@foreach ($errors->all() as $error)
-					<div class="tstf">{{ $error }}</div>
-				@endforeach
-			</div>
-		</div>
-	@endif
     
-    <form class="guestform" method="post" name="guestform" action="/blog/uploadArticles" enctype="multipart/form-data">
+
+    {{ $uploadStatus ?? "Выберите файл в формате csv"}}
+
+    <form class="guestform" method="post" name="guestform" action="/admin/uploadArticles" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         
@@ -29,4 +22,5 @@
         <button type="submit">Отправить!</button>
 
     </form>
+    
 @endsection
