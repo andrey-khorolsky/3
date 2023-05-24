@@ -12,9 +12,10 @@ class Blog_model extends Model{
 
 
 
-    function getArticles($from, $count){
-        $this->articles = Article::pagination();
-        return $this->articles;
+    function getArticles($count){
+        // $this->articles = Article::pagination();
+        // return $this->articles;
+        return Article::paginate($count);
     }
 
     function newArticle($array, BlogRequest $blogRequest){
