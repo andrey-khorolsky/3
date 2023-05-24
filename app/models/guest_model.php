@@ -66,14 +66,7 @@ class Guest_model{
     }
 
     function uploadFromFile($files){
-        $fil = fopen($files["messages"]["tmp_name"], "r");
-        $this->openFileForWrite();
-
-        while($str = fgets($fil)){
-            fwrite($this->openFile, "\n".$str);
-        }
-        fclose($fil);
-        $this->closeFile();
+        move_uploaded_file($_FILES["messages"]["tmp_name"], public_path()."/messages.inc");
     }
 
     function getAllComments(){
