@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Account_controller;
 use App\Http\Controllers\Admin_controller;
 use App\Http\Controllers\Contact_controller;
 use App\Http\Controllers\Test_controller;
+use App\Http\Requests\AccountRequest;
 use App\Http\Requests\BlogRequest;
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\GuestRequest;
 use App\Http\Requests\TestRequest;
+use App\Models\account_model;
 use App\Models\statistic_model;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blog_controller;
@@ -96,6 +99,22 @@ Route::post("/test", function(TestRequest $testRequest){
 
 
 Route::view("/account", "account.account");
+
+Route::view("/account/sign_in", "account.sign_in");
+
+Route::view("/account/sign_up", "account.sign_up");
+
+Route::post("/account/sign_in", function(AccountRequest $accountRequest){
+    return (new Account_controller(new account_model))->signIn($accountRequest);
+});
+
+Route::post("/account/sign_up", function(AccountRequest $accountRequest){
+    return (new Account_controller(new Account_model))->registration($accountRequest);
+});
+
+Route::get("/account/sign_out", function(){
+    return (new Account_controller)->signOut();
+});
 
 
 
