@@ -8,15 +8,13 @@
 
 
 @section('content')
-<?
-// session(["auth" => "true", "userName" => "Андрей"]);
-// session()->forget(["admin", "auth", "userName"]);
-?>
+
 	<div class="accountTable">
 		@if (session("auth"))
 			<div>ФИО: {{session("userName")}}</div>
 			@if (session("admin"))
 				<div>Текущая роль: Администратор</div>
+				<a class="btn" href="/admin">Панель управления</a>
 			@else
 				<div>Текущая роль: Пользователь</div>
 			@endif

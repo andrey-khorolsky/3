@@ -3,10 +3,13 @@
 
 @section('head')
     <title>Регистрация</title>
+	<link rel="stylesheet" href="/css/for_admin.css">
 @endsection
 
 
 @section('content')
+
+    <a class="btn" href="/account">Назад</a>
     
     @if ($errors->any())
 		<div class="alert alert-danger">
@@ -32,4 +35,6 @@
         
         <button type="submit">Зарегистрироваться</button>
     </form>
+    
+    <a class="btn" href="/account/sign_in">Вход</a>
 @endsection
