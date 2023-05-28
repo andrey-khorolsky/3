@@ -1,4 +1,9 @@
-@extends('layout')
+@extends('Layouts.layout')
+
+
+@section('head')
+    <link rel="stylesheet" href="/css/for_table.css">
+@endsection
 
 
 @section('content')

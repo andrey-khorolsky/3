@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Layouts.layout')
 
 
 @section("content")
@@ -6,13 +6,14 @@
         <div class="tstf">
             <p>Контакты отправлены</p>
             <p>Данные:</p>
-            <p>ФИО: <?echo $_POST["fio"]?></p>
-            <p>Дата рождения: <?echo $_POST["birth"]?></p>
-            <p>Пол: <?echo $_POST["sex"]?></p>
-            <p>Возраст: <?echo $_POST["age"]?></p>
-            <p>Электронная почта: <?echo $_POST["email"]?></p>
-            <p>Номер телефона: <?echo $_POST["tel"]?></p>
+            <p>ФИО: <?= $model->getFio()?></p>
+            <p>Дата рождения: <?= $model->getBirth()?></p>
+            <p>Пол: <?= $model->getSex()?></p>
+            <p>Возраст: <?= $model->getAge()?></p>
+            <p>Электронная почта: <?= $model->getEmail()?></p>
+            <p>Номер телефона: <?= $model->getTel()?></p>
         </div>
+        
         <div class="sch">
             <a href="/contacts">Вернуться</a>
         </div>

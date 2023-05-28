@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('Layouts.layout')
 
 
 @section("head")
 	<title>Учёба</title>
-	<link rel="stylesheet" href="/css/school.css">
+	<link rel="stylesheet" href="/css/for_table.css">
 @endsection
 
 
