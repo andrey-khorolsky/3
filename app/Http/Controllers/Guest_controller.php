@@ -10,7 +10,7 @@ class Guest_controller extends Controller{
     }
 
     function create(GuestRequest $guestRequest){
-        $this->model->writeComment($_POST);
+        $this->model->writeComment($guestRequest);
         return redirect("/guest");
     }
 

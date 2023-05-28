@@ -20,4 +20,36 @@ class Hobby_model{
 
     }
 
+    
+    /**
+     * Get the value of music
+     */ 
+    public function getMusic()
+    {
+        return $this->music;
+    }
+
+    /**
+     * Get the value of books
+     */ 
+    public function getBooks()
+    {
+        return $this->books;
+    }
+
+    /**
+     * Get the value of films
+     */ 
+    public function getFilms()
+    {
+        return $this->films;
+    }
+
+    /**
+     * Get the value of games
+     */ 
+    public function getGames()
+    {
+        return $this->games;
+    }
 }

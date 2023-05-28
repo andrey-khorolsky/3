@@ -10,6 +10,7 @@ use App\Http\Requests\ContactRequest;
 use App\Http\Requests\GuestRequest;
 use App\Http\Requests\TestRequest;
 use App\Models\account_model;
+use App\Models\Contact_model;
 use App\Models\statistic_model;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blog_controller;
@@ -52,8 +53,6 @@ Route::get("/guest", function(){
 Route::view("/guest/newComment", "guest.newComment");
 
 Route::post("/guest/create", function(GuestRequest $request){
-    $token = $request->session()->token();
-    $token = csrf_token();
     return (new Guest_controller(new Guest_model))->create($request);
 });
 
@@ -81,9 +80,7 @@ Route::get("/photoalbum", function(){
 Route::view("/contacts", "contacts.contacts");
 
 Route::post("/contacts", function(ContactRequest $contactRequest){
-    $token = $contactRequest->session()->token();
-    $token = csrf_token();
-    return (new Contact_controller)->check($contactRequest);
+    return (new Contact_controller(new Contact_model))->check($contactRequest);
 });
 
 
@@ -91,8 +88,6 @@ Route::post("/contacts", function(ContactRequest $contactRequest){
 Route::view("/test", "test.test");
 
 Route::post("/test", function(TestRequest $testRequest){
-    $token = $testRequest->session()->token();
-    $token = csrf_token();
     return (new Test_controller(new Test_model($testRequest)))->check($testRequest);
 });
 
@@ -132,8 +127,7 @@ Route::view("/admin/addFileWithArticles", "admin.addFileWithArticle")->middlewar
 Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile")->middleware("admin");
 
 Route::post("/admin/newArticle", function(BlogRequest $blogRequest){
-    (new Admin_controller(new Blog_model))->newArticle($blogRequest);
-    return back();
+    return (new Admin_controller(new Blog_model))->newArticle($blogRequest);
 })->middleware("admin");
 
 Route::post("/admin/uploadArticles", function(){

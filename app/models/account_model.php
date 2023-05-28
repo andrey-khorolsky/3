@@ -17,8 +17,6 @@ class Account_model
         $this->accountAR->name = $accountRequest["name"];
         $this->accountAR->email = $accountRequest["email"];
         $this->accountAR->password = md5($accountRequest["password"]);
-        // $this->accountAR = new Account(["login" => $accountRequest["login"], "email" => $accountRequest["email"], "password" => md5($accountRequest["password"])]);
-        // die($this->accountAR->email);
         return $this->accountAR->save();
     }
 
@@ -35,7 +33,6 @@ class Account_model
     static function accountLogin($array){
         $admin = (($array["email"] == "qqr@mail.ru") && (md5($array["password"] == "fcea920f7412b5da7be0cf42b8c93759")));
         $name = $array["name"] ?? Account_model::findNameToEnter($array["email"], $array["password"]);
-
         session(["auth" => true, "userName" => $name, "admin" => $admin]);
     }
 

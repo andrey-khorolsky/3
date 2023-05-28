@@ -12,7 +12,8 @@ class Admin_controller extends Controller
 
     //Блог (blog) - статьи в бд
     function newArticle(BlogRequest $blogRequest){
-        $this->model->newArticle($_POST, $blogRequest);
+        $this->model->newArticle($blogRequest);
+        return back();
     }
 
 

@@ -13,14 +13,12 @@ class Blog_model extends Model{
 
 
     function getArticles($count){
-        // $this->articles = Article::pagination();
-        // return $this->articles;
         return Article::paginate($count);
     }
 
-    function newArticle($array, BlogRequest $blogRequest){
-        $array["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
-        Article::writeArticle($array);
+    function newArticle(BlogRequest $blogRequest){
+        $blogRequest["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
+        Article::writeArticle($blogRequest);
         move_uploaded_file($_FILES["file"]["tmp_name"], "img/blog/".$_FILES["file"]["name"]);
     }
 
