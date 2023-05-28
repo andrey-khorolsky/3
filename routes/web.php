@@ -105,7 +105,7 @@ Route::view("/account/sign_in", "account.sign_in");
 Route::view("/account/sign_up", "account.sign_up");
 
 Route::post("/account/sign_in", function(AccountRequest $accountRequest){
-    return (new Account_controller(new account_model))->signIn($accountRequest);
+    return (new Account_controller(new Account_model))->signIn($accountRequest);
 });
 
 Route::post("/account/sign_up", function(AccountRequest $accountRequest){
@@ -113,7 +113,7 @@ Route::post("/account/sign_up", function(AccountRequest $accountRequest){
 });
 
 Route::get("/account/sign_out", function(){
-    return (new Account_controller)->signOut();
+    return (new Account_controller(new Account_model))->signOut();
 });
 
 
@@ -123,28 +123,28 @@ Route::view("/school", "school");
 
 
 
-Route::view("/admin", "admin.main");
+Route::view("/admin", "admin.main")->middleware("admin");
 
-Route::view("/admin/newArticle", "admin.newArticle");
+Route::view("/admin/newArticle", "admin.newArticle")->middleware("admin");
 
-Route::view("/admin/addFileWithArticles", "admin.addFileWithArticle");
+Route::view("/admin/addFileWithArticles", "admin.addFileWithArticle")->middleware("admin");
 
-Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile");
+Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile")->middleware("admin");
 
 Route::post("/admin/newArticle", function(BlogRequest $blogRequest){
     (new Admin_controller(new Blog_model))->newArticle($blogRequest);
     return back();
-});
+})->middleware("admin");
 
 Route::post("/admin/uploadArticles", function(){
     return (new Admin_controller(new Blog_model))->uploadArticles();
-});
+})->middleware("admin");
 
 Route::post("/admin/uploadComments", function(){
     return (new Admin_controller(new Guest_model))->uploadComments();
-});
+})->middleware("admin");
 
 Route::get("/admin/statistic", function(){
     return (new Admin_controller(new statistic_model))->statistic();
-});
+})->middleware("admin");
 
