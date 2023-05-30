@@ -11,6 +11,7 @@ use App\Http\Requests\GuestRequest;
 use App\Http\Requests\TestRequest;
 use App\Models\account_model;
 use App\Models\Contact_model;
+use App\Models\Files_model;
 use App\Models\statistic_model;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blog_controller;
@@ -35,6 +36,11 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+// 2 загрузка в блог видео (ют) поле для ссылки в форме. проигрывание на стр. скачать блог и гостевую.
+
+// 3 роль редактор (работа с блогом) не загружает блог
 
 
 
@@ -93,7 +99,7 @@ Route::post("/test", function(TestRequest $testRequest){
 
 
 
-Route::view("/account", "account.account");
+Route::view("/account", "account.account")->name("account");
 
 Route::view("/account/sign_in", "account.sign_in");
 
@@ -139,6 +145,13 @@ Route::post("/admin/uploadComments", function(){
 })->middleware("admin");
 
 Route::get("/admin/statistic", function(){
+    
+    // echo Auth::user()."--";
+    // die(Auth::getUser());
     return (new Admin_controller(new statistic_model))->statistic();
 })->middleware("admin");
+
+Route::get("/admin/downloadFiles", function(){
+    return (new Admin_controller(new Files_model))->dovnloadFiles();
+});
 

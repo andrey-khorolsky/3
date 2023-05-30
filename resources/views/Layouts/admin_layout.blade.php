@@ -32,6 +32,7 @@
             <a href="/admin/newArticle">Добавить запись в блог</a>
             <a href="/admin/addFileWithArticles">Добавить запись в блог из файла</a>
             <a href="/admin/statistic">Статистика посещений</a>
+            <a href="/admin/downloadFiles">Скачать файлы</a>
         </div>
 
         @yield("content")
