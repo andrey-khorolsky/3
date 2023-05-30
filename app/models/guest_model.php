@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Guest_model{
 
-    private $file = "messages.inc";
+    private static $file = "messages.inc";
     private $openFile;
     private $validator;
 
@@ -13,13 +13,13 @@ class Guest_model{
 
 
     private function openFileForRead(){
-        $this->openFile = fopen($this->file, 'r');
+        $this->openFile = fopen(static::$file, 'r');
     }
 
 
     private function openFileForWrite(){
-        $this->openFile = fopen($this->file, "r+");
-        fseek($this->openFile, filesize($this->file));
+        $this->openFile = fopen(static::$file, "r+");
+        fseek($this->openFile, filesize(static::$file));
     }
 
 
@@ -82,6 +82,11 @@ class Guest_model{
     function getAllComments(){
         $this->getComments();
         return $this->comments;
+    }
+
+
+    static function saveGuestInFile(){
+        return url(static::$file);
     }
 
 }

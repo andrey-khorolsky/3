@@ -2,11 +2,11 @@
 
 namespace App\Models;
 use App\Http\Requests\BlogRequest;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\AR\Article;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Translation\Dumper\CsvFileDumper;
 
-class Blog_model extends Model{
+class Blog_model{
 
     private $articles;
 
@@ -19,11 +19,12 @@ class Blog_model extends Model{
     function newArticle(BlogRequest $blogRequest){
         $blogRequest["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
         Article::writeArticle($blogRequest);
+        // (new Article($blogRequest))->save();
         move_uploaded_file($_FILES["file"]["tmp_name"], "img/blog/".$_FILES["file"]["name"]);
     }
 
     function getPagesCount(){
-        return count(Article::all());
+        return Article::all()->count();
     }
 
     function addArticlesFromFile($file){
@@ -47,8 +48,24 @@ class Blog_model extends Model{
             if ($validator->fails()) {
                 return back()->withErrors($validator)->withInput();
             }
+            // die(json_encode($arr));
 
             Article::writeArticle($arr);
+            // (new Article($arr))->save();
         }
+    }
+
+    static function saveBlogInFile(){
+        $file = "blog.csv";
+        $openedFile = fopen($file, 'w');
+
+        $articles = Article::all();
+        foreach($articles as $article){
+            
+            fwrite($openedFile, "\"".($article->title ?? "")."\",\"".($article->text ?? "")."\",\"".($article->author ?? "")."\",\"".($article->date ?? "")."\"\n");
+        }
+
+        fclose($openedFile);
+        return url($file);
     }
 }

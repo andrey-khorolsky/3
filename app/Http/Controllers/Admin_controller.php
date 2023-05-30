@@ -35,4 +35,10 @@ class Admin_controller extends Controller
         return view("admin.statistic", ["model" => $this->model]);
     }
 
+
+    //Скачивание файлов (saveFiles)
+    function dovnloadFiles(){
+        return view("admin.downloadFiles", ["model" => $this->model]);
+    }
+
 }
