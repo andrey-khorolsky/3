@@ -10,19 +10,27 @@
 @section('content')
 
 	<div class="accountTable">
-		@if (session("auth"))
-			<div>ФИО: {{session("userName")}}</div>
-			@if (session("admin"))
-				<div>Текущая роль: Администратор</div>
-				<a class="btn" href="/admin">Панель управления</a>
-			@else
-				<div>Текущая роль: Пользователь</div>
-			@endif
-			<a class="btn" href="/account/sign_out">Выйти</a>
-		@else
+		@auth
+			<div>ФИО: {{ auth()->user()->name}}</div>
+			@switch(auth()->user()->role)
+				@case('admin')
+					<div>Текущая роль: Администратор</div>
+					<a class="btn" href="/admin">Панель управления</a>
+					@break
+				@case('editor')
+					<div>Текущая роль: Редактор</div>
+					<a class="btn" href="/admin">Панель управления</a>
+					@break
+				@default
+					<div>Текущая роль: Пользователь</div>
+			@endswitch
+			<a class="btn" href="/account/sign_out">Выйти</a>	
+		@endauth
+
+		@guest
 			<div>Текущая роль: гость</div>
-			<a class="btn" href="/account/sign_in">Войти</a>
-		@endif
+			<a class="btn" href="/account/sign_in">Войти</a>	
+		@endguest
 	</div>
 	
 	<script src="/js/storage.js"></script>
