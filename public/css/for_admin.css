@@ -113,3 +113,30 @@ tr td:last-child {
 #curPage{
     color: rgba(185, 19, 19, 0.7);
 }
+
+
+.accountTable{
+    /* margin: 10% 0 0 20%; */
+    position: absolute;
+    top: 13%;
+    left: 10%;
+    border-radius: 7px;
+    border: 1px solid grey;
+    display: inline-block;
+    padding: 2%;
+    background-color: #92866c71;
+}
+
+.btn{
+    text-decoration: none;
+    color: #2D2020;
+    background-color: #b8985e;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5%;
+}
+
+.btn:hover{
+    background-color: #bbb6b6;
+}
