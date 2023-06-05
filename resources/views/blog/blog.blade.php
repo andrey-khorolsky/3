@@ -28,6 +28,8 @@
                 </div>
 
                 <?=$article->img != null ? "<img src='".$article->img."'>" : ""?>
+                <?=$article->video != null ?
+                    '<iframe src="'.$article->video.'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' : ""?>
             </div>
             <?
         }

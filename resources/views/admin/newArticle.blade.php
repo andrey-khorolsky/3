@@ -25,6 +25,7 @@
         <div class="guestform__row">
             <input type="text" id="title" name="title" placeholder="Title" value="{{ old("title") }}">
             <textarea cols="50" rows="4" type="text" id="text" name="text" placeholder="Text">{{ old("text") }}</textarea>
+            <input type="text" id="video" name="video" placeholder="YouTube link" value="{{ old("video") }}">
             <input type="file" id="file" name="file" value="{{ old("file") }}">
 
             <button class="btn" type="submit">Отправить!</button>

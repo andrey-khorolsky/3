@@ -9,7 +9,20 @@
 @section('content')
     
 
-    {{ $uploadStatus ?? "Выберите файл в формате csv"}}
+    {{-- {{!isset($uploadStatus) ? "la" : $uploadStatus}} --}}
+    @if (isset($uploadStatus))
+        {{$uploadStatus}}
+    @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <div class="test">
+            @foreach ($errors->all() as $error)
+                <div class="tstf">{{ $error }}</div>
+            @endforeach
+        </div>
+    </div>
+    @endif
 
     <form class="guestform" method="post" name="guestform" action="/admin/uploadArticles" enctype="multipart/form-data">
         @csrf
