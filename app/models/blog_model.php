@@ -17,7 +17,8 @@ class Blog_model{
     }
 
     function newArticle(BlogRequest $blogRequest){
-        $blogRequest["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
+        if (is_null($blogRequest["video"]) && !is_null($_FILES["file"]["name"]))
+            $blogRequest["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
         Article::writeArticle($blogRequest);
         // (new Article($blogRequest))->save();
         move_uploaded_file($_FILES["file"]["tmp_name"], "img/blog/".$_FILES["file"]["name"]);
@@ -29,13 +30,15 @@ class Blog_model{
 
     function addArticlesFromFile($file){
 
+        $res = 0;
         $openedFile = fopen($file, "r");
         while($str = fgetcsv($openedFile)){
             $arr = [
                 "date" => $str["3"],
                 "title" => $str["0"],
                 "text" => $str["1"],
-                "author" => $str["2"]
+                "author" => $str["2"],
+                "video" => $str["4"] ?? null
             ];
             
             $validator = Validator::make($arr, [
@@ -46,13 +49,22 @@ class Blog_model{
             ]);
     
             if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
+                // return back()->withErrors($validator)->withInput();
             }
-            // die(json_encode($arr));
+
+            // if (!is_null($arr["img"])){
+            //     $imgName = "img/blog/".uniqid().".jpg";
+            //     $img = fopen($imgName, 'w');
+            //     fwrite($img, base64_decode($arr["img"]));
+            //     fclose($img);
+            //     $arr["img"] = $imgName;
+            // }
 
             Article::writeArticle($arr);
-            // (new Article($arr))->save();
+            $res += 1;
         }
+        fclose($openedFile);
+        return $res;
     }
 
     static function saveBlogInFile(){
@@ -61,8 +73,11 @@ class Blog_model{
 
         $articles = Article::all();
         foreach($articles as $article){
+            $av = !is_null($article->video) ? $article->video : "";
+            // !is_null($article->img) ? base64_encode(file($article->img)) : (!is_null($article->video) ? base64_encode(file($article->video)) : "");
+            // $av = !is_null($article->img) ? base64_encode(file_get_contents("img/blog/firs.jpg")) : "";
             
-            fwrite($openedFile, "\"".($article->title ?? "")."\",\"".($article->text ?? "")."\",\"".($article->author ?? "")."\",\"".($article->date ?? "")."\"\n");
+            fwrite($openedFile, "\"".($article->title ?? "")."\",\"".($article->text ?? "")."\",\"".($article->author ?? "")."\",\"".($article->date ?? "")."\",\"".($av)."\"\n");
         }
 
         fclose($openedFile);
