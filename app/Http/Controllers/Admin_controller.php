@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BlogRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class Admin_controller extends Controller
@@ -18,8 +19,14 @@ class Admin_controller extends Controller
 
 
     function uploadArticles(){
-        $this->model->addArticlesFromFile($_FILES["articles"]["tmp_name"]);
-        return  view("admin.addFileWithArticle", ["uploadStatus" => "Статьи успешно добавлены в блог"]);
+        // try{
+        $countArticles = $this->model->addArticlesFromFile($_FILES["articles"]["tmp_name"]);
+        // } catch (Exception $e){
+            // die($e);
+            // return back()->with("uploadStatus", ("Произошла ошибка при добавлении"));
+        // }
+        // return view("admin/uploadArticles", ["uploadStatus" => ($countArticles." статей успешно добавлено в блог")]);
+        return redirect("admin/uploadArticles")->with("uploadStatus", ($countArticles." статей успешно добавлено в блог"));
     }
 
     
