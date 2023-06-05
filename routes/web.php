@@ -118,40 +118,43 @@ Route::get("/account/sign_out", function(){
 });
 
 
+//ajax
+
+Route::get("/account/canRegistr", function(Request $request){
+    return (new Account_controller(new Account_model))->checkEmail($request);
+});
+
+
 
 Route::view("/school", "school");
 
 
 
 
-Route::view("/admin", "admin.main")->middleware("admin");
+Route::view("/admin", "admin.main")->middleware("role:admin|editor");
 
-Route::view("/admin/newArticle", "admin.newArticle")->middleware("admin");
+Route::view("/admin/newArticle", "admin.newArticle")->middleware("role:admin|editor");
 
-Route::view("/admin/addFileWithArticles", "admin.addFileWithArticle")->middleware("admin");
+Route::view("/admin/uploadArticles", "admin.uploadArticles")->middleware("role:admin");
 
-Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile")->middleware("admin");
+Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile")->middleware("role:admin");
 
 Route::post("/admin/newArticle", function(BlogRequest $blogRequest){
     return (new Admin_controller(new Blog_model))->newArticle($blogRequest);
-})->middleware("admin");
+})->middleware("role:admin|editor");
 
 Route::post("/admin/uploadArticles", function(){
     return (new Admin_controller(new Blog_model))->uploadArticles();
-})->middleware("admin");
+})->middleware("role:admin");
 
 Route::post("/admin/uploadComments", function(){
     return (new Admin_controller(new Guest_model))->uploadComments();
-})->middleware("admin");
+})->middleware("role:admin");
 
 Route::get("/admin/statistic", function(){
-    
-    // echo Auth::user()."--";
-    // die(Auth::getUser());
     return (new Admin_controller(new statistic_model))->statistic();
-})->middleware("admin");
+})->middleware("role:admin|editor");
 
 Route::get("/admin/downloadFiles", function(){
     return (new Admin_controller(new Files_model))->dovnloadFiles();
-});
-
+})->middleware("role:admin|editor");
