@@ -89,7 +89,7 @@
 }
 
 
-.card img{
+.card img, iframe{
     max-height: 300px;
 }
 

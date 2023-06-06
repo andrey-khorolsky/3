@@ -2,40 +2,43 @@
 
 namespace App\Models;
 use App\Http\Requests\BlogRequest;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\AR\Article;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Translation\Dumper\CsvFileDumper;
 
-class Blog_model extends Model{
+class Blog_model{
 
     private $articles;
 
 
 
-    function getArticles($from, $count){
-        $this->articles = Article::pagination();
-        return $this->articles;
+    function getArticles($count){
+        return Article::paginate($count);
     }
 
-    function newArticle($array, BlogRequest $blogRequest){
-        $array["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
-        Article::writeArticle($array);
+    function newArticle(BlogRequest $blogRequest){
+        if (is_null($blogRequest["video"]) && !is_null($_FILES["file"]["name"]))
+            $blogRequest["img"] = $_FILES["file"]["name"] ? "img/blog/".$_FILES["file"]["name"] : null;
+        Article::writeArticle($blogRequest);
+        // (new Article($blogRequest))->save();
         move_uploaded_file($_FILES["file"]["tmp_name"], "img/blog/".$_FILES["file"]["name"]);
     }
 
     function getPagesCount(){
-        return count(Article::all());
+        return Article::all()->count();
     }
 
     function addArticlesFromFile($file){
 
+        $res = 0;
         $openedFile = fopen($file, "r");
         while($str = fgetcsv($openedFile)){
             $arr = [
                 "date" => $str["3"],
                 "title" => $str["0"],
                 "text" => $str["1"],
-                "author" => $str["2"]
+                "author" => $str["2"],
+                "video" => $str["4"] ?? null
             ];
             
             $validator = Validator::make($arr, [
@@ -46,10 +49,38 @@ class Blog_model extends Model{
             ]);
     
             if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
+                // return back()->withErrors($validator)->withInput();
             }
 
+            // if (!is_null($arr["img"])){
+            //     $imgName = "img/blog/".uniqid().".jpg";
+            //     $img = fopen($imgName, 'w');
+            //     fwrite($img, base64_decode($arr["img"]));
+            //     fclose($img);
+            //     $arr["img"] = $imgName;
+            // }
+
             Article::writeArticle($arr);
+            $res += 1;
         }
+        fclose($openedFile);
+        return $res;
+    }
+
+    static function saveBlogInFile(){
+        $file = "blog.csv";
+        $openedFile = fopen($file, 'w');
+
+        $articles = Article::all();
+        foreach($articles as $article){
+            $av = !is_null($article->video) ? $article->video : "";
+            // !is_null($article->img) ? base64_encode(file($article->img)) : (!is_null($article->video) ? base64_encode(file($article->video)) : "");
+            // $av = !is_null($article->img) ? base64_encode(file_get_contents("img/blog/firs.jpg")) : "";
+            
+            fwrite($openedFile, "\"".($article->title ?? "")."\",\"".($article->text ?? "")."\",\"".($article->author ?? "")."\",\"".($article->date ?? "")."\",\"".($av)."\"\n");
+        }
+
+        fclose($openedFile);
+        return url($file);
     }
 }

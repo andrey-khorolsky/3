@@ -1,16 +1,14 @@
-@extends("layout")
+@extends('Layouts.layout')
 
 
 @section("head")
     <title>Блог</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/for_blog.css">
+    <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
 @endsection
 
 
 @section('content')
     <div class="newcomm">
-        <a href="/blog/newArticle">Write new</a>
-        <a href="/blog/addFileWithArticles">Add from file</a>
         <a href="/guest">Гостевая книга</a>
     </div>
 
@@ -20,7 +18,7 @@
         $page = $_GET["page"] ?? 1;
         $pageCount = ceil($model->getPagesCount()/$articlesOnPage);
         
-            foreach(App\Models\AR\Article::paginate($articlesOnPage) as $article){
+            foreach($model->getArticles($articlesOnPage) as $article){
             ?>
             <div class="card">
                 <div class="card__row">
@@ -30,6 +28,8 @@
                 </div>
 
                 <?=$article->img != null ? "<img src='".$article->img."'>" : ""?>
+                <?=$article->video != null ?
+                    '<iframe src="'.$article->video.'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' : ""?>
             </div>
             <?
         }

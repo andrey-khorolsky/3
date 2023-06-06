@@ -1,11 +1,18 @@
 <?php
 
+use App\Http\Controllers\Account_controller;
+use App\Http\Controllers\Admin_controller;
 use App\Http\Controllers\Contact_controller;
 use App\Http\Controllers\Test_controller;
+use App\Http\Requests\AccountRequest;
 use App\Http\Requests\BlogRequest;
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\GuestRequest;
 use App\Http\Requests\TestRequest;
+use App\Models\account_model;
+use App\Models\Contact_model;
+use App\Models\Files_model;
+use App\Models\statistic_model;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blog_controller;
 use App\Http\Controllers\Hobby_controller;
@@ -31,6 +38,12 @@ use Illuminate\Http\Request;
 */
 
 
+// 2 загрузка в блог видео (ют) поле для ссылки в форме. проигрывание на стр. скачать блог и гостевую.
+
+// 3 роль редактор (работа с блогом) не загружает блог
+
+
+
 Route::view("/", "main");
 
 
@@ -43,40 +56,17 @@ Route::get("/guest", function(){
     return (new Guest_controller(new Guest_model()))->show();
 });
 
-Route::get("/guest/{action}", function($action){
-    return (new Guest_controller())->$action();
-});
+Route::view("/guest/newComment", "guest.newComment");
 
 Route::post("/guest/create", function(GuestRequest $request){
-    $token = $request->session()->token();
-    $token = csrf_token();
     return (new Guest_controller(new Guest_model))->create($request);
 });
 
-Route::post("guest/uploadComments", function(Request $request){
-    $token = $request->session()->token();
-    $token = csrf_token();
-    return (new Guest_controller(new Guest_model))->uploadComments();
-});
 
 
 
-Route::get("blog", function (){
+Route::get("/blog", function (){
     return (new Blog_controller(new Blog_model))->show();
-});
-
-Route::get("blog/{action}", function($action){
-    return (new Blog_controller())->$action();
-});
-
-Route::post("blog/create", function(BlogRequest $blogRequest){
-    return (new Blog_controller(new Blog_model))->create($blogRequest);
-});
-
-Route::post("blog/uploadArticles", function(Request $request){
-    $token = $request->session()->token();
-    $token = csrf_token();
-    return (new Blog_controller(new Blog_model))->uploadArticles();
 });
 
 
@@ -87,34 +77,84 @@ Route::get("/hobby", function(){
 
 
 
-Route::get("photoalbum", function(){
+Route::get("/photoalbum", function(){
     return (new Photoalbum_controller(new Photoalbum_model))->show();
 });
 
 
 
-Route::view("contacts", "contacts.contacts");
+Route::view("/contacts", "contacts.contacts");
 
 Route::post("/contacts", function(ContactRequest $contactRequest){
-    $token = $contactRequest->session()->token();
-    $token = csrf_token();
-    return (new Contact_controller)->check($contactRequest);
+    return (new Contact_controller(new Contact_model))->check($contactRequest);
 });
 
 
 
-Route::view("test", "test.test");
+Route::view("/test", "test.test");
 
-Route::post("test", function(TestRequest $testRequest){
-    $token = $testRequest->session()->token();
-    $token = csrf_token();
+Route::post("/test", function(TestRequest $testRequest){
     return (new Test_controller(new Test_model($testRequest)))->check($testRequest);
 });
 
 
 
-Route::view("account", "account.account");
+Route::view("/account", "account.account")->name("account");
+
+Route::view("/account/sign_in", "account.sign_in");
+
+Route::view("/account/sign_up", "account.sign_up");
+
+Route::post("/account/sign_in", function(AccountRequest $accountRequest){
+    return (new Account_controller(new Account_model))->signIn($accountRequest);
+});
+
+Route::post("/account/sign_up", function(AccountRequest $accountRequest){
+    return (new Account_controller(new Account_model))->registration($accountRequest);
+});
+
+Route::get("/account/sign_out", function(){
+    return (new Account_controller(new Account_model))->signOut();
+});
+
+
+//ajax
+
+Route::get("/account/canRegistr", function(Request $request){
+    return (new Account_controller(new Account_model))->checkEmail($request);
+});
 
 
 
-Route::view("school", "school");
+Route::view("/school", "school");
+
+
+
+
+Route::view("/admin", "admin.main")->middleware("role:admin|editor");
+
+Route::view("/admin/newArticle", "admin.newArticle")->middleware("role:admin|editor");
+
+Route::view("/admin/uploadArticles", "admin.uploadArticles")->middleware("role:admin");
+
+Route::view("/admin/addCommentsFromFile", "admin.addCommentFromFile")->middleware("role:admin");
+
+Route::post("/admin/newArticle", function(BlogRequest $blogRequest){
+    return (new Admin_controller(new Blog_model))->newArticle($blogRequest);
+})->middleware("role:admin|editor");
+
+Route::post("/admin/uploadArticles", function(){
+    return (new Admin_controller(new Blog_model))->uploadArticles();
+})->middleware("role:admin");
+
+Route::post("/admin/uploadComments", function(){
+    return (new Admin_controller(new Guest_model))->uploadComments();
+})->middleware("role:admin");
+
+Route::get("/admin/statistic", function(){
+    return (new Admin_controller(new statistic_model))->statistic();
+})->middleware("role:admin|editor");
+
+Route::get("/admin/downloadFiles", function(){
+    return (new Admin_controller(new Files_model))->dovnloadFiles();
+})->middleware("role:admin|editor");

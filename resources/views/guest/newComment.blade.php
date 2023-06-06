@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Layouts.layout')
 
 
 @section("head")
@@ -29,7 +29,7 @@
                 <input type="text" id="email" name="email" placeholder="email@email.com" value="{{ old('email') }}">
             </div>
 
-            <textarea cols="50" rows="4" name="text" placeholder="Напишите тут свой отзыв" value="{{ old('text') }}"></textarea>
+            <textarea cols="50" rows="4" name="text" placeholder="Напишите тут свой отзыв">{{ old('text') }}</textarea>
 
             <button class="btn" type="submit">Отправить!</button>
         </div>

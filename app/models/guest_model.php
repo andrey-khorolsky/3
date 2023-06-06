@@ -4,32 +4,38 @@ namespace App\Models;
 
 class Guest_model{
 
-    private $file = "messages.inc";
+    private static $file = "messages.inc";
     private $openFile;
     private $validator;
 
     private $comments;
 
-    function openFileForRead(){
-        $this->openFile = fopen($this->file, 'r');
+
+
+    private function openFileForRead(){
+        $this->openFile = fopen(static::$file, 'r');
     }
 
-    function openFileForWrite(){
-        $this->openFile = fopen($this->file, "r+");
-        fseek($this->openFile, filesize($this->file));
+
+    private function openFileForWrite(){
+        $this->openFile = fopen(static::$file, "r+");
+        fseek($this->openFile, filesize(static::$file));
     }
 
-    function closeFile(){
+
+    private function closeFile(){
         fclose($this->openFile);
     }
 
-    function getComments($start = 0, $countComments = 20){
+
+    //считывание countComments комментариев
+    private function getComments($start = 0, $countComments = 20){
         $this->openFileForRead();
 
         for ($i=0; $i<$start; $i++)
             fgets($this->openFile);
         
-        $this->comments = null;
+        unset($this->comments);
 
         for ($i=0; $i<$countComments; $i++){
             if (!feof($this->openFile))
@@ -38,11 +44,11 @@ class Guest_model{
         }
         
         $this->closeFile();
-        
     }
 
-    function findComment(){
-        
+
+    //создание комментария из строки
+    private function findComment(){
         if ($str = fgets($this->openFile)){
             $str = explode(";", $str);
             $res["date"] = $str["0"];
@@ -54,6 +60,8 @@ class Guest_model{
         return;
     }
 
+
+    //написание комментария (создание из массива)
     function writeComment($array){
         if (is_null($array) || !isset($array)) return;
 
@@ -65,19 +73,20 @@ class Guest_model{
         $this->closeFile();
     }
 
-    function uploadFromFile($files){
-        $fil = fopen($files["messages"]["tmp_name"], "r");
-        $this->openFileForWrite();
 
-        while($str = fgets($fil)){
-            fwrite($this->openFile, "\n".$str);
-        }
-        fclose($fil);
-        $this->closeFile();
+    function uploadFromFile($files){
+        move_uploaded_file($_FILES["messages"]["tmp_name"], public_path()."/messages.inc");
     }
+
 
     function getAllComments(){
         $this->getComments();
         return $this->comments;
     }
+
+
+    static function saveGuestInFile(){
+        return url(static::$file);
+    }
+
 }

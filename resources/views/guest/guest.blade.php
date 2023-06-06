@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Layouts.layout')
 
 
 @section('head')
@@ -12,7 +12,6 @@
 
     <div class="newcomm">
         <a href="/guest/newComment">Write new</a>
-        <a href="/guest/addCommentsFromFile">Add from file</a>
         <a href="/blog">Блог</a>
     </div>
 
