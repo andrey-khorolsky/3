@@ -26,7 +26,7 @@ class Account_model
     }
 
     static function findNameToEnter($email, $password){
-        $account = Account::where("email", $email)->where("password", md5($password))->get();
+        $account = User::where("email", $email)->where("password", md5($password))->get();
         return $account[0]->name;
     }
 
@@ -49,12 +49,9 @@ class Account_model
 
     
     function checkEmail($email){
-        // die("ajax");
-
         $validEmail = preg_match('/^[0-9a-zA-z][0-9a-zA-Z\.]*[0-9a-zA-z]?[^\.]\@[-a-zA-z]+\.[-a-zA-z]{2,}$/', $email) == 1;
 
         return json_encode(['res' => User::where('email', $email)->count(), 'errvalid' => $validEmail]);
-        // return json_encode(['response' => 'yes']);
     }
 
 }

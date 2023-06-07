@@ -47,7 +47,6 @@ class Account_controller extends Controller
 
 
     function checkEmail($request){
-        // die($this->model->checkEmail($request['email']));
         return $this->model->checkEmail($request['email']);
     }
 }

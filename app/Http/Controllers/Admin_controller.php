@@ -19,13 +19,11 @@ class Admin_controller extends Controller
 
 
     function uploadArticles(){
-        // try{
-        $countArticles = $this->model->addArticlesFromFile($_FILES["articles"]["tmp_name"]);
-        // } catch (Exception $e){
-            // die($e);
-            // return back()->with("uploadStatus", ("Произошла ошибка при добавлении"));
-        // }
-        // return view("admin/uploadArticles", ["uploadStatus" => ($countArticles." статей успешно добавлено в блог")]);
+        try{
+            $countArticles = $this->model->addArticlesFromFile($_FILES["articles"]["tmp_name"]);
+        } catch (Exception $e){
+            return back()->with("uploadStatus", ("Произошла ошибка при добавлении"));
+        }
         return redirect("admin/uploadArticles")->with("uploadStatus", ($countArticles." статей успешно добавлено в блог"));
     }
 
