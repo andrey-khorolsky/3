@@ -3,6 +3,8 @@
 namespace App\Models;
 use App\Http\Requests\BlogRequest;
 use App\Models\AR\Article;
+use App\Models\AR\ArticlesComment;
+use Exception;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Translation\Dumper\CsvFileDumper;
 
@@ -82,5 +84,18 @@ class Blog_model{
 
         fclose($openedFile);
         return url($file);
+    }
+
+    function newComment($authorId, $articleId, $textComment){
+        try{
+            $comment = new ArticlesComment;
+            $comment->author_id = $authorId;
+            $comment->article_id = $articleId;
+            $comment->comment = $textComment;
+            $comment->save();
+            return true;
+        } catch(Exception $e){
+            return $e;
+        }
     }
 }

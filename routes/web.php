@@ -38,11 +38,6 @@ use Illuminate\Http\Request;
 */
 
 
-// 2 загрузка в блог видео (ют) поле для ссылки в форме. проигрывание на стр. скачать блог и гостевую.
-
-// 3 роль редактор (работа с блогом) не загружает блог
-
-
 
 Route::view("/", "main");
 
@@ -68,6 +63,12 @@ Route::post("/guest/create", function(GuestRequest $request){
 Route::get("/blog", function (){
     return (new Blog_controller(new Blog_model))->show();
 });
+
+
+//ajax api
+Route::post("/blog/addComment", function(Request $request){
+    return ['new comment' => (new Blog_controller(new Blog_model))->addComment($request['data']['articleId'], $request['data']['comment'])];
+})->middleware('auth');
 
 
 

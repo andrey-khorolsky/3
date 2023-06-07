@@ -4,6 +4,8 @@
 @section("head")
     <title>Блог</title>
     <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
+    <script src="/public/js/comments.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 
 
@@ -18,18 +20,23 @@
         $page = $_GET["page"] ?? 1;
         $pageCount = ceil($model->getPagesCount()/$articlesOnPage);
         
-            foreach($model->getArticles($articlesOnPage) as $article){
-            ?>
+        foreach($model->getArticles($articlesOnPage) as $article){
+        ?>
             <div class="card">
                 <div class="card__row">
                     <div class="state__date"><?=$article->date?></div>
                     <div class="state__title"><?=$article->title?></div>
                     <div class="state__text"><?=$article->text?></div>
+
+                    @auth
+                        <button articleId='{{$article->id}}'>Комментировать</button>
+                    @endauth
                 </div>
 
                 <?=$article->img != null ? "<img src='".$article->img."'>" : ""?>
                 <?=$article->video != null ?
                     '<iframe src="'.$article->video.'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>' : ""?>
+                
             </div>
             <?
         }
