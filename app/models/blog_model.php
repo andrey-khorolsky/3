@@ -98,4 +98,16 @@ class Blog_model{
             return $e;
         }
     }
+
+    function hasComment($article_id){
+        return ArticlesComment::get()->where('article_id', $article_id)->count();
+    }
+
+    function getLastComment($article_id){
+        return ArticlesComment::orderBy('id', 'desc')->where('article_id', $article_id)->limit(1)->get()[0]['comment'];
+    }
+
+    function getLastCommentAuthor($article_id){
+        return User::where('id', ArticlesComment::orderBy('id', 'desc')->where('article_id', $article_id)->limit(1)->get()[0]['author_id'])->get()['0']['name'];
+    }
 }

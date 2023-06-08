@@ -28,6 +28,16 @@
                     <div class="state__title"><?=$article->title?></div>
                     <div class="state__text"><?=$article->text?></div>
 
+                    <div id="forCom_{{$article->id}}">
+                        @if ($model->hasComment($article->id))
+                            <div class="state__text">
+                                Последний комментарий от {{$model->getLastCommentAuthor($article->id)}}:
+                                <?='<div>'.$model->getLastComment($article->id).'</div>'?>
+                            </div>
+                        @endif
+                    </div>
+                   
+
                     @auth
                         <button articleId='{{$article->id}}'>Комментировать</button>
                     @endauth

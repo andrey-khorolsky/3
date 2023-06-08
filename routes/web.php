@@ -67,7 +67,7 @@ Route::get("/blog", function (){
 
 //ajax api
 Route::post("/blog/addComment", function(Request $request){
-    return ['new comment' => (new Blog_controller(new Blog_model))->addComment($request['data']['articleId'], $request['data']['comment'])];
+    return ['new comment' => (new Blog_controller(new Blog_model))->addComment($request['data']['articleId'], $request['data']['comment']), 'authorName' => Auth::user()->name];
 })->middleware('auth');
 
 

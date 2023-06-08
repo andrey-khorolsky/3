@@ -93,6 +93,12 @@
     max-height: 300px;
 }
 
+.comment{
+    float: left;
+    margin-top: 18%;
+    width: 15%;
+}
+
 .pages{
     margin-bottom: 1%;
     margin-top: 2%;
@@ -108,3 +114,24 @@
 #curPage{
     color: rgba(0, 0, 0, 0.5);
 }
+
+
+.modal_comment {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    text-align: center;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+.modal_comment :nth-child(n) {
+    margin-top: 5vh;
+    margin-bottom: 3%;
+    width: 40%;
+    margin-left: 30%;
+    padding: 1%;
+    border-radius: 5px;
+    background-color: white;
+  }

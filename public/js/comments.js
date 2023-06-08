@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     $('button').click(function(){
         let popup = $('<div class="modal_comment"></div>');
-        let inp = $('<input type="text" value="123">');
+        let inp = $('<input type="text" placeholder="Напишите комментарий">');
         let cross = $('<div>X</div>');
         let create = $('<div>Комментировать</div>');
 
@@ -33,7 +33,10 @@ $(document).ready(function () {
                 return(response.json());
             })
             .then(function(res){
-                console.log(res)
+                let text = $('<div class="state__text"></div>').text('Последний комментарий от '+res["authorName"]+':').append('<div>'+comment+'</div>');
+                $('#forCom_'+articleId).html('').append(text);
+                popup.append('<div>Комментарий написан</div>');
+                $(inp).val('');
             })
             .catch(error =>
                 console.log(error)
