@@ -2,7 +2,7 @@
 $(document).ready(function () {
     
 
-    $('button').click(function(){
+    $('.commentBtn').click(function(){
         let popup = $('<div class="modal_comment"></div>');
         let inp = $('<input type="text" placeholder="Напишите комментарий">');
         let cross = $('<div>X</div>');
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 return(response.json());
             })
             .then(function(res){
-                let text = $('<div class="state__text"></div>').text('Последний комментарий от '+res["authorName"]+':').append('<div>'+comment+'</div>');
+                let text = $('<div class="state__comment"></div>').text('Последний комментарий от '+res["authorName"]+':').append('<div>'+comment+'</div>');
                 $('#forCom_'+articleId).html('').append(text);
                 popup.append('<div>Комментарий написан</div>');
                 $(inp).val('');
