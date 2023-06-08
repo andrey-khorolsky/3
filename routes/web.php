@@ -71,6 +71,15 @@ Route::post("/blog/addComment", function(Request $request){
 })->middleware('auth');
 
 
+Route::post("/blog/editArticle", function(Request $request){
+    // echo($request);
+    // (new Blog_controller(new Blog_model))->editArticle($request['id'], $request['title'], $request['text']);
+    return ['req' => (new Blog_controller(new Blog_model))->editArticle($request['id'], $request['title'], $request['text'])];
+    
+    // return ['req' => $request];
+});
+
+
 
 Route::get("/hobby", function(){
     return (new Hobby_controller(new Hobby_model))->show();

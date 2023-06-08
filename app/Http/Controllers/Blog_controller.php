@@ -14,4 +14,8 @@ class Blog_controller extends Controller{
         return $this->model->newComment(Auth::user()->id, $articleId, $comment);
     }
 
+    function editArticle($articleId, $title, $text){
+        return $this->model->editArticle($articleId, $title, $text);
+    }
+
 }

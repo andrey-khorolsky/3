@@ -110,4 +110,15 @@ class Blog_model{
     function getLastCommentAuthor($article_id){
         return User::where('id', ArticlesComment::orderBy('id', 'desc')->where('article_id', $article_id)->limit(1)->get()[0]['author_id'])->get()['0']['name'];
     }
+
+    function editArticle($articleId, $title, $text){
+        
+        $article = new Article;
+        $article = $article->where('id', $articleId)->get()['0'];
+        $article->title = $title;
+        $article->text = $text;
+        $article->save();
+
+        return $articleId;
+    }
 }

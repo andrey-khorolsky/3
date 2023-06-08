@@ -4,7 +4,8 @@
 @section("head")
     <title>Блог</title>
     <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
-    <script src="/public/js/comments.js"></script>
+    {{-- <script src="/public/js/comments.js"></script> --}}
+    <script src="/public/js/editBlog.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 
@@ -22,7 +23,7 @@
         
         foreach($model->getArticles($articlesOnPage) as $article){
         ?>
-            <div class="card">
+            <div id="{{$article->id}}" class="card">
                 <div class="card__row">
                     <div class="state__date"><?=$article->date?></div>
                     <div class="state__title"><?=$article->title?></div>
@@ -30,17 +31,21 @@
 
                     <div id="forCom_{{$article->id}}">
                         @if ($model->hasComment($article->id))
-                            <div class="state__text">
+                            <div class="state__comment">
                                 Последний комментарий от {{$model->getLastCommentAuthor($article->id)}}:
                                 <?='<div>'.$model->getLastComment($article->id).'</div>'?>
                             </div>
                         @endif
-                    </div>
-                   
+                    </div>                   
 
                     @auth
-                        <button articleId='{{$article->id}}'>Комментировать</button>
+                        <button class="commentBtn" articleId='{{$article->id}}'>Комментировать</button>
                     @endauth
+                    
+                    @if (Auth::user()->role == 'admin')
+                        <button class="editBtn" articleId='{{$article->id}}'>Редактировать</button>
+                    @endif
+
                 </div>
 
                 <?=$article->img != null ? "<img src='".$article->img."'>" : ""?>
