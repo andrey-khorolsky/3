@@ -72,12 +72,8 @@ Route::post("/blog/addComment", function(Request $request){
 
 
 Route::post("/blog/editArticle", function(Request $request){
-    // echo($request);
-    // (new Blog_controller(new Blog_model))->editArticle($request['id'], $request['title'], $request['text']);
-    return ['req' => (new Blog_controller(new Blog_model))->editArticle($request['id'], $request['title'], $request['text'])];
-    
-    // return ['req' => $request];
-});
+    return ['req' => (new Blog_controller(new Blog_model))->editArticle($request['data']['id'], $request['data']['title'], $request['data']['text'])];
+})->middleware('role:admin|editor');
 
 
 

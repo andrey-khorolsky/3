@@ -117,8 +117,7 @@ class Blog_model{
         $article = $article->where('id', $articleId)->get()['0'];
         $article->title = $title;
         $article->text = $text;
-        $article->save();
 
-        return $articleId;
+        return $article->save();
     }
 }
