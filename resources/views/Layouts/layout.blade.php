@@ -14,7 +14,7 @@
         <nav class="nav">
             <ul>
                 <li> <a href="/"><img src="">Главная</a></li>
-                <li> <a href="/guest"><img src="">Гостевая книга</a> </li>
+                <li> <a href="/blog"><img src="">Блог</a> </li>
                 <li> <a onclick="openMenu();"><img src="">Мои интересы</a></li>
                 <li> <a href="/photoalbum"><img src="">Фото</a></li>
                 <li> <a href="/contacts"><img src="">Контакты</a></li>

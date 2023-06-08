@@ -44,9 +44,9 @@
     <div>
         <span id="regMsg"></span>
 
-        @if (isset($registration))
-            <div>{{$registration}}</div>
-        @endif
+        
+            <div>{{$registration ?? ''}}</div>
+        
     </div>
 
 @endsection

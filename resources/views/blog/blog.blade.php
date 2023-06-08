@@ -4,7 +4,7 @@
 @section("head")
     <title>Блог</title>
     <link rel="stylesheet" type="text/css" href="/css/for_blog.css">
-    {{-- <script src="/public/js/comments.js"></script> --}}
+    <script src="/public/js/comments.js"></script>
     <script src="/public/js/editBlog.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
@@ -42,7 +42,7 @@
                         <button class="commentBtn" articleId='{{$article->id}}'>Комментировать</button>
                     @endauth
                     
-                    @if (Auth::user()->role == 'admin')
+                    @if (isset(Auth::user()->role) && in_array(Auth::user()->role, ['admin', 'editor']))
                         <button class="editBtn" articleId='{{$article->id}}'>Редактировать</button>
                     @endif
 
