@@ -62,4 +62,9 @@ $(document).ready(function () {
         popup.append(create);
         $('body').append(popup);
     });
+
+    $('.delBtn').click(function(){
+        fetch('/blog/deleteArticle/'+$(this).attr('articleId'));
+    });
+
 });
