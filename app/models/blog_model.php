@@ -120,4 +120,10 @@ class Blog_model{
 
         return $article->save();
     }
+
+    function deleteArticle($id){
+        $article = new Article;
+        $article = $article->find($id);
+        return $article->delete();
+    }
 }

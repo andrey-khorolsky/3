@@ -18,4 +18,8 @@ class Blog_controller extends Controller{
         return $this->model->editArticle($articleId, $title, $text);
     }
 
+    function deleteArticle($id){
+        return $this->model->deleteArticle($id);
+    }
+
 }

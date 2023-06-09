@@ -75,6 +75,11 @@ Route::post("/blog/editArticle", function(Request $request){
     return ['req' => (new Blog_controller(new Blog_model))->editArticle($request['data']['id'], $request['data']['title'], $request['data']['text'])];
 })->middleware('role:admin|editor');
 
+Route::get("/blog/deleteArticle/{id}", function($id){
+    return ["del" => (new Blog_controller(new Blog_model))->deleteArticle($id)];
+})->middleware("role:admin");
+
+
 
 
 Route::get("/hobby", function(){
