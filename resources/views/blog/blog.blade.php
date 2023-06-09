@@ -44,6 +44,7 @@
                     
                     @if (isset(Auth::user()->role) && in_array(Auth::user()->role, ['admin', 'editor']))
                         <button class="editBtn" articleId='{{$article->id}}'>Редактировать</button>
+                        <button class="delBtn" articleId='{{$article->id}}'>Удалить</button>
                     @endif
 
                 </div>
