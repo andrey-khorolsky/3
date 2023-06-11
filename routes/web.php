@@ -67,13 +67,14 @@ Route::get("/blog", function (){
 
 //ajax api
 Route::post("/blog/addComment", function(Request $request){
-    return ['new comment' => (new Blog_controller(new Blog_model))->addComment($request['data']['articleId'], $request['data']['comment']), 'authorName' => Auth::user()->name];
-})->middleware('auth');
+    return ['image' => (new Blog_controller(new Blog_model))->addComment($request['articleId'], $request['comment'], ($_FILES['img']['tmp_name'] ?? null)), 'authorName' => Auth::user()->name];
+});
 
 
 Route::post("/blog/editArticle", function(Request $request){
     return ['req' => (new Blog_controller(new Blog_model))->editArticle($request['data']['id'], $request['data']['title'], $request['data']['text'])];
 })->middleware('role:admin|editor');
+
 
 Route::get("/blog/deleteArticle/{id}", function($id){
     return ["del" => (new Blog_controller(new Blog_model))->deleteArticle($id)];

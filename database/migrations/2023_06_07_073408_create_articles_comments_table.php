@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('article_id')->constrained('articles');
             $table->foreignId('author_id')->constrained('users');
             $table->string('comment', 400);
+            $table->string('img', 120)->nullable()->default(null);
         });
     }
 

@@ -31,9 +31,11 @@
 
                     <div id="forCom_{{$article->id}}">
                         @if ($model->hasComment($article->id))
+                            <? $comment = $model->getLastComment($article->id);?>
                             <div class="state__comment">
                                 Последний комментарий от {{$model->getLastCommentAuthor($article->id)}}:
-                                <?='<div>'.$model->getLastComment($article->id).'</div>'?>
+                                <?='<div>'.$comment->comment.'</div>'?>
+                                <?= ($comment->img) ? '<img src="'.$comment->img.'"></img>' : ''?>
                             </div>
                         @endif
                     </div>                   

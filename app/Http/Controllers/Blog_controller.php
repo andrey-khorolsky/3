@@ -10,8 +10,8 @@ class Blog_controller extends Controller{
         return view("blog.blog", ["model" => $this->model]);
     }
 
-    function addComment($articleId, $comment){
-        return $this->model->newComment(Auth::user()->id, $articleId, $comment);
+    function addComment($articleId, $comment, $img){
+        return $this->model->newComment(Auth::user()->id, $articleId, $comment, $img);
     }
 
     function editArticle($articleId, $title, $text){

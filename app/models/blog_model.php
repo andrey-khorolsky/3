@@ -86,14 +86,19 @@ class Blog_model{
         return url($file);
     }
 
-    function newComment($authorId, $articleId, $textComment){
+    function newComment($authorId, $articleId, $textComment, $img){
         try{
             $comment = new ArticlesComment;
             $comment->author_id = $authorId;
             $comment->article_id = $articleId;
             $comment->comment = $textComment;
+            if (isset($img) && !is_null($img)){
+                $imgName = "img/blog/".uniqid().".jpg";
+                $comment->img = $imgName;
+                move_uploaded_file($img, $imgName);
+            }
             $comment->save();
-            return true;
+            return $imgName ?? false;
         } catch(Exception $e){
             return $e;
         }
@@ -104,7 +109,7 @@ class Blog_model{
     }
 
     function getLastComment($article_id){
-        return ArticlesComment::orderBy('id', 'desc')->where('article_id', $article_id)->limit(1)->get()[0]['comment'];
+        return ArticlesComment::orderBy('id', 'desc')->where('article_id', $article_id)->limit(1)->get()[0];
     }
 
     function getLastCommentAuthor($article_id){

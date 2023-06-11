@@ -4,7 +4,9 @@ $(document).ready(function () {
 
     $('.commentBtn').click(function(){
         let popup = $('<div class="modal_comment"></div>');
-        let inp = $('<input type="text" placeholder="Напишите комментарий">');
+        let form = $('<form id="commentForm"></form>');
+        let inpText = $('<input type="text" placeholder="Напишите комментарий">');
+        let inpImg = $('<input type="file">');
         let cross = $('<div>X</div>');
         let create = $('<div>Комментировать</div>');
 
@@ -17,34 +19,46 @@ $(document).ready(function () {
 
         create.click(function(){
 
+            let a = $(inpImg);
+            let comment = $(inpText).val();
+            console.log($(a)[0].files[0]);
+
+            let formdata = new FormData;
+            formdata.append('articleId', articleId);
+            formdata.append('comment', $(inpText).val());
+            formdata.append('img', $(a)[0].files[0]);
+            formdata.append("_token", $('meta[name="csrf-token"]').attr('content'));
             
-            let comment = $(inp).val();
-            let data = {comment, articleId};
-            let comm = {"_token": $('meta[name="csrf-token"]').attr('content'), data};
 
             fetch('/blog/addComment',{
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(comm)
+                body: formdata
             })
             .then(function(response){
-                return(response.json());
+                console.log(response);
+                return response.json();
             })
             .then(function(res){
-                let text = $('<div class="state__comment"></div>').text('Последний комментарий от '+res["authorName"]+':').append('<div>'+comment+'</div>');
+                console.log(res);
+                let img = null;
+                if (res['image']){
+                    img = $('<img class="state__comment"></img>').attr('src', res['image']);
+                }
+                let text = $('<div class="state__comment"></div>').text('Последний комментарий от '+res["authorName"]+':').append('<div>'+comment+'</div>').append(img);
                 $('#forCom_'+articleId).html('').append(text);
                 popup.append('<div>Комментарий написан</div>');
-                $(inp).val('');
+                $(inpText).val('');
             })
             .catch(error =>
                 console.log(error)
             );
         });
 
+        form.append(inpText);
+        form.append(inpImg);
+
         popup.append(cross);
-        popup.append(inp);
+        popup.append(form);
         popup.append(create);
         $('body').append(popup);
     });
