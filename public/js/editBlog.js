@@ -65,6 +65,8 @@ $(document).ready(function () {
 
     $('.delBtn').click(function(){
         fetch('/blog/deleteArticle/'+$(this).attr('articleId'));
+        $(this).text("Удалено");
+        $(this).attr('disabled', true);
     });
 
 });
